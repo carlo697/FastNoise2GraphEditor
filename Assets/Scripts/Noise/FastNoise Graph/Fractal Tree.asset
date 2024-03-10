@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8250058840514292203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e54461ff033b347a947b50bb1218e9, type: 3}
+  m_Name: ValueNode
+  m_EditorClassIdentifier: 
+  guid: 5fa352de4fa3c16479393e4c7ed8abd9
+  nodePosition: {x: -439, y: 372}
+  edges: []
+--- !u!114 &-7183240307789894891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32baf0f84b5ab914ba953cbb89bc3d7e, type: 3}
+  m_Name: OpenSimplex2SNode
+  m_EditorClassIdentifier: 
+  guid: c39014587dc15e840b24bf56504cc4c4
+  nodePosition: {x: -503.74255, y: 64}
+  edges: []
+--- !u!114 &-6938243124369663341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebb8cfec7e210445876a311029ce11d, type: 3}
+  m_Name: OpenSimplex2Node
+  m_EditorClassIdentifier: 
+  guid: 209c767afb32af34faacab949ac3f706
+  nodePosition: {x: -493, y: 141}
+  edges: []
+--- !u!114 &-6111959339267971012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cceb11aa484c2b4d9211bdcaf472ffc, type: 3}
+  m_Name: SimplexNode
+  m_EditorClassIdentifier: 
+  guid: 270241f5e07bdb748adc125981bdb343
+  nodePosition: {x: -452, y: 218}
+  edges: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,6 +77,10 @@ MonoBehaviour:
   - {fileID: 6681280436467448167}
   - {fileID: 9070373599128283}
   - {fileID: 4898872105978505962}
+  - {fileID: -8250058840514292203}
+  - {fileID: -6111959339267971012}
+  - {fileID: -6938243124369663341}
+  - {fileID: -7183240307789894891}
 --- !u!114 &9070373599128283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,7 +94,7 @@ MonoBehaviour:
   m_Name: PerlinNode
   m_EditorClassIdentifier: 
   guid: 559abd6a677ceee4db1b928f49a0f455
-  nodePosition: {x: -436, y: 64}
+  nodePosition: {x: -439, y: 295}
   edges: []
 --- !u!114 &4898872105978505962
 MonoBehaviour:
@@ -48,7 +112,7 @@ MonoBehaviour:
   nodePosition: {x: -321, y: 63.5}
   edges:
   - parentPortIndex: 0
-    childNode: {fileID: 9070373599128283}
+    childNode: {fileID: -7183240307789894891}
   gain: 0.5
   weightedStrength: 0
   octaves: 3
