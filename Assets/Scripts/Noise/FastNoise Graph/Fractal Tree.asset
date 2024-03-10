@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
+  m_Name: Fractal Tree
+  m_EditorClassIdentifier: 
+  outputNode: {fileID: 6681280436467448167}
+  nodes:
+  - {fileID: 6681280436467448167}
+  - {fileID: 9070373599128283}
+  - {fileID: 4898872105978505962}
+--- !u!114 &9070373599128283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05bba89d7502934ca40a2a06312ed96, type: 3}
+  m_Name: PerlinNode
+  m_EditorClassIdentifier: 
+  guid: 559abd6a677ceee4db1b928f49a0f455
+  nodePosition: {x: -436, y: 64}
+  edges: []
+--- !u!114 &4898872105978505962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb154f8e7ddaf64aa7b1d4afe65e690, type: 3}
+  m_Name: FractalFBmNode
+  m_EditorClassIdentifier: 
+  guid: 1b0bd3b65c0ceae40942b946b61d20a0
+  nodePosition: {x: -321, y: 63.5}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: 9070373599128283}
+  gain: 0.5
+  weightedStrength: 0
+  octaves: 3
+  lacunarity: 2
+--- !u!114 &6681280436467448167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
+  m_Name: OutputNode
+  m_EditorClassIdentifier: 
+  guid: 685029665fb119b4aa48583c85ef1153
+  nodePosition: {x: 3, y: 64}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: 4898872105978505962}
