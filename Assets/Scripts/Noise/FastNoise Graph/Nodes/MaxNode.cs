@@ -1,5 +1,5 @@
+[NodeName("Max")]
 public class MaxNode : FastNoiseNode {
-  public override string nodeName => "Max";
   public override string nodeMetadataName => "max";
 
   public float RHS;

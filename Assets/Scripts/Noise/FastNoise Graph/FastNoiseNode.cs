@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 public abstract class FastNoiseNode : ScriptableObject {
   public string guid;
   public Vector2 nodePosition;
   public List<FastNoiseEdge> edges = new();
 
-  public abstract string nodeName { get; }
   public abstract string nodeMetadataName { get; }
   public virtual int nodeWidth => 180;
   public virtual Color headerBackgroundColor => Color.black;
@@ -22,4 +23,13 @@ public abstract class FastNoiseNode : ScriptableObject {
   public abstract FastNoiseInput[] inputs { get; }
 
   public virtual void ApplyValues(FastNoise node) { }
+
+  public static string GetNodeName(Type type) {
+    NodeNameAttribute nameAttribute = type.GetCustomAttribute<NodeNameAttribute>();
+    return nameAttribute?.name ?? type.Name;
+  }
+
+  public static string GetNodeName(FastNoiseNode node) {
+    return GetNodeName(node.GetType());
+  }
 }

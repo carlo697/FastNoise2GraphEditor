@@ -3,7 +3,9 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
   public FastNoiseNode node;
@@ -19,7 +21,10 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
     this.tree = tree;
     this.treeView = treeView;
 
-    this.title = node.nodeName;
+    // Get the name of the node
+    string name = FastNoiseNode.GetNodeName(node);
+    this.title = name;
+
     this.viewDataKey = node.guid;
     this.titleContainer.style.backgroundColor = node.headerBackgroundColor;
 

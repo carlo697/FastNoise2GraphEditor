@@ -1,6 +1,6 @@
+[NodeName("Perlin")]
 public class PerlinNode : FastNoiseNode {
-  public override string nodeName => "Perlin";
-  public override string nodeMetadataName => "Perlin";
+  public override string nodeMetadataName => "perlin";
 
   public override FastNoiseInput[] inputs => new FastNoiseInput[0];
 }

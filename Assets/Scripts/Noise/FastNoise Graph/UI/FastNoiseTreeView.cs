@@ -5,6 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class FastNoiseTreeView : GraphView {
   private FastNoiseTree tree;
@@ -116,11 +117,17 @@ public class FastNoiseTreeView : GraphView {
     base.BuildContextualMenu(evt);
 
     if (tree) {
+      // Get the available types of nodes
       var nodeTypes = TypeCache.GetTypesDerivedFrom<FastNoiseNode>();
 
+      // Iterate the types to append buttons (to the menu) for adding the nodes
       foreach (var nodeType in nodeTypes) {
         if (nodeType != typeof(OutputNode)) {
-          evt.menu.AppendAction($"{nodeType.Name}", (action) => {
+          // Get the name of the node
+          string name = FastNoiseNode.GetNodeName(nodeType);
+
+          // Add the button
+          evt.menu.AppendAction(name, (action) => {
             CreateNode(nodeType);
           });
         }

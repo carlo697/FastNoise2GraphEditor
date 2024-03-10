@@ -1,8 +1,8 @@
 using UnityEditor.Experimental.GraphView;
 
+[NodeName("Output")]
 public class OutputNode : FastNoiseNode {
-  public override string nodeName => "Output";
-  public override string nodeMetadataName => "None";
+  public override string nodeMetadataName => "";
 
   public override Capabilities capabilities =>
     Capabilities.Selectable | Capabilities.Movable | Capabilities.Snappable;

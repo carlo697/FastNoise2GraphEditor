@@ -1,5 +1,5 @@
+[NodeName("Divide")]
 public class DivideNode : FastNoiseNode {
-  public override string nodeName => "Divide";
   public override string nodeMetadataName => "divide";
 
   public float LHS;

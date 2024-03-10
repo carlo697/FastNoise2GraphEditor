@@ -1,8 +1,8 @@
 using UnityEngine;
 
+[NodeName("Fractal FBm")]
 public class FractalFBmNode : FastNoiseNode {
-  public override string nodeName => "Fractal FBm";
-  public override string nodeMetadataName => "FractalFBm";
+  public override string nodeMetadataName => "fractalfbm";
 
   public float gain = 0.5f;
   public float weightedStrength = 0f;
