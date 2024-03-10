@@ -1,4 +1,4 @@
-[NodeName("Max")]
+[NodeName("Max", "Blends/Max")]
 public class MaxNode : FastNoiseNode {
   public override string nodeMetadataName => "max";
 

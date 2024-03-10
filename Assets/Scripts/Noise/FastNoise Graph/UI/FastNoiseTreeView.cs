@@ -124,7 +124,7 @@ public class FastNoiseTreeView : GraphView {
       foreach (var nodeType in nodeTypes) {
         if (nodeType != typeof(OutputNode)) {
           // Get the name of the node
-          string name = FastNoiseNode.GetNodeName(nodeType);
+          string name = FastNoiseNode.GetNodeMenuName(nodeType);
 
           // Add the button
           evt.menu.AppendAction(name, (action) => {

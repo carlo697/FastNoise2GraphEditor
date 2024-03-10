@@ -1,4 +1,4 @@
-[NodeName("Add")]
+[NodeName("Add", "Blends/Add")]
 public class AddNode : FastNoiseNode {
   public override string nodeMetadataName => "add";
 

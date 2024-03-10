@@ -29,6 +29,11 @@ public abstract class FastNoiseNode : ScriptableObject {
     return nameAttribute?.name ?? type.Name;
   }
 
+  public static string GetNodeMenuName(Type type) {
+    NodeNameAttribute nameAttribute = type.GetCustomAttribute<NodeNameAttribute>();
+    return nameAttribute?.menuName ?? type.Name;
+  }
+
   public static string GetNodeName(FastNoiseNode node) {
     return GetNodeName(node.GetType());
   }

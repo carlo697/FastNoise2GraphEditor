@@ -1,4 +1,4 @@
-[NodeName("Min")]
+[NodeName("Min", "Blends/Min")]
 public class MinNode : FastNoiseNode {
   public override string nodeMetadataName => "min";
 

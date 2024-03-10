@@ -1,4 +1,4 @@
-[NodeName("Divide")]
+[NodeName("Divide", "Blends/Divide")]
 public class DivideNode : FastNoiseNode {
   public override string nodeMetadataName => "divide";
 
