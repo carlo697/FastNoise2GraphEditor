@@ -9,6 +9,7 @@ public class CellularDistanceNode : FastNoiseNode {
   public DistanceFunction distanceFunction = DistanceFunction.EuclideanSquared;
   [Min(0)]
   public int distanceIndex0 = 0;
+  [Min(0)]
   public int distanceIndex1 = 1;
   public ReturnType returnType = ReturnType.Index0;
 
