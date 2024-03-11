@@ -28,6 +28,8 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
     this.viewDataKey = node.guid;
     this.titleContainer.style.backgroundColor = node.headerBackgroundColor;
 
+    this.style.width = node.nodeWidth;
+
     capabilities = node.capabilities;
 
     // Set the saved position
@@ -90,12 +92,10 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
         field.Bind(serializedNode);
 
         // Style field
-        // FloatField field = new FloatField(input.label);
-        // field.labelElement.style.width = 40;
-        // field.labelElement.style.flexShrink = 1;
-        field.style.width = 200;
-        field.style.flexGrow = 0;
-        field.style.flexShrink = 1;
+        field.AddToClassList("node-input-property");
+        if (port == null) {
+          field.AddToClassList("node-input-property--no-port");
+        }
 
         field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
           foreach (var node in tree.nodes) {
@@ -150,11 +150,11 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
       box.style.height = 200;
 
       // Background colors
-      box.style.backgroundColor = Color.white;
+      box.style.backgroundColor = Color.black;
       mainContainer.style.backgroundColor = Color.black;
 
       // Noise image preview
-      previewTexture = new Texture2D(256, 256);
+      previewTexture = new Texture2D(200, 200);
       UpdatePreview();
       box.style.backgroundPositionX = new BackgroundPosition(BackgroundPositionKeyword.Center);
       box.style.backgroundPositionY = new BackgroundPosition(BackgroundPositionKeyword.Center);
@@ -172,7 +172,7 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
       return;
     }
 
-    int resolution = 256;
+    int resolution = 200;
     FastNoise instancedNoise = tree.GetFastNoise(node);
 
     if (instancedNoise != null) {

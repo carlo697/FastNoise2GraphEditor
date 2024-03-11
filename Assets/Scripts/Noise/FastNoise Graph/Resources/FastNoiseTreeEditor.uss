@@ -4,3 +4,23 @@ GridBackground {
   --thick-line-color: rgba(193, 196, 192, 0.1);
   --spacing: 15;
 }
+
+.node-input-property .unity-base-field {
+  flex-direction: row-reverse;
+  margin-left: -5px;
+  justify-content: flex-end;
+}
+
+.node-input-property .unity-base-field__label {
+  min-width: 60px;
+  margin-left: 5px;
+}
+
+.node-input-property .unity-base-field__input {
+  width: 50px;
+  flex-grow: 0;
+}
+
+.node-input-property--no-port .unity-base-field {
+  margin-left: 25px;
+}

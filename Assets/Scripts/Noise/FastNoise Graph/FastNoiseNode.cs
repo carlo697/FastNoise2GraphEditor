@@ -10,7 +10,7 @@ public abstract class FastNoiseNode : ScriptableObject {
   public List<FastNoiseEdge> edges = new();
 
   public abstract string nodeMetadataName { get; }
-  public virtual int nodeWidth => 180;
+  public virtual int nodeWidth => 200;
   public virtual Color headerBackgroundColor => Color.black;
 
   public virtual Capabilities capabilities =>
