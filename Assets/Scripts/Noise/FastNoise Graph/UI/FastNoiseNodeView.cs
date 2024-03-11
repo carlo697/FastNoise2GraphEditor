@@ -179,20 +179,37 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
 
     if (instancedNoise != null) {
       try {
+        // System.Diagnostics.Stopwatch watch = new();
+        // watch.Start();
+
+        // Generate the noise
         float[] values = new float[resolution * resolution];
         instancedNoise.GenUniformGrid2D(values, 0, 0, resolution, resolution, 0.03f, 0);
 
-        for (int y = 0; y < resolution; y++) {
-          for (int x = 0; x < resolution; x++) {
-            int index2d = TextureUtils.GetIndexFrom2d(x, y, resolution);
+        // watch.Stop();
+        // Debug.Log($"Noise: {watch.Elapsed.TotalMilliseconds}");
 
-            float value = values[index2d];
-            float normalizedValue = TextureUtils.Normalize(value);
+        // watch.Restart();
 
-            Color finalColor = Color.Lerp(Color.black, Color.white, normalizedValue);
-            previewTexture.SetPixel(x, y, finalColor);
-          }
+        // Convert the noise data into colors
+        Color[] colors = new Color[resolution * resolution];
+        for (int i = 0; i < colors.Length; i++) {
+          // Get value in range -1 to 1
+          float value = values[i];
+
+          // Convert the value to range 0 to 1
+          float normalizedValue = TextureUtils.Normalize(value);
+
+          // Store the final black and white color
+          Color finalColor = new Color(normalizedValue, normalizedValue, normalizedValue, 1f);
+          colors[i] = finalColor;
         }
+
+        // Set the pixels
+        previewTexture.SetPixels(colors);
+
+        // watch.Stop();
+        // Debug.Log($"Set: {watch.Elapsed.TotalMilliseconds}");
       } catch (System.Exception e) {
         Debug.LogError(e);
       }
