@@ -145,26 +145,28 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
 
   public void CreatePreview() {
     if (node is OutputNode) {
-      Box box = new Box();
-      box.style.width = 200;
-      box.style.height = 200;
-
-      // Background colors
-      box.style.backgroundColor = Color.black;
-      mainContainer.style.backgroundColor = Color.black;
-
-      // Noise image preview
-      previewTexture = new Texture2D(200, 200);
-      UpdatePreview();
-      box.style.backgroundPositionX = new BackgroundPosition(BackgroundPositionKeyword.Center);
-      box.style.backgroundPositionY = new BackgroundPosition(BackgroundPositionKeyword.Center);
-      box.style.backgroundRepeat = new BackgroundRepeat(Repeat.NoRepeat, Repeat.NoRepeat);
-      box.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
-      box.style.backgroundImage = previewTexture;
-
-      // Add the box
-      mainContainer.Add(box);
+      return;
     }
+
+    Box box = new Box();
+    box.style.width = 200;
+    box.style.height = 200;
+
+    // Background colors
+    box.style.backgroundColor = Color.black;
+    mainContainer.style.backgroundColor = Color.black;
+
+    // Noise image preview
+    previewTexture = new Texture2D(200, 200);
+    UpdatePreview();
+    box.style.backgroundPositionX = new BackgroundPosition(BackgroundPositionKeyword.Center);
+    box.style.backgroundPositionY = new BackgroundPosition(BackgroundPositionKeyword.Center);
+    box.style.backgroundRepeat = new BackgroundRepeat(Repeat.NoRepeat, Repeat.NoRepeat);
+    box.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
+    box.style.backgroundImage = previewTexture;
+
+    // Add the box
+    mainContainer.Add(box);
   }
 
   public void UpdatePreview() {

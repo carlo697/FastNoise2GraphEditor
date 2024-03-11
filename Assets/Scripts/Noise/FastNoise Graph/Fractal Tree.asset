@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ValueNode
   m_EditorClassIdentifier: 
   guid: 5fa352de4fa3c16479393e4c7ed8abd9
-  nodePosition: {x: -439, y: 372}
+  nodePosition: {x: -734, y: 898.03754}
   edges: []
 --- !u!114 &-7183240307789894891
 MonoBehaviour:
@@ -28,7 +28,7 @@ MonoBehaviour:
   m_Name: OpenSimplex2SNode
   m_EditorClassIdentifier: 
   guid: c39014587dc15e840b24bf56504cc4c4
-  nodePosition: {x: -503.74255, y: 64}
+  nodePosition: {x: -734.1149, y: -11.382511}
   edges: []
 --- !u!114 &-6938243124369663341
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Name: OpenSimplex2Node
   m_EditorClassIdentifier: 
   guid: 209c767afb32af34faacab949ac3f706
-  nodePosition: {x: -493, y: 141}
+  nodePosition: {x: -733.99994, y: 288.50003}
   edges: []
 --- !u!114 &-6111959339267971012
 MonoBehaviour:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: SimplexNode
   m_EditorClassIdentifier: 
   guid: 270241f5e07bdb748adc125981bdb343
-  nodePosition: {x: -452, y: 218}
+  nodePosition: {x: -734, y: 589.0934}
   edges: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: PerlinNode
   m_EditorClassIdentifier: 
   guid: 559abd6a677ceee4db1b928f49a0f455
-  nodePosition: {x: -439, y: 295}
+  nodePosition: {x: -733.99994, y: 1191.9603}
   edges: []
 --- !u!114 &4898872105978505962
 MonoBehaviour:
@@ -112,7 +112,7 @@ MonoBehaviour:
   nodePosition: {x: -321, y: 63.5}
   edges:
   - parentPortIndex: 0
-    childNode: {fileID: -7183240307789894891}
+    childNode: {fileID: -6111959339267971012}
   gain: 0.5
   weightedStrength: 0
   octaves: 3

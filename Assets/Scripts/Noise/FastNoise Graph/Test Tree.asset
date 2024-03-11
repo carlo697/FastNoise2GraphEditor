@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: PerlinNode
   m_EditorClassIdentifier: 
   guid: c5b6f652258a1484eb2846fe40c211cd
-  nodePosition: {x: -247, y: 15}
+  nodePosition: {x: -311.2351, y: -121.99997}
   edges: []
 --- !u!114 &-6343964222334978345
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: AddNode
   m_EditorClassIdentifier: 
   guid: b6ffc23086649114fa50352e82dec3c7
-  nodePosition: {x: 304, y: 92}
+  nodePosition: {x: 304, y: 189.86502}
   edges:
   - parentPortIndex: 0
     childNode: {fileID: -966717179082961771}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: PerlinNode
   m_EditorClassIdentifier: 
   guid: 3c8245780395a1e40909902599b3e83d
-  nodePosition: {x: -208, y: 285.66}
+  nodePosition: {x: -247, y: 326.22714}
   edges: []
 --- !u!114 &-4344050803318713286
 MonoBehaviour:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: FractalFBmNode
   m_EditorClassIdentifier: 
   guid: de60fbe2c114cbc4391c8fb7aeeefa9d
-  nodePosition: {x: 0, y: 0}
+  nodePosition: {x: -39.000057, y: -121.99998}
   edges:
   - parentPortIndex: 0
     childNode: {fileID: -8054581896313806922}
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: AddNode
   m_EditorClassIdentifier: 
   guid: 8c955f78879e6884f92d763d087a2a11
-  nodePosition: {x: 304.00003, y: 211.5}
+  nodePosition: {x: 304, y: 511}
   edges:
   - parentPortIndex: 1
     childNode: {fileID: -6285968054598219177}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: AddNode
   m_EditorClassIdentifier: 
   guid: 1c81be31ab5d2d54ca5918dc9fb377b6
-  nodePosition: {x: 624, y: 92}
+  nodePosition: {x: 707.0238, y: 383.17944}
   edges:
   - parentPortIndex: 0
     childNode: {fileID: -6343964222334978345}
