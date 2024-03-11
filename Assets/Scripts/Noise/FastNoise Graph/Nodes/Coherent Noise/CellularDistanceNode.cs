@@ -15,10 +15,10 @@ public class CellularDistanceNode : FastNoiseNode {
 
   public override FastNoiseInput[] inputs => new FastNoiseInput[] {
     new FastNoiseHybridInput("Jitter Modifier", "jitterModifier"),
-    new FastNoiseFloatInput("Distance Function", "distanceFunction"),
-    new FastNoiseFloatInput("Distance Index 0", "distanceIndex0"),
-    new FastNoiseFloatInput("Distance Index 1", "distanceIndex1"),
-    new FastNoiseFloatInput("Return Type", "returnType"),
+    new FastNoiseSimpleInput("Distance Function", "distanceFunction"),
+    new FastNoiseSimpleInput("Distance Index 0", "distanceIndex0"),
+    new FastNoiseSimpleInput("Distance Index 1", "distanceIndex1"),
+    new FastNoiseSimpleInput("Return Type", "returnType"),
   };
 
   public override void ApplyValues(FastNoise node) {

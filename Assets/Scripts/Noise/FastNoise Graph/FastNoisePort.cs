@@ -8,17 +8,8 @@ public abstract class FastNoiseInput {
   public Color color;
 }
 
-public class FastNoiseIntInput : FastNoiseInput {
-  public FastNoiseIntInput(string label, string valuePath) {
-    this.acceptConnection = false;
-    this.label = label;
-    this.valuePath = valuePath;
-    this.color = new Color(0.02f, 0.188f, 1f);
-  }
-}
-
-public class FastNoiseFloatInput : FastNoiseInput {
-  public FastNoiseFloatInput(string label, string valuePath) {
+public class FastNoiseSimpleInput : FastNoiseInput {
+  public FastNoiseSimpleInput(string label, string valuePath) {
     this.acceptConnection = false;
     this.label = label;
     this.valuePath = valuePath;

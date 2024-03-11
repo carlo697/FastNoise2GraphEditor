@@ -12,8 +12,8 @@ public class CellularValueNode : FastNoiseNode {
 
   public override FastNoiseInput[] inputs => new FastNoiseInput[] {
     new FastNoiseHybridInput("Jitter Modifier", "jitterModifier"),
-    new FastNoiseFloatInput("Distance Function", "distanceFunction"),
-    new FastNoiseFloatInput("Value Index", "valueIndex"),
+    new FastNoiseSimpleInput("Distance Function", "distanceFunction"),
+    new FastNoiseSimpleInput("Value Index", "valueIndex"),
   };
 
   public override void ApplyValues(FastNoise node) {

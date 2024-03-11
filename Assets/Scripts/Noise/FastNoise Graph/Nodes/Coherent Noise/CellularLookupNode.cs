@@ -13,8 +13,8 @@ public class CellularLookupNode : FastNoiseNode {
   public override FastNoiseInput[] inputs => new FastNoiseInput[] {
     new FastNoiseNodeInput("Lookup", true),
     new FastNoiseHybridInput("Jitter Modifier", "jitterModifier"),
-    new FastNoiseFloatInput("Distance Function", "distanceFunction"),
-    new FastNoiseFloatInput("Lookup Frequency", "lookupFrequency"),
+    new FastNoiseSimpleInput("Distance Function", "distanceFunction"),
+    new FastNoiseSimpleInput("Lookup Frequency", "lookupFrequency"),
   };
 
   public override void ApplyValues(FastNoise node) {

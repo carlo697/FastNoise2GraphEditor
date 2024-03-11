@@ -15,8 +15,8 @@ public class FractalFBmNode : FastNoiseNode {
     new FastNoiseNodeInput("Source", true),
     new FastNoiseHybridInput("Gain", "gain"),
     new FastNoiseHybridInput("Weighted Strength", "weightedStrength"),
-    new FastNoiseFloatInput("Octaves", "octaves"),
-    new FastNoiseFloatInput("Lacunarity", "lacunarity"),
+    new FastNoiseSimpleInput("Octaves", "octaves"),
+    new FastNoiseSimpleInput("Lacunarity", "lacunarity"),
   };
 
   public override void ApplyValues(FastNoise node) {
