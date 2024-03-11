@@ -1,11 +1,9 @@
-using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Reflection;
 
 public class FastNoiseTreeView : GraphView {
   private FastNoiseTree tree;

@@ -3,9 +3,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
-using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
   public FastNoiseNode node;
@@ -158,11 +156,6 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
 
     // Noise image preview
     previewTexture = new Texture2D(200, 200);
-    UpdatePreview();
-    box.style.backgroundPositionX = new BackgroundPosition(BackgroundPositionKeyword.Center);
-    box.style.backgroundPositionY = new BackgroundPosition(BackgroundPositionKeyword.Center);
-    box.style.backgroundRepeat = new BackgroundRepeat(Repeat.NoRepeat, Repeat.NoRepeat);
-    box.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
     box.style.backgroundImage = previewTexture;
 
     // Add the box
