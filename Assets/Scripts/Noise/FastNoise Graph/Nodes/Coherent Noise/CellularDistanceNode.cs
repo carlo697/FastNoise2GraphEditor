@@ -13,7 +13,8 @@ public class CellularDistanceNode : FastNoiseNode {
   public int distanceIndex1 = 1;
   public ReturnType returnType = ReturnType.Index0;
 
-  public override FastNoiseInput[] inputs => new FastNoiseInput[] {
+  public override FastNoiseInput[] inputs => m_inputs;
+  private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
     new FastNoiseHybridInput("Jitter Modifier", "jitterModifier"),
     new FastNoiseSimpleInput("Distance Function", "distanceFunction"),
     new FastNoiseSimpleInput("Distance Index 0", "distanceIndex0"),

@@ -20,7 +20,8 @@ public abstract class FastNoiseNode : ScriptableObject {
     | Capabilities.Snappable
     | Capabilities.Collapsible;
 
-  public virtual FastNoiseInput[] inputs => new FastNoiseInput[0];
+  public virtual FastNoiseInput[] inputs => m_inputs;
+  private FastNoiseInput[] m_inputs = new FastNoiseInput[0];
 
   public virtual void ApplyValues(FastNoise node) { }
 

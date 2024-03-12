@@ -7,7 +7,8 @@ public class OutputNode : FastNoiseNode {
   public override Capabilities capabilities =>
     Capabilities.Selectable | Capabilities.Movable | Capabilities.Snappable;
 
-  public override FastNoiseInput[] inputs => new FastNoiseInput[] {
+  public override FastNoiseInput[] inputs => m_inputs;
+  private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
     new FastNoiseOutputInput("Output"),
   };
 }

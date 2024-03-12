@@ -4,7 +4,8 @@ public class MaxNode : FastNoiseNode {
 
   public float RHS;
 
-  public override FastNoiseInput[] inputs => new FastNoiseInput[] {
+  public override FastNoiseInput[] inputs => m_inputs;
+  private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
     new FastNoiseNodeInput("LHS", true),
     new FastNoiseHybridInput("RHS", "RHS")
   };
