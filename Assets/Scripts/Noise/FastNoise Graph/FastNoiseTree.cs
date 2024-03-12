@@ -64,7 +64,7 @@ public class FastNoiseTree : ScriptableObject {
     for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
       FastNoiseInput input = node.inputs[inputIndex];
 
-      if (input.acceptConnection && input.isConnectionMandatory) {
+      if (input.acceptsEdge && input.isEdgeMandatory) {
         // Find an edge for this input
         bool found = false;
         for (int edgeIndex = 0; edgeIndex < node.edges.Count; edgeIndex++) {
@@ -94,8 +94,8 @@ public class FastNoiseTree : ScriptableObject {
     // for (int i = 0; i < node.inputs.Length; i++) {
     //   FastNoiseInput input = node.inputs[i];
 
-    //   if (input.valuePath != null) {
-    //     FieldInfo field = nodeType.GetField(input.valuePath);
+    //   if (input.fieldPath != null) {
+    //     FieldInfo field = nodeType.GetField(input.fieldPath);
 
     //     object value = field.GetValue(node);
     //     if (value is float floatValue) {

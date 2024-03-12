@@ -68,7 +68,7 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
       Port port = null;
 
       // Create a port if the input accepts connections
-      if (input.acceptConnection) {
+      if (input.acceptsEdge) {
         port = InstantiatePort(
           Orientation.Horizontal,
           Direction.Input,
@@ -81,9 +81,9 @@ public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
       }
 
       // Create a field if the input supports it
-      if (input.valuePath != null) {
+      if (input.fieldPath != null) {
         // Get a SerializedProperty
-        SerializedProperty property = serializedNode.FindProperty(input.valuePath);
+        SerializedProperty property = serializedNode.FindProperty(input.fieldPath);
 
         // Create the field and bind it to the SerializedObject
         PropertyField field = new PropertyField(property);
