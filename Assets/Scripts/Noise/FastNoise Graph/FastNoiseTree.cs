@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System;
+using System.Reflection;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Fast Noise/Tree")]
@@ -89,6 +90,23 @@ public class FastNoiseTree : ScriptableObject {
 
     // Apply values of variables
     node.ApplyValues(instancedNode);
+    // Type nodeType = node.GetType();
+    // for (int i = 0; i < node.inputs.Length; i++) {
+    //   FastNoiseInput input = node.inputs[i];
+
+    //   if (input.valuePath != null) {
+    //     FieldInfo field = nodeType.GetField(input.valuePath);
+
+    //     object value = field.GetValue(node);
+    //     if (value is float floatValue) {
+    //       instancedNode.Set(input.label, floatValue);
+    //     } else if (value is int intValue) {
+    //       instancedNode.Set(input.label, intValue);
+    //     } else if (value is Enum enumValue) {
+    //       instancedNode.Set(input.label, enumValue.ToString());
+    //     }
+    //   }
+    // }
 
     // Iterate over the connections to create and connect those nodes to this one
     for (int i = 0; i < node.edges.Count; i++) {
@@ -128,6 +146,11 @@ public class FastNoiseTree : ScriptableObject {
   }
 
   private void GetFastNoiseContextMenu() {
-    Debug.Log(GetFastNoise());
+    System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+    stopwatch.Start();
+    FastNoise generated = GetFastNoise();
+    stopwatch.Stop();
+    Debug.Log(generated);
+    Debug.Log($"Time to generate the FastNoise intances: {stopwatch.Elapsed.TotalMilliseconds}");
   }
 }
