@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
+  m_Name: Cellular Lookup
+  m_EditorClassIdentifier: 
+  outputNode: {fileID: 7180475840030048117}
+  nodes:
+  - {fileID: 7180475840030048117}
+  - {fileID: 7622656443124195847}
+  - {fileID: 5243396880673913936}
+--- !u!114 &5243396880673913936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e54461ff033b347a947b50bb1218e9, type: 3}
+  m_Name: ValueNode
+  m_EditorClassIdentifier: 
+  guid: 1fb4ed76385ce17458d16694eb96abcf
+  nodePosition: {x: -607, y: 0}
+  edges: []
+--- !u!114 &7180475840030048117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
+  m_Name: OutputNode
+  m_EditorClassIdentifier: 
+  guid: e88d8246e7f75ba4ab2b09a195a46360
+  nodePosition: {x: 0, y: 0}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: 7622656443124195847}
+--- !u!114 &7622656443124195847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff297186d4c7b542915b9f63742b606, type: 3}
+  m_Name: CellularLookupNode
+  m_EditorClassIdentifier: 
+  guid: f174db3e7bdc17644a32aa31edbef6fc
+  nodePosition: {x: -305.49762, y: -0.0000035762787}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: 5243396880673913936}
+  jitterModifier: 1
+  distanceFunction: 1
+  lookupFrequency: 0.41
