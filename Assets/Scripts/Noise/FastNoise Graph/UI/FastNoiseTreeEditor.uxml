@@ -3,5 +3,5 @@
     <uie:Toolbar>
         <uie:ToolbarMenu tabindex="-1" display-tooltip-when-elided="true" text="Assets" />
     </uie:Toolbar>
-    <FastNoiseTreeView focusable="true" style="flex-grow: 1;" />
+    <FastNoiseGraph.UI.FastNoiseTreeView focusable="true" style="flex-grow: 1;" />
 </ui:UXML>
