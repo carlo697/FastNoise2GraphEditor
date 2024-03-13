@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FastNoiseGraph {
   [NodeName("Domain Scale", "Modifiers/Domain Scale")]
   public class DomainScaleNode : FastNoiseNode {
-    public override string nodeMetadataName => "domainscale";
+    public override string metadataName => "domainscale";
 
     public float scale = 1f;
 

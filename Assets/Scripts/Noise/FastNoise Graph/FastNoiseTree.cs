@@ -84,7 +84,7 @@ namespace FastNoiseGraph {
       }
 
       // Create the new node
-      FastNoise instancedNode = new FastNoise(node.nodeMetadataName);
+      FastNoise instancedNode = new FastNoise(node.metadataName);
       m_nodesCache.Add(node, instancedNode);
 
       // Debug.Log(node.nodeMetadataName);

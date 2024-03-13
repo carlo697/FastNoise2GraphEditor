@@ -10,7 +10,7 @@ namespace FastNoiseGraph {
     public Vector2 nodePosition;
     public List<FastNoiseEdge> edges = new();
 
-    public abstract string nodeMetadataName { get; }
+    public abstract string metadataName { get; }
     public virtual int nodeWidth => 200;
     public virtual Color headerBackgroundColor => Color.black;
 

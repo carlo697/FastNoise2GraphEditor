@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Divide", "Blends/Divide")]
   public class DivideNode : FastNoiseNode {
-    public override string nodeMetadataName => "divide";
+    public override string metadataName => "divide";
 
     public float LHS;
     public float RHS;

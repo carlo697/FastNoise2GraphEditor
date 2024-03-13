@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FastNoiseGraph {
   [NodeName("Cellular Value", "Coherent Noise/Cellular Value")]
   public class CellularValueNode : FastNoiseNode {
-    public override string nodeMetadataName => "cellularvalue";
+    public override string metadataName => "cellularvalue";
     public override int nodeWidth => 250;
 
     public float jitterModifier = 1f;

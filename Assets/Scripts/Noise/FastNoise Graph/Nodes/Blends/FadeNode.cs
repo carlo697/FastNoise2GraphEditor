@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Fade", "Blends/Fade")]
   public class FadeNode : FastNoiseNode {
-    public override string nodeMetadataName => "fade";
+    public override string metadataName => "fade";
 
     public float fade = 0.5f;
 

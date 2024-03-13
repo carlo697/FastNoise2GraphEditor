@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: OutputNode
   m_EditorClassIdentifier: 
   guid: 6dcedf7dd6654fd4abb7b3894712739f
-  nodePosition: {x: 1863, y: -172}
+  nodePosition: {x: 2136, y: -467}
   edges:
   - parentPortIndex: 0
-    childNode: {fileID: 8973522708676717559}
+    childNode: {fileID: 6103153149489315771}
 --- !u!114 &-8054581896313806922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,6 +32,24 @@ MonoBehaviour:
   guid: c5b6f652258a1484eb2846fe40c211cd
   nodePosition: {x: -311.2351, y: -121.99997}
   edges: []
+--- !u!114 &-6665025271263843205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f725c489210dea46a3689899725d921, type: 3}
+  m_Name: MinNode
+  m_EditorClassIdentifier: 
+  guid: 8e1adafc227f00b4dba4b3ab2257cf14
+  nodePosition: {x: 1246, y: -645}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: 33724074370472896}
+  RHS: 1
 --- !u!114 &-6343964222334978345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +123,21 @@ MonoBehaviour:
   - parentPortIndex: 0
     childNode: {fileID: 1174971206326847130}
   RHS: 1
+--- !u!114 &-3097329257465658426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e54461ff033b347a947b50bb1218e9, type: 3}
+  m_Name: ValueNode
+  m_EditorClassIdentifier: 
+  guid: c565637a33528b44799b8cdbdd0508d1
+  nodePosition: {x: 1146, y: -1000}
+  edges: []
 --- !u!114 &-1825641096519277181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +203,31 @@ MonoBehaviour:
   - {fileID: -4344050803318713286}
   - {fileID: -3111654115435435853}
   - {fileID: -1825641096519277181}
+  - {fileID: 786557675644555369}
+  - {fileID: 33724074370472896}
+  - {fileID: 6103153149489315771}
+  - {fileID: 3812242467467708805}
+  - {fileID: -6665025271263843205}
+  - {fileID: -3097329257465658426}
+  - {fileID: 8423627608817776623}
+--- !u!114 &33724074370472896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c13a419e4ca5846848b8eb0573f2ef, type: 3}
+  m_Name: MultiplyNode
+  m_EditorClassIdentifier: 
+  guid: 73ef9aa569591c04c9c65dc3a672c0f5
+  nodePosition: {x: 973.8688, y: -683.167}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: 786557675644555369}
+  RHS: 467.5
 --- !u!114 &305720888639857094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +266,24 @@ MonoBehaviour:
   - parentPortIndex: 1
     childNode: {fileID: 305720888639857094}
   RHS: 14.34
+--- !u!114 &786557675644555369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542a1ca14436bfd49bf9fb1fd13cb21d, type: 3}
+  m_Name: CellularValueNode
+  m_EditorClassIdentifier: 
+  guid: e3dc9cdbfd40a7c44b36f495290d0945
+  nodePosition: {x: 700.8688, y: -683.167}
+  edges: []
+  jitterModifier: 1
+  distanceFunction: 4
+  valueIndex: 0
 --- !u!114 &1174971206326847130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +303,64 @@ MonoBehaviour:
     childNode: {fileID: -966717179082961771}
   LHS: 0
   RHS: 0.05
+--- !u!114 &3812242467467708805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdd06dd37d7cbe41ad52b59ef9049e7, type: 3}
+  m_Name: MaxNode
+  m_EditorClassIdentifier: 
+  guid: 8a648569e60a505429122bd201759adf
+  nodePosition: {x: 1470.8777, y: -645}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: -6665025271263843205}
+  RHS: 0
+--- !u!114 &6103153149489315771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3710f7aa27c23d498c3efec4bf924d1, type: 3}
+  m_Name: FadeNode
+  m_EditorClassIdentifier: 
+  guid: 545cfd6849b91514b81a369a82f56181
+  nodePosition: {x: 1902, y: -467.36}
+  edges:
+  - parentPortIndex: 1
+    childNode: {fileID: 8973522708676717559}
+  - parentPortIndex: 0
+    childNode: {fileID: 8423627608817776623}
+  - parentPortIndex: 2
+    childNode: {fileID: 3812242467467708805}
+  fade: 0
+--- !u!114 &8423627608817776623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce55884815b55384e983022edba8e496, type: 3}
+  m_Name: DomainScaleNode
+  m_EditorClassIdentifier: 
+  guid: 4580b010e08b4bb4ab96ca1f3254ce2c
+  nodePosition: {x: 1410, y: -979.0001}
+  edges:
+  - parentPortIndex: 0
+    childNode: {fileID: -3097329257465658426}
+  scale: 1.34
 --- !u!114 &8973522708676717559
 MonoBehaviour:
   m_ObjectHideFlags: 0

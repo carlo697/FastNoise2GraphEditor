@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Subtract", "Blends/Subtract")]
   public class SubtractNode : FastNoiseNode {
-    public override string nodeMetadataName => "subtract";
+    public override string metadataName => "subtract";
 
     public float LHS;
     public float RHS;

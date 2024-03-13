@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Max", "Blends/Max")]
   public class MaxNode : FastNoiseNode {
-    public override string nodeMetadataName => "max";
+    public override string metadataName => "max";
 
     public float RHS;
 

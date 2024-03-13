@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Multiply", "Blends/Multiply")]
   public class MultiplyNode : FastNoiseNode {
-    public override string nodeMetadataName => "multiply";
+    public override string metadataName => "multiply";
 
     public float RHS;
 

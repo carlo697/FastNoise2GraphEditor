@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Add", "Blends/Add")]
   public class AddNode : FastNoiseNode {
-    public override string nodeMetadataName => "add";
+    public override string metadataName => "add";
 
     public float RHS;
 

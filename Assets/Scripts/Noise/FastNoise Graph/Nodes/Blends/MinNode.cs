@@ -1,7 +1,7 @@
 namespace FastNoiseGraph {
   [NodeName("Min", "Blends/Min")]
   public class MinNode : FastNoiseNode {
-    public override string nodeMetadataName => "min";
+    public override string metadataName => "min";
 
     public float RHS;
 

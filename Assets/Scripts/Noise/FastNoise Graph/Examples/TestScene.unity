@@ -381,7 +381,7 @@ MonoBehaviour:
   noiseTree: {fileID: 11400000, guid: 091f0ff6f7b16214a95c6087ee2dc0e6, type: 2}
   useThreshold: 0
   threshold: 0.5
-  debugTime: 0
+  debugTime: 1
 --- !u!23 &370614017
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   noiseTree: {fileID: 11400000, guid: 5d3e2e8918194064180a7a863d3c6d50, type: 2}
   useThreshold: 0
   threshold: 0.5
-  debugTime: 0
+  debugTime: 1
 --- !u!1 &492979346
 GameObject:
   m_ObjectHideFlags: 0
