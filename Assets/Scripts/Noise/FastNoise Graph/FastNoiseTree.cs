@@ -4,7 +4,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "Fast Noise/Tree")]
+[CreateAssetMenu(menuName = "Fast Noise Tree")]
 public class FastNoiseTree : ScriptableObject {
   [ContextMenuItem("Test FastNoiseOutput", nameof(GetFastNoiseContextMenu))]
   public OutputNode outputNode;
