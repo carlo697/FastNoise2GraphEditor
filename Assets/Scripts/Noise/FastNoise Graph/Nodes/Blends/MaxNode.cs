@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Max", "Blends/Max")]
   public class MaxNode : FastNoiseNode {
     public override string metadataName => "max";

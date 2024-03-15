@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Subtract", "Blends/Subtract")]
   public class SubtractNode : FastNoiseNode {
     public override string metadataName => "subtract";

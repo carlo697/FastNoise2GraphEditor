@@ -12,44 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Cellular Distance
   m_EditorClassIdentifier: 
-  outputNode: {fileID: 7180475840030048117}
+  outputNode:
+    rid: 6015746235274625052
   nodes:
-  - {fileID: 7180475840030048117}
-  - {fileID: 6173468189848150757}
---- !u!114 &6173468189848150757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b78a48449172f4d88d015befd16d9e, type: 3}
-  m_Name: CellularDistanceNode
-  m_EditorClassIdentifier: 
-  guid: 1d37b1965c6fb9d4ab5a592af9df34ab
-  nodePosition: {x: -296, y: 0}
-  edges: []
-  jitterModifier: 1
-  distanceFunction: 1
-  distanceIndex0: 0
-  distanceIndex1: 1
-  returnType: 0
---- !u!114 &7180475840030048117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
-  m_Name: OutputNode
-  m_EditorClassIdentifier: 
-  guid: e88d8246e7f75ba4ab2b09a195a46360
-  nodePosition: {x: 0, y: 0}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: 6173468189848150757}
+  - rid: 6015746235274625052
+  - rid: 6015746235274625053
+  references:
+    version: 2
+    RefIds:
+    - rid: 6015746235274625052
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 41a135ef-4269-4b15-bc11-3e17cc94bc69
+        nodePosition: {x: 0, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625053
+    - rid: 6015746235274625053
+      type: {class: CellularDistanceNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 08df1f84-648c-4f67-a4bc-9452766b838b
+        nodePosition: {x: -308, y: 0}
+        edges: []
+        jitterModifier: 1
+        distanceFunction: 1
+        distanceIndex0: 0
+        distanceIndex1: 1
+        returnType: 0

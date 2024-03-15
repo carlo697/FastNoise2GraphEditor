@@ -51,16 +51,19 @@ namespace FastNoiseGraph.UI {
     public override void SetPosition(Rect newPos) {
       base.SetPosition(newPos);
 
-      Undo.RecordObject(node, "FastNoise Tree (Set node position)");
+      Undo.RecordObject(tree, "FastNoise Tree (Set node position)");
 
       // Save the position
       node.nodePosition = newPos.position;
 
-      EditorUtility.SetDirty(node);
+      EditorUtility.SetDirty(tree);
     }
 
     private void CreateInputPorts() {
-      var serializedNode = new SerializedObject(node);
+      int nodeIndex = tree.nodes.IndexOf(node);
+      var serializedTree = new SerializedObject(tree);
+      var serializedNodes = serializedTree.FindProperty("nodes");
+      var serializedNode = serializedNodes.GetArrayElementAtIndex(nodeIndex);
 
       // Iterate the inputs to create the ports and fields
       for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
@@ -84,11 +87,11 @@ namespace FastNoiseGraph.UI {
         // Create a field if the input supports it
         if (input.fieldPath != null) {
           // Get a SerializedProperty
-          SerializedProperty property = serializedNode.FindProperty(input.fieldPath);
+          SerializedProperty property = serializedNode.FindPropertyRelative(input.fieldPath);
 
           // Create the field and bind it to the SerializedObject
           PropertyField field = new PropertyField(property);
-          field.Bind(serializedNode);
+          field.Bind(serializedTree);
 
           // Style field
           field.AddToClassList("node-input-property");

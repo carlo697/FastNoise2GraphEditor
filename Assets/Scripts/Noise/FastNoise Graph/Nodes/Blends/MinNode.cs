@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Min", "Blends/Min")]
   public class MinNode : FastNoiseNode {
     public override string metadataName => "min";

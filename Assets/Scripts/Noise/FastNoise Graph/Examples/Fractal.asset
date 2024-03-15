@@ -1,103 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8250058840514292203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e54461ff033b347a947b50bb1218e9, type: 3}
-  m_Name: ValueNode
-  m_EditorClassIdentifier: 
-  guid: 5fa352de4fa3c16479393e4c7ed8abd9
-  nodePosition: {x: -1291.1456, y: 507.7967}
-  edges: []
---- !u!114 &-7183240307789894891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32baf0f84b5ab914ba953cbb89bc3d7e, type: 3}
-  m_Name: OpenSimplex2SNode
-  m_EditorClassIdentifier: 
-  guid: c39014587dc15e840b24bf56504cc4c4
-  nodePosition: {x: -806.1456, y: 198.79663}
-  edges: []
---- !u!114 &-6938243124369663341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ebb8cfec7e210445876a311029ce11d, type: 3}
-  m_Name: OpenSimplex2Node
-  m_EditorClassIdentifier: 
-  guid: 209c767afb32af34faacab949ac3f706
-  nodePosition: {x: -1041.1456, y: 198.79663}
-  edges: []
---- !u!114 &-6111959339267971012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cceb11aa484c2b4d9211bdcaf472ffc, type: 3}
-  m_Name: SimplexNode
-  m_EditorClassIdentifier: 
-  guid: 270241f5e07bdb748adc125981bdb343
-  nodePosition: {x: -1291.1456, y: 198.79663}
-  edges: []
---- !u!114 &-4165872179661788271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542a1ca14436bfd49bf9fb1fd13cb21d, type: 3}
-  m_Name: CellularValueNode
-  m_EditorClassIdentifier: 
-  guid: 833bb93be764e9543ae0cb8f4a2c346d
-  nodePosition: {x: -1315.698, y: -175.00002}
-  edges: []
-  jitterModifier: 1
-  distanceFunction: 1
-  valueIndex: 0
---- !u!114 &-1250606803468471036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff297186d4c7b542915b9f63742b606, type: 3}
-  m_Name: CellularLookupNode
-  m_EditorClassIdentifier: 
-  guid: ac2ee4abdfc16ec4cb4b239efe938151
-  nodePosition: {x: -1024.494, y: -199.00008}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: 5987029482159782629}
-  jitterModifier: 1
-  distanceFunction: 1
-  lookupFrequency: 0.1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,104 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Fractal
   m_EditorClassIdentifier: 
-  outputNode: {fileID: 6681280436467448167}
+  outputNode:
+    rid: 6015746235274625067
   nodes:
-  - {fileID: 6681280436467448167}
-  - {fileID: 9070373599128283}
-  - {fileID: 4898872105978505962}
-  - {fileID: -8250058840514292203}
-  - {fileID: -6111959339267971012}
-  - {fileID: -6938243124369663341}
-  - {fileID: -7183240307789894891}
-  - {fileID: -4165872179661788271}
-  - {fileID: 2224168191251759871}
-  - {fileID: -1250606803468471036}
-  - {fileID: 5987029482159782629}
---- !u!114 &9070373599128283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05bba89d7502934ca40a2a06312ed96, type: 3}
-  m_Name: PerlinNode
-  m_EditorClassIdentifier: 
-  guid: 559abd6a677ceee4db1b928f49a0f455
-  nodePosition: {x: -994.1456, y: 507.7967}
-  edges: []
---- !u!114 &2224168191251759871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b78a48449172f4d88d015befd16d9e, type: 3}
-  m_Name: CellularDistanceNode
-  m_EditorClassIdentifier: 
-  guid: 9c54620c703509242b5734a8cd6e29fc
-  nodePosition: {x: -751.98816, y: -198.00003}
-  edges: []
-  jitterModifier: 1
-  distanceFunction: 1
-  distanceIndex0: 0
-  distanceIndex1: 1
-  returnType: 0
---- !u!114 &4898872105978505962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb154f8e7ddaf64aa7b1d4afe65e690, type: 3}
-  m_Name: FractalFBmNode
-  m_EditorClassIdentifier: 
-  guid: 1b0bd3b65c0ceae40942b946b61d20a0
-  nodePosition: {x: -368.32257, y: 161}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: -7183240307789894891}
-  gain: 0.5
-  weightedStrength: 0
-  octaves: 3
-  lacunarity: 2
---- !u!114 &5987029482159782629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05bba89d7502934ca40a2a06312ed96, type: 3}
-  m_Name: PerlinNode
-  m_EditorClassIdentifier: 
-  guid: 2a80a3b536cc77347b90db109da1d460
-  nodePosition: {x: -1266, y: -475.24792}
-  edges: []
---- !u!114 &6681280436467448167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
-  m_Name: OutputNode
-  m_EditorClassIdentifier: 
-  guid: 685029665fb119b4aa48583c85ef1153
-  nodePosition: {x: -37.36275, y: 160.49998}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: 4898872105978505962}
+  - rid: 6015746235274625067
+  - rid: 6015746235274625069
+  - rid: 6015746235274625070
+  references:
+    version: 2
+    RefIds:
+    - rid: 6015746235274625067
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: b36b7386-49ba-4234-8b7c-5c2833d02d4f
+        nodePosition: {x: 0, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625069
+    - rid: 6015746235274625069
+      type: {class: FractalFBmNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 384e296f-2a46-4fac-8e67-cba51fd2b186
+        nodePosition: {x: -273, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625070
+        gain: 0.5
+        weightedStrength: 0
+        octaves: 3
+        lacunarity: 2
+    - rid: 6015746235274625070
+      type: {class: OpenSimplex2SNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 875d160f-1202-4374-924e-89b4cb5f3d08
+        nodePosition: {x: -566, y: 0}
+        edges: []

@@ -48,12 +48,6 @@ namespace FastNoiseGraph.UI {
       DeleteElements(graphElements);
       graphViewChanged += OnGraphViewChanged;
 
-      if (tree.outputNode == null) {
-        tree.outputNode = tree.AddNode(typeof(OutputNode)) as OutputNode;
-        EditorUtility.SetDirty(tree);
-        AssetDatabase.SaveAssets();
-      }
-
       foreach (var node in tree.nodes) {
         CreateNodeView(node);
       }
@@ -86,9 +80,9 @@ namespace FastNoiseGraph.UI {
 
             int indexInList = parent.edges.FindIndex((edge) => edge.parentPortIndex == index);
 
-            Undo.RecordObject(parent, "FastNoise Tree (Remove edge)");
+            Undo.RecordObject(tree, "FastNoise Tree (Remove edge)");
             parent.edges.RemoveAt(indexInList);
-            EditorUtility.SetDirty(parent);
+            EditorUtility.SetDirty(tree);
           }
         }
       }
@@ -99,9 +93,9 @@ namespace FastNoiseGraph.UI {
           FastNoiseNode parent = ((FastNoiseNodeView)edge.input.node).node;
           FastNoiseNode child = ((FastNoiseNodeView)edge.output.node).node;
 
-          Undo.RecordObject(parent, "FastNoise Tree (Add edge)");
+          Undo.RecordObject(tree, "FastNoise Tree (Add edge)");
           parent.edges.Add(new FastNoiseEdge(index, child));
-          EditorUtility.SetDirty(parent);
+          EditorUtility.SetDirty(tree);
         }
       }
 

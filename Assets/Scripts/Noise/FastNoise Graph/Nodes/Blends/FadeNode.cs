@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Fade", "Blends/Fade")]
   public class FadeNode : FastNoiseNode {
     public override string metadataName => "fade";

@@ -378,7 +378,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   resolution: 256
   scale: 50
-  noiseTree: {fileID: 11400000, guid: 091f0ff6f7b16214a95c6087ee2dc0e6, type: 2}
+  noiseTree: {fileID: 11400000, guid: b289ba3a25ad7c84ebcf3583a38d7452, type: 2}
   useThreshold: 0
   threshold: 0.5
   debugTime: 1
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 491518630}
   - component: {fileID: 491518633}
   m_Layer: 0
-  m_Name: Complex Tree
+  m_Name: Fractal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   resolution: 256
   scale: 50
-  noiseTree: {fileID: 11400000, guid: 5d3e2e8918194064180a7a863d3c6d50, type: 2}
+  noiseTree: {fileID: 11400000, guid: 74e9d92e2b3375b4fa1db1810c74abc4, type: 2}
   useThreshold: 0
   threshold: 0.5
   debugTime: 1
@@ -621,7 +621,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   resolution: 256
   scale: 50
-  noiseTree: {fileID: 11400000, guid: 28c1aea0c9ec72f4ebb40d917a6d82dd, type: 2}
+  noiseTree: {fileID: 11400000, guid: cdc233c5a14e73d49bd9553ad0e0b6c2, type: 2}
   useThreshold: 0
   threshold: 0.5
   debugTime: 1
@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8478b81b682d54086b5d8014d4faac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 6a266c0f04a7460419094537c1547eb4, type: 2}
+  tree: {fileID: 0}
 --- !u!4 &1835140553
 Transform:
   m_ObjectHideFlags: 0
@@ -964,7 +964,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   resolution: 256
   scale: 50
-  noiseTree: {fileID: 11400000, guid: 4b074a0c9f066ac46a566ad867a38d3c, type: 2}
+  noiseTree: {fileID: 11400000, guid: 253848f577b6d0a48a76600ee82b4cb8, type: 2}
   useThreshold: 0
   threshold: 0.5
   debugTime: 1

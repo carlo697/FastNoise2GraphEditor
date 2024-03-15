@@ -1,6 +1,7 @@
 using UnityEngine;
 
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Cellular Value", "Coherent Noise/Cellular Value")]
   public class CellularValueNode : FastNoiseNode {
     public override string metadataName => "cellularvalue";

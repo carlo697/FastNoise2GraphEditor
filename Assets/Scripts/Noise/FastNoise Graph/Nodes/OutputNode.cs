@@ -1,6 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Output")]
   public class OutputNode : FastNoiseNode {
     public override string metadataName => "";

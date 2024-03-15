@@ -1,23 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8030549525691342755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542a1ca14436bfd49bf9fb1fd13cb21d, type: 3}
-  m_Name: CellularValueNode
-  m_EditorClassIdentifier: 
-  guid: 094595bfd1e48f44fb990aee768f3942
-  nodePosition: {x: -302, y: -40}
-  edges: []
-  jitterModifier: 1
-  distanceFunction: 1
-  valueIndex: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,24 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Cellular Value
   m_EditorClassIdentifier: 
-  outputNode: {fileID: 7180475840030048117}
+  outputNode:
+    rid: 6015746235274625058
   nodes:
-  - {fileID: 7180475840030048117}
-  - {fileID: -8030549525691342755}
---- !u!114 &7180475840030048117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
-  m_Name: OutputNode
-  m_EditorClassIdentifier: 
-  guid: e88d8246e7f75ba4ab2b09a195a46360
-  nodePosition: {x: 0, y: 0}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: -8030549525691342755}
+  - rid: 6015746235274625058
+  - rid: 6015746235274625059
+  references:
+    version: 2
+    RefIds:
+    - rid: 6015746235274625058
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 9b1d2934-6c8a-40dd-ba0f-2828c9035e3c
+        nodePosition: {x: 0, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625059
+    - rid: 6015746235274625059
+      type: {class: CellularValueNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: ccb0b631-1c94-4e60-8c97-cfa0c7ad9a7a
+        nodePosition: {x: -289, y: 0}
+        edges: []
+        jitterModifier: 1
+        distanceFunction: 1
+        valueIndex: 0

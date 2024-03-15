@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8821779264891004265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05bba89d7502934ca40a2a06312ed96, type: 3}
-  m_Name: PerlinNode
-  m_EditorClassIdentifier: 
-  guid: bed08815903778c43aa7aec5a3f2d27f
-  nodePosition: {x: -310.6, y: 0}
-  edges: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,24 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Perlin
   m_EditorClassIdentifier: 
-  outputNode: {fileID: 5332033334532528131}
+  outputNode:
+    rid: 6015746235274625062
   nodes:
-  - {fileID: 5332033334532528131}
-  - {fileID: -8821779264891004265}
---- !u!114 &5332033334532528131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
-  m_Name: OutputNode
-  m_EditorClassIdentifier: 
-  guid: 7091c876eaccc1c43987be9132327dda
-  nodePosition: {x: 0, y: 0}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: -8821779264891004265}
+  - rid: 6015746235274625062
+  - rid: 6015746235274625063
+  references:
+    version: 2
+    RefIds:
+    - rid: 6015746235274625062
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 2ecb5b6a-897c-416d-ba16-9622590fef5a
+        nodePosition: {x: 0, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625063
+    - rid: 6015746235274625063
+      type: {class: PerlinNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 2e76597e-e772-4af7-a814-590ca2fcba33
+        nodePosition: {x: -254, y: 0}
+        edges: []

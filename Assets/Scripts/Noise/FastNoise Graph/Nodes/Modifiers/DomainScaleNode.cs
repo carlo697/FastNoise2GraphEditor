@@ -1,6 +1,5 @@
-using UnityEngine;
-
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Domain Scale", "Modifiers/Domain Scale")]
   public class DomainScaleNode : FastNoiseNode {
     public override string metadataName => "domainscale";

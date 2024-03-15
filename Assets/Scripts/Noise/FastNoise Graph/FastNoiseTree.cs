@@ -8,14 +8,25 @@ namespace FastNoiseGraph {
   [CreateAssetMenu(menuName = "Fast Noise Tree")]
   public class FastNoiseTree : ScriptableObject {
     [ContextMenuItem("Test FastNoiseOutput", nameof(GetFastNoiseContextMenu))]
+    public bool debug;
+
+    [SerializeReference]
+    [HideInInspector]
     public OutputNode outputNode;
-    public List<FastNoiseNode> nodes;
+
+    [SerializeReference]
+    [HideInInspector]
+    public List<FastNoiseNode> nodes = new List<FastNoiseNode>();
     private Dictionary<FastNoiseNode, FastNoise> m_nodesCache;
 
+    public FastNoiseTree() {
+      OutputNode node = new OutputNode();
+      nodes.Add(node);
+      outputNode = node;
+    }
+
     public FastNoiseNode AddNode(Type type) {
-      FastNoiseNode node = ScriptableObject.CreateInstance(type) as FastNoiseNode;
-      node.name = type.Name;
-      node.guid = GUID.Generate().ToString();
+      FastNoiseNode node = (FastNoiseNode)Activator.CreateInstance(type);
 
       Undo.RecordObject(this, "FastNoise Tree (Add Node)");
       nodes.Add(node);
@@ -24,10 +35,7 @@ namespace FastNoiseGraph {
         outputNode = _outputNode;
       }
 
-      AssetDatabase.AddObjectToAsset(node, this);
-      Undo.RegisterCreatedObjectUndo(node, "FastNoise Tree (Add Node)");
-
-      AssetDatabase.SaveAssets();
+      EditorUtility.SetDirty(this);
 
       return node;
     }
@@ -41,9 +49,7 @@ namespace FastNoiseGraph {
 
       nodes.Remove(node);
 
-      Undo.DestroyObjectImmediate(node);
-      // AssetDatabase.RemoveObjectFromAsset(node);
-      AssetDatabase.SaveAssets();
+      EditorUtility.SetDirty(this);
     }
 
     private FastNoise GetFastNoise(FastNoiseNode node, bool isOutput) {

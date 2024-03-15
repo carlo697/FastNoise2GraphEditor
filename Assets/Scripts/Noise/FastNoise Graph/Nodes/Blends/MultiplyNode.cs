@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Multiply", "Blends/Multiply")]
   public class MultiplyNode : FastNoiseNode {
     public override string metadataName => "multiply";

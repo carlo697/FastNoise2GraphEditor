@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Reflection;
 
 namespace FastNoiseGraph {
-  public abstract class FastNoiseNode : ScriptableObject {
+  [System.Serializable]
+  public abstract class FastNoiseNode {
     public string guid;
     public Vector2 nodePosition;
     public List<FastNoiseEdge> edges = new();
@@ -23,6 +24,10 @@ namespace FastNoiseGraph {
 
     public virtual FastNoiseInput[] inputs => m_inputs;
     private FastNoiseInput[] m_inputs = new FastNoiseInput[0];
+
+    public FastNoiseNode() {
+      guid = Guid.NewGuid().ToString();
+    }
 
     public virtual void ApplyValues(FastNoise node) { }
 

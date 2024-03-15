@@ -1,6 +1,7 @@
 using UnityEngine;
 
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Cellular Lookup", "Coherent Noise/Cellular Lookup")]
   public class CellularLookupNode : FastNoiseNode {
     public override string metadataName => "cellularlookup";

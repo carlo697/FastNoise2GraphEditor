@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   [NodeName("Divide", "Blends/Divide")]
   public class DivideNode : FastNoiseNode {
     public override string metadataName => "divide";

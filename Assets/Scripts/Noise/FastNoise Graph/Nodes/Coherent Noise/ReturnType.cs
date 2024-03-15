@@ -1,4 +1,5 @@
 namespace FastNoiseGraph {
+  [System.Serializable]
   public enum ReturnType {
     Index0,
     Index0Add1,

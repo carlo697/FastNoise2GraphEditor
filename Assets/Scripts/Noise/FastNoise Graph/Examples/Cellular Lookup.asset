@@ -1,38 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9156686493391234943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce55884815b55384e983022edba8e496, type: 3}
-  m_Name: DomainScaleNode
-  m_EditorClassIdentifier: 
-  guid: 8767a0a085d27c84e84f41988de9eac2
-  nodePosition: {x: 0, y: 0}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: 7622656443124195847}
-  scale: 8.18
---- !u!114 &-6437868985663230917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32baf0f84b5ab914ba953cbb89bc3d7e, type: 3}
-  m_Name: OpenSimplex2SNode
-  m_EditorClassIdentifier: 
-  guid: ab31403b4d850b0499702ffd417e6ecd
-  nodePosition: {x: -580.0841, y: -0.00000047683716}
-  edges: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,46 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Cellular Lookup
   m_EditorClassIdentifier: 
-  outputNode: {fileID: 7180475840030048117}
+  outputNode:
+    rid: 6015746235274625076
   nodes:
-  - {fileID: 7180475840030048117}
-  - {fileID: 7622656443124195847}
-  - {fileID: -6437868985663230917}
-  - {fileID: -9156686493391234943}
---- !u!114 &7180475840030048117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
-  m_Name: OutputNode
-  m_EditorClassIdentifier: 
-  guid: e88d8246e7f75ba4ab2b09a195a46360
-  nodePosition: {x: 252, y: 0}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: -9156686493391234943}
---- !u!114 &7622656443124195847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff297186d4c7b542915b9f63742b606, type: 3}
-  m_Name: CellularLookupNode
-  m_EditorClassIdentifier: 
-  guid: f174db3e7bdc17644a32aa31edbef6fc
-  nodePosition: {x: -305.49762, y: -0.0000035762787}
-  edges:
-  - parentPortIndex: 0
-    childNode: {fileID: -6437868985663230917}
-  jitterModifier: 1
-  distanceFunction: 1
-  lookupFrequency: 0.07
+  - rid: 6015746235274625076
+  - rid: 6015746235274625077
+  - rid: 6015746235274625079
+  - rid: 6015746235274625080
+  references:
+    version: 2
+    RefIds:
+    - rid: 6015746235274625076
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: f84b50a5-1f0e-48fa-a4d5-3b619e5379c8
+        nodePosition: {x: 295, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625080
+    - rid: 6015746235274625077
+      type: {class: CellularLookupNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: fd95badc-4851-4df1-9690-22049bdf3066
+        nodePosition: {x: -413, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625079
+        jitterModifier: 1
+        distanceFunction: 1
+        lookupFrequency: 0.07
+    - rid: 6015746235274625079
+      type: {class: OpenSimplex2Node, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: baff6f00-6d23-4fce-98a2-d3a901aad928
+        nodePosition: {x: -741.9543, y: -0.000002861023}
+        edges: []
+    - rid: 6015746235274625080
+      type: {class: DomainScaleNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      data:
+        guid: 306e71de-8734-426d-b7c6-c6f014fcdb29
+        nodePosition: {x: -103, y: 0}
+        edges:
+        - parentPortIndex: 0
+          childNode:
+            rid: 6015746235274625077
+        scale: 6.61
