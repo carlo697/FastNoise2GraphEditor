@@ -21,7 +21,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 6015746244823482370
-      type: {class: OutputNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 1f43a2f7-59b1-4acd-8fa1-8921ff4a112a
         nodePosition: {x: 0, y: 0}

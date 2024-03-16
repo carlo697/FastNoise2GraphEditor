@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Subtract", "Blends/Subtract")]
   public class SubtractNode : FastNoiseNode {

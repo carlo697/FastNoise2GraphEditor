@@ -1,6 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Output")]
   public class OutputNode : FastNoiseNode {

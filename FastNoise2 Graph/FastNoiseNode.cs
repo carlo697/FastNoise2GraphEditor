@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph {
   [System.Serializable]
   public abstract class FastNoiseNode {
     public string guid;

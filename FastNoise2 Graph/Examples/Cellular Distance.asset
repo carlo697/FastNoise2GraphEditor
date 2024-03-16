@@ -21,7 +21,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 6015746235274625052
-      type: {class: OutputNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 41a135ef-4269-4b15-bc11-3e17cc94bc69
         nodePosition: {x: 0, y: 0}
@@ -30,7 +30,7 @@ MonoBehaviour:
           childNode:
             rid: 6015746235274625053
     - rid: 6015746235274625053
-      type: {class: CellularDistanceNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: CellularDistanceNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 08df1f84-648c-4f67-a4bc-9452766b838b
         nodePosition: {x: -308, y: 0}

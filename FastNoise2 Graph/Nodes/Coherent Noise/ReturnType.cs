@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   public enum ReturnType {
     Index0,

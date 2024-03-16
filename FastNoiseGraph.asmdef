@@ -1,6 +1,6 @@
 {
-    "name": "FastNoiseGraph",
-    "rootNamespace": "FastNoiseGraph",
+    "name": "FastNoise2Graph",
+    "rootNamespace": "FastNoise2Graph",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

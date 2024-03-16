@@ -3,8 +3,9 @@ using UnityEditor;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
+using FastNoise2Graph.Nodes;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph {
   [CreateAssetMenu(menuName = "Fast Noise Tree")]
   public class FastNoiseTree : ScriptableObject {
     [ContextMenuItem("Test FastNoiseOutput", nameof(GetFastNoiseContextMenu))]

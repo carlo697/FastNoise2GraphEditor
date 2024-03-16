@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Simplex", "Coherent Noise/Simplex")]
   public class SimplexNode : FastNoiseNode {

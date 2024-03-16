@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FastNoiseGraph.Examples {
+namespace FastNoise2Graph.Examples {
   [ExecuteInEditMode]
   [RequireComponent(typeof(MeshFilter))]
   [RequireComponent(typeof(MeshRenderer))]

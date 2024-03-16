@@ -21,7 +21,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 6015746235274625062
-      type: {class: OutputNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 2ecb5b6a-897c-416d-ba16-9622590fef5a
         nodePosition: {x: 0, y: 0}
@@ -30,7 +30,7 @@ MonoBehaviour:
           childNode:
             rid: 6015746235274625063
     - rid: 6015746235274625063
-      type: {class: PerlinNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 2e76597e-e772-4af7-a814-590ca2fcba33
         nodePosition: {x: -254, y: 0}

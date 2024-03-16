@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Min", "Blends/Min")]
   public class MinNode : FastNoiseNode {

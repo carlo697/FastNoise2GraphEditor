@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Max", "Blends/Max")]
   public class MaxNode : FastNoiseNode {

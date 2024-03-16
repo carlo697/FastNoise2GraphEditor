@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Divide", "Blends/Divide")]
   public class DivideNode : FastNoiseNode {

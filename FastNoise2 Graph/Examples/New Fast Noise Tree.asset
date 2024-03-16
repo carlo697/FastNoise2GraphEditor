@@ -10,31 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
-  m_Name: Cellular Value
+  m_Name: New Fast Noise Tree
   m_EditorClassIdentifier: 
+  debug: 0
   outputNode:
-    rid: 6015746235274625058
+    rid: 6015746256091217921
   nodes:
-  - rid: 6015746235274625058
-  - rid: 6015746235274625059
+  - rid: 6015746256091217921
+  - rid: 6015746256091217922
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625058
+    - rid: 6015746256091217921
       type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
-        guid: 9b1d2934-6c8a-40dd-ba0f-2828c9035e3c
+        guid: cfd0013f-781e-46f6-8a6a-1dda66d213ad
         nodePosition: {x: 0, y: 0}
-        edges:
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746235274625059
-    - rid: 6015746235274625059
-      type: {class: CellularValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
-      data:
-        guid: ccb0b631-1c94-4e60-8c97-cfa0c7ad9a7a
-        nodePosition: {x: -289, y: 0}
         edges: []
-        jitterModifier: 1
-        distanceFunction: 1
-        valueIndex: 0
+    - rid: 6015746256091217922
+      type: {class: ValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+      data:
+        guid: 30983bed-3714-4ed9-bb1d-1ca31b34c3a7
+        nodePosition: {x: 0, y: 0}
+        edges: []

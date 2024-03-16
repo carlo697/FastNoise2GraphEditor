@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Fractal FBm", "Fractal/Fractal FBm")]
   public class FractalFBmNode : FastNoiseNode {

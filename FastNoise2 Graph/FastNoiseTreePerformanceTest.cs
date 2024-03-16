@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FastNoiseGraph.Examples {
+namespace FastNoise2Graph.Examples {
   public class FastNoiseTreePerformanceTest : MonoBehaviour {
     public FastNoiseTree tree;
 

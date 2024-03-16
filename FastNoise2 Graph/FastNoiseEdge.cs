@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph {
   [System.Serializable]
   public struct FastNoiseEdge {
     public int parentPortIndex;

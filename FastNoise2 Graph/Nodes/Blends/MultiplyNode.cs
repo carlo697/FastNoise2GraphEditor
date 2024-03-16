@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Multiply", "Blends/Multiply")]
   public class MultiplyNode : FastNoiseNode {

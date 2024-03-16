@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Fade", "Blends/Fade")]
   public class FadeNode : FastNoiseNode {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Cellular Distance", "Coherent Noise/Cellular Distance")]
   public class CellularDistanceNode : FastNoiseNode {

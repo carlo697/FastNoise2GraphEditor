@@ -3,7 +3,7 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace FastNoiseGraph.UI {
+namespace FastNoise2Graph.UI {
   public class FastNoiseTreeEditor : EditorWindow {
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;

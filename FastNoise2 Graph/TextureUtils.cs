@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph {
   public static class TextureUtils {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int GetIndexFrom2d(Vector2Int coords, Vector2Int size) {

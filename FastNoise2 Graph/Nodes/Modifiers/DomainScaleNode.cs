@@ -1,4 +1,4 @@
-namespace FastNoiseGraph {
+namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Domain Scale", "Modifiers/Domain Scale")]
   public class DomainScaleNode : FastNoiseNode {

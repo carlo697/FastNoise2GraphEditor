@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FastNoiseGraph {
+namespace FastNoise2Graph {
   public abstract class FastNoiseInput {
     public bool acceptsEdge;
     public bool isEdgeMandatory;

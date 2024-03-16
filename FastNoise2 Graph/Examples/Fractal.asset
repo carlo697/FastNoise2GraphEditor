@@ -22,7 +22,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 6015746235274625067
-      type: {class: OutputNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: b36b7386-49ba-4234-8b7c-5c2833d02d4f
         nodePosition: {x: 0, y: 0}
@@ -31,7 +31,7 @@ MonoBehaviour:
           childNode:
             rid: 6015746235274625069
     - rid: 6015746235274625069
-      type: {class: FractalFBmNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 384e296f-2a46-4fac-8e67-cba51fd2b186
         nodePosition: {x: -273, y: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
         octaves: 3
         lacunarity: 2
     - rid: 6015746235274625070
-      type: {class: OpenSimplex2SNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      type: {class: OpenSimplex2SNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 875d160f-1202-4374-924e-89b4cb5f3d08
         nodePosition: {x: -566, y: 0}

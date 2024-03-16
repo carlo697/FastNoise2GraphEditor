@@ -4,8 +4,9 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using System.Collections.Generic;
+using FastNoise2Graph.Nodes;
 
-namespace FastNoiseGraph.UI {
+namespace FastNoise2Graph.UI {
   public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
     public FastNoiseNode node;
     public FastNoiseTree tree;
