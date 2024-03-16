@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using FastNoise2Graph.Nodes;
 
 namespace FastNoise2Graph.UI {
-  public class FastNoiseTreeView : GraphView {
-    private FastNoiseTree tree;
+  public class NoiseTreeView : GraphView {
+    private NoiseTree tree;
 
-    public new class UxmlFactory : UxmlFactory<FastNoiseTreeView, GraphElement.UxmlTraits> { }
+    public new class UxmlFactory : UxmlFactory<NoiseTreeView, GraphElement.UxmlTraits> { }
 
-    public FastNoiseTreeView() {
+    public NoiseTreeView() {
       // Add stylesheet
       StyleSheet styleSheet = Resources.Load<StyleSheet>("FastNoiseTreeEditor");
       styleSheets.Add(styleSheet);
@@ -42,7 +42,7 @@ namespace FastNoise2Graph.UI {
       }
     }
 
-    public void PopulateView(FastNoiseTree tree) {
+    public void PopulateView(NoiseTree tree) {
       this.tree = tree;
 
       graphViewChanged -= OnGraphViewChanged;
@@ -55,8 +55,8 @@ namespace FastNoise2Graph.UI {
 
       foreach (var node in tree.nodes) {
         foreach (var fastNoiseEdge in node.edges) {
-          FastNoiseNodeView parent = FindNodeView(node);
-          FastNoiseNodeView child = FindNodeView(fastNoiseEdge.childNode);
+          NoiseNodeView parent = FindNodeView(node);
+          NoiseNodeView child = FindNodeView(fastNoiseEdge.childNode);
 
           int portIndex = fastNoiseEdge.parentPortIndex;
           Edge edge = parent.portsByIndex[portIndex].ConnectTo(child.output);
@@ -68,7 +68,7 @@ namespace FastNoise2Graph.UI {
     private GraphViewChange OnGraphViewChanged(GraphViewChange change) {
       if (change.elementsToRemove != null) {
         foreach (var elementToRemove in change.elementsToRemove) {
-          FastNoiseNodeView nodeView = elementToRemove as FastNoiseNodeView;
+          NoiseNodeView nodeView = elementToRemove as NoiseNodeView;
           if (nodeView != null) {
             tree.DeleteNode(nodeView.node);
           }
@@ -76,8 +76,8 @@ namespace FastNoise2Graph.UI {
           Edge edge = elementToRemove as Edge;
           if (edge != null) {
             int index = edge.input.parent.IndexOf(edge.input);
-            FastNoiseNode parent = ((FastNoiseNodeView)edge.input.node).node;
-            FastNoiseNode child = ((FastNoiseNodeView)edge.input.node).node;
+            NoiseNode parent = ((NoiseNodeView)edge.input.node).node;
+            NoiseNode child = ((NoiseNodeView)edge.input.node).node;
 
             int indexInList = parent.edges.FindIndex((edge) => edge.parentPortIndex == index);
 
@@ -91,17 +91,17 @@ namespace FastNoise2Graph.UI {
       if (change.edgesToCreate != null) {
         foreach (var edge in change.edgesToCreate) {
           int index = edge.input.parent.IndexOf(edge.input);
-          FastNoiseNode parent = ((FastNoiseNodeView)edge.input.node).node;
-          FastNoiseNode child = ((FastNoiseNodeView)edge.output.node).node;
+          NoiseNode parent = ((NoiseNodeView)edge.input.node).node;
+          NoiseNode child = ((NoiseNodeView)edge.output.node).node;
 
           Undo.RecordObject(tree, "FastNoise Tree (Add edge)");
-          parent.edges.Add(new FastNoiseEdge(index, child));
+          parent.edges.Add(new NoiseEdge(index, child));
           EditorUtility.SetDirty(tree);
         }
       }
 
       foreach (var node in tree.nodes) {
-        FastNoiseNodeView nodeView = FindNodeView(node);
+        NoiseNodeView nodeView = FindNodeView(node);
         nodeView.UpdatePreview();
       }
 
@@ -113,13 +113,13 @@ namespace FastNoise2Graph.UI {
 
       if (tree) {
         // Get the available types of nodes
-        var nodeTypes = TypeCache.GetTypesDerivedFrom<FastNoiseNode>();
+        var nodeTypes = TypeCache.GetTypesDerivedFrom<NoiseNode>();
 
         // Iterate the types to append buttons (to the menu) for adding the nodes
         foreach (var nodeType in nodeTypes) {
           if (nodeType != typeof(OutputNode)) {
             // Get the name of the node
-            string name = FastNoiseNode.GetNodeMenuName(nodeType);
+            string name = NoiseNode.GetNodeMenuName(nodeType);
 
             // Add the button
             evt.menu.AppendAction(name, (action) => {
@@ -131,12 +131,12 @@ namespace FastNoise2Graph.UI {
     }
 
     private void CreateNode(Type type) {
-      FastNoiseNode node = tree.AddNode(type);
+      NoiseNode node = tree.AddNode(type);
       CreateNodeView(node);
     }
 
-    private void CreateNodeView(FastNoiseNode node) {
-      var nodeView = new FastNoiseNodeView(node, tree, this);
+    private void CreateNodeView(NoiseNode node) {
+      var nodeView = new NoiseNodeView(node, tree, this);
       AddElement(nodeView);
     }
 
@@ -144,8 +144,8 @@ namespace FastNoise2Graph.UI {
       return ports.ToList().Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node).ToList();
     }
 
-    public FastNoiseNodeView FindNodeView(FastNoiseNode node) {
-      return GetNodeByGuid(node.guid) as FastNoiseNodeView;
+    public NoiseNodeView FindNodeView(NoiseNode node) {
+      return GetNodeByGuid(node.guid) as NoiseNodeView;
     }
   }
 }

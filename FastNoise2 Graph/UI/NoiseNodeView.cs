@@ -7,22 +7,22 @@ using System.Collections.Generic;
 using FastNoise2Graph.Nodes;
 
 namespace FastNoise2Graph.UI {
-  public class FastNoiseNodeView : UnityEditor.Experimental.GraphView.Node {
-    public FastNoiseNode node;
-    public FastNoiseTree tree;
-    public FastNoiseTreeView treeView;
+  public class NoiseNodeView : UnityEditor.Experimental.GraphView.Node {
+    public NoiseNode node;
+    public NoiseTree tree;
+    public NoiseTreeView treeView;
     public Dictionary<int, Port> portsByIndex = new();
     public Port output;
 
     private Texture2D previewTexture;
 
-    public FastNoiseNodeView(FastNoiseNode node, FastNoiseTree tree, FastNoiseTreeView treeView) {
+    public NoiseNodeView(NoiseNode node, NoiseTree tree, NoiseTreeView treeView) {
       this.node = node;
       this.tree = tree;
       this.treeView = treeView;
 
       // Get the name of the node
-      string name = FastNoiseNode.GetNodeName(node);
+      string name = NoiseNode.GetNodeName(node);
       this.title = name;
 
       this.viewDataKey = node.guid;
@@ -68,7 +68,7 @@ namespace FastNoise2Graph.UI {
 
       // Iterate the inputs to create the ports and fields
       for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
-        FastNoiseInput input = node.inputs[inputIndex];
+        NoiseInput input = node.inputs[inputIndex];
 
         Port port = null;
 
@@ -102,7 +102,7 @@ namespace FastNoise2Graph.UI {
 
           field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
             foreach (var node in tree.nodes) {
-              FastNoiseNodeView nodeView = treeView.FindNodeView(node);
+              NoiseNodeView nodeView = treeView.FindNodeView(node);
               nodeView.MarkDirtyRepaint();
             }
           });
@@ -140,7 +140,7 @@ namespace FastNoise2Graph.UI {
       RefreshPorts();
     }
 
-    ~FastNoiseNodeView() {
+    ~NoiseNodeView() {
       if (previewTexture != null) {
         Texture2D.DestroyImmediate(previewTexture);
       }
@@ -196,7 +196,7 @@ namespace FastNoise2Graph.UI {
             float value = values[i];
 
             // Convert the value to range 0 to 1
-            float normalizedValue = TextureUtils.Normalize(value);
+            float normalizedValue = NoiseTextureUtils.Normalize(value);
 
             // Store the final black and white color
             Color finalColor = new Color(normalizedValue, normalizedValue, normalizedValue, 1f);

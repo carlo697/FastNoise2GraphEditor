@@ -4,14 +4,14 @@ namespace FastNoise2Graph.Examples {
   [ExecuteInEditMode]
   [RequireComponent(typeof(MeshFilter))]
   [RequireComponent(typeof(MeshRenderer))]
-  public class FastNoiseTreePreview : MonoBehaviour {
+  public class NoiseTreePreview : MonoBehaviour {
     [Header("Position")]
     public Vector2Int offset;
 
     [Header("Noise")]
     public int resolution = 256;
     public float scale = 50f;
-    public FastNoiseTree noiseTree;
+    public NoiseTree noiseTree;
 
     [Header("Noise Output")]
     public bool useThreshold;

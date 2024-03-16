@@ -1,16 +1,16 @@
 namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Subtract", "Blends/Subtract")]
-  public class SubtractNode : FastNoiseNode {
+  public class SubtractNode : NoiseNode {
     public override string metadataName => "subtract";
 
     public float LHS;
     public float RHS;
 
-    public override FastNoiseInput[] inputs => m_inputs;
-    private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
-      new FastNoiseHybridInput("LHS", "LHS"),
-      new FastNoiseHybridInput("RHS", "RHS")
+    public override NoiseInput[] inputs => m_inputs;
+    private NoiseInput[] m_inputs = new NoiseInput[] {
+      new NoiseHybridInput("LHS", "LHS"),
+      new NoiseHybridInput("RHS", "RHS")
     };
 
     public override void ApplyValues(FastNoise node) {

@@ -1,9 +1,8 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace FastNoise2Graph {
-  public static class TextureUtils {
+  public static class NoiseTextureUtils {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int GetIndexFrom2d(Vector2Int coords, Vector2Int size) {
       return GetIndexFrom2d(coords.x, coords.y, size.x);

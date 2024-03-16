@@ -6,10 +6,10 @@ using System.Reflection;
 
 namespace FastNoise2Graph {
   [System.Serializable]
-  public abstract class FastNoiseNode {
+  public abstract class NoiseNode {
     public string guid;
     public Vector2 nodePosition;
-    public List<FastNoiseEdge> edges = new();
+    public List<NoiseEdge> edges = new();
 
     public abstract string metadataName { get; }
     public virtual int nodeWidth => 200;
@@ -22,10 +22,10 @@ namespace FastNoise2Graph {
       | Capabilities.Snappable
       | Capabilities.Collapsible;
 
-    public virtual FastNoiseInput[] inputs => m_inputs;
-    private FastNoiseInput[] m_inputs = new FastNoiseInput[0];
+    public virtual NoiseInput[] inputs => m_inputs;
+    private NoiseInput[] m_inputs = new NoiseInput[0];
 
-    public FastNoiseNode() {
+    public NoiseNode() {
       guid = Guid.NewGuid().ToString();
     }
 
@@ -41,7 +41,7 @@ namespace FastNoise2Graph {
       return nameAttribute?.menuName ?? type.Name;
     }
 
-    public static string GetNodeName(FastNoiseNode node) {
+    public static string GetNodeName(NoiseNode node) {
       return GetNodeName(node.GetType());
     }
   }

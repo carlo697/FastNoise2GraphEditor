@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace FastNoise2Graph {
-  public abstract class FastNoiseInput {
+  public abstract class NoiseInput {
     public bool acceptsEdge;
     public bool isEdgeMandatory;
     public string label = "Label";
@@ -11,8 +11,8 @@ namespace FastNoise2Graph {
     public static Color defaultColor = new Color(0.02f, 0.188f, 1f);
   }
 
-  public class FastNoiseSimpleInput : FastNoiseInput {
-    public FastNoiseSimpleInput(string label, string fieldPath) {
+  public class NoiseSimpleInput : NoiseInput {
+    public NoiseSimpleInput(string label, string fieldPath) {
       this.acceptsEdge = false;
       this.label = label;
       this.fieldPath = fieldPath;
@@ -20,8 +20,8 @@ namespace FastNoise2Graph {
     }
   }
 
-  public class FastNoiseHybridInput : FastNoiseInput {
-    public FastNoiseHybridInput(string label, string fieldPath) {
+  public class NoiseHybridInput : NoiseInput {
+    public NoiseHybridInput(string label, string fieldPath) {
       this.acceptsEdge = true;
       this.label = label;
       this.fieldPath = fieldPath;
@@ -29,8 +29,8 @@ namespace FastNoise2Graph {
     }
   }
 
-  public class FastNoiseNodeInput : FastNoiseInput {
-    public FastNoiseNodeInput(string label, bool isEdgeMandatory) {
+  public class NoiseNodeInput : NoiseInput {
+    public NoiseNodeInput(string label, bool isEdgeMandatory) {
       this.acceptsEdge = true;
       this.isEdgeMandatory = isEdgeMandatory;
       this.label = label;
@@ -39,8 +39,8 @@ namespace FastNoise2Graph {
     }
   }
 
-  public class FastNoiseOutputInput : FastNoiseInput {
-    public FastNoiseOutputInput(string label) {
+  public class NoiseOutputInput : NoiseInput {
+    public NoiseOutputInput(string label) {
       this.acceptsEdge = true;
       this.label = label;
       this.fieldPath = null;

@@ -1,8 +1,8 @@
 using UnityEngine;
 
 namespace FastNoise2Graph.Examples {
-  public class FastNoiseTreePerformanceTest : MonoBehaviour {
-    public FastNoiseTree tree;
+  public class NoiseTreePerformanceTest : MonoBehaviour {
+    public NoiseTree tree;
 
     void Update() {
       for (int i = 0; i < 100; i++) {

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Cellular Lookup", "Coherent Noise/Cellular Lookup")]
-  public class CellularLookupNode : FastNoiseNode {
+  public class CellularLookupNode : NoiseNode {
     public override string metadataName => "cellularlookup";
     public override int nodeWidth => 250;
 
@@ -12,12 +12,12 @@ namespace FastNoise2Graph.Nodes {
     [Min(0)]
     public float lookupFrequency = 0.1f;
 
-    public override FastNoiseInput[] inputs => m_inputs;
-    private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
-      new FastNoiseNodeInput("Lookup", true),
-      new FastNoiseHybridInput("Jitter Modifier", "jitterModifier"),
-      new FastNoiseSimpleInput("Distance Function", "distanceFunction"),
-      new FastNoiseSimpleInput("Lookup Frequency", "lookupFrequency"),
+    public override NoiseInput[] inputs => m_inputs;
+    private NoiseInput[] m_inputs = new NoiseInput[] {
+      new NoiseNodeInput("Lookup", true),
+      new NoiseHybridInput("Jitter Modifier", "jitterModifier"),
+      new NoiseSimpleInput("Distance Function", "distanceFunction"),
+      new NoiseSimpleInput("Lookup Frequency", "lookupFrequency"),
     };
 
     public override void ApplyValues(FastNoise node) {

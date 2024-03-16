@@ -7,7 +7,7 @@ using FastNoise2Graph.Nodes;
 
 namespace FastNoise2Graph {
   [CreateAssetMenu(menuName = "Fast Noise Tree")]
-  public class FastNoiseTree : ScriptableObject {
+  public class NoiseTree : ScriptableObject {
     [ContextMenuItem("Test FastNoiseOutput", nameof(GetFastNoiseContextMenu))]
     public bool debug;
 
@@ -17,17 +17,17 @@ namespace FastNoise2Graph {
 
     [SerializeReference]
     [HideInInspector]
-    public List<FastNoiseNode> nodes = new List<FastNoiseNode>();
-    private Dictionary<FastNoiseNode, FastNoise> m_nodesCache;
+    public List<NoiseNode> nodes = new List<NoiseNode>();
+    private Dictionary<NoiseNode, FastNoise> m_nodesCache;
 
-    public FastNoiseTree() {
+    public NoiseTree() {
       OutputNode node = new OutputNode();
       nodes.Add(node);
       outputNode = node;
     }
 
-    public FastNoiseNode AddNode(Type type) {
-      FastNoiseNode node = (FastNoiseNode)Activator.CreateInstance(type);
+    public NoiseNode AddNode(Type type) {
+      NoiseNode node = (NoiseNode)Activator.CreateInstance(type);
 
       Undo.RecordObject(this, "FastNoise Tree (Add Node)");
       nodes.Add(node);
@@ -41,7 +41,7 @@ namespace FastNoise2Graph {
       return node;
     }
 
-    public void DeleteNode(FastNoiseNode node) {
+    public void DeleteNode(NoiseNode node) {
       Undo.RecordObject(this, "FastNoise Tree (Delete Node)");
 
       if (outputNode == node) {
@@ -53,13 +53,13 @@ namespace FastNoise2Graph {
       EditorUtility.SetDirty(this);
     }
 
-    private FastNoise GetFastNoise(FastNoiseNode node, bool isOutput) {
+    private FastNoise GetFastNoise(NoiseNode node, bool isOutput) {
       // Create or clear the cache if necessary
       if (isOutput) {
         if (m_nodesCache != null) {
           m_nodesCache.Clear();
         } else {
-          m_nodesCache = new Dictionary<FastNoiseNode, FastNoise>();
+          m_nodesCache = new Dictionary<NoiseNode, FastNoise>();
         }
       }
 
@@ -70,13 +70,13 @@ namespace FastNoise2Graph {
 
       // Check if the mandatory inputs have connections
       for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
-        FastNoiseInput input = node.inputs[inputIndex];
+        NoiseInput input = node.inputs[inputIndex];
 
         if (input.acceptsEdge && input.isEdgeMandatory) {
           // Find an edge for this input
           bool found = false;
           for (int edgeIndex = 0; edgeIndex < node.edges.Count; edgeIndex++) {
-            FastNoiseEdge edge = node.edges[edgeIndex];
+            NoiseEdge edge = node.edges[edgeIndex];
 
             if (edge.parentPortIndex == inputIndex) {
               found = true;
@@ -118,8 +118,8 @@ namespace FastNoise2Graph {
 
       // Iterate over the connections to create and connect those nodes to this one
       for (int i = 0; i < node.edges.Count; i++) {
-        FastNoiseEdge edge = node.edges[i];
-        FastNoiseInput port = node.inputs[edge.parentPortIndex];
+        NoiseEdge edge = node.edges[i];
+        NoiseInput port = node.inputs[edge.parentPortIndex];
 
         // Create or get the node
         FastNoise childNode = GetFastNoise(edge.childNode, false);
@@ -137,7 +137,7 @@ namespace FastNoise2Graph {
       return instancedNode;
     }
 
-    public FastNoise GetFastNoise(FastNoiseNode node) {
+    public FastNoise GetFastNoise(NoiseNode node) {
       if (node is not OutputNode) {
         return GetFastNoise(node, true);
       }

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Fractal FBm", "Fractal/Fractal FBm")]
-  public class FractalFBmNode : FastNoiseNode {
+  public class FractalFBmNode : NoiseNode {
     public override string metadataName => "fractalfbm";
     public override int nodeWidth => 250;
 
@@ -13,13 +13,13 @@ namespace FastNoise2Graph.Nodes {
     public int octaves = 3;
     public float lacunarity = 2f;
 
-    public override FastNoiseInput[] inputs => m_inputs;
-    private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
-      new FastNoiseNodeInput("Source", true),
-      new FastNoiseHybridInput("Gain", "gain"),
-      new FastNoiseHybridInput("Weighted Strength", "weightedStrength"),
-      new FastNoiseSimpleInput("Octaves", "octaves"),
-      new FastNoiseSimpleInput("Lacunarity", "lacunarity"),
+    public override NoiseInput[] inputs => m_inputs;
+    private NoiseInput[] m_inputs = new NoiseInput[] {
+      new NoiseNodeInput("Source", true),
+      new NoiseHybridInput("Gain", "gain"),
+      new NoiseHybridInput("Weighted Strength", "weightedStrength"),
+      new NoiseSimpleInput("Octaves", "octaves"),
+      new NoiseSimpleInput("Lacunarity", "lacunarity"),
     };
 
     public override void ApplyValues(FastNoise node) {

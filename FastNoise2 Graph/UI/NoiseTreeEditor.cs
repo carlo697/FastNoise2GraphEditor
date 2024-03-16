@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace FastNoise2Graph.UI {
-  public class FastNoiseTreeEditor : EditorWindow {
+  public class NoiseTreeEditor : EditorWindow {
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    private FastNoiseTreeView treeView;
+    private NoiseTreeView treeView;
 
     [OnOpenAsset]
     public static bool OnOpenAsset(int instanceId, int line) {
-      if (Selection.activeObject is FastNoiseTree) {
+      if (Selection.activeObject is NoiseTree) {
         OpenWindow();
         return true;
       }
@@ -22,7 +22,7 @@ namespace FastNoise2Graph.UI {
 
     [MenuItem("Window/FastNoiseTreeEditor")]
     public static void OpenWindow() {
-      FastNoiseTreeEditor wnd = GetWindow<FastNoiseTreeEditor>();
+      NoiseTreeEditor wnd = GetWindow<NoiseTreeEditor>();
       wnd.titleContent = new GUIContent("FastNoiseTreeEditor");
     }
 
@@ -33,14 +33,14 @@ namespace FastNoise2Graph.UI {
       // Instantiate UXML
       m_VisualTreeAsset.CloneTree(root);
 
-      treeView = root.Q<FastNoiseTreeView>();
+      treeView = root.Q<NoiseTreeView>();
 
       OnSelectionChange();
     }
 
     private void OnSelectionChange() {
       if (
-        Selection.activeObject is FastNoiseTree tree
+        Selection.activeObject is NoiseTree tree
         && AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID())
       ) {
         treeView.PopulateView(tree);

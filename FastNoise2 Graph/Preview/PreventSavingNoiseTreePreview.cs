@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace FastNoise2Graph.Examples {
   [UnityEditor.InitializeOnLoad]
-  static class PreventSavingFastNoiseTreePreview {
+  static class PreventSavingNoiseTreePreview {
     private static Dictionary<MeshRenderer, Material> cachedMaterials =
       new Dictionary<MeshRenderer, Material>();
 
-    static PreventSavingFastNoiseTreePreview() {
+    static PreventSavingNoiseTreePreview() {
       EditorSceneManager.sceneSaved += OnSceneSaved;
       EditorSceneManager.sceneSaving += OnSceneSaving;
     }
@@ -17,7 +17,7 @@ namespace FastNoise2Graph.Examples {
     static void OnSceneSaving(Scene scene, string path) {
       cachedMaterials.Clear();
 
-      var components = Resources.FindObjectsOfTypeAll<FastNoiseTreePreview>();
+      var components = Resources.FindObjectsOfTypeAll<NoiseTreePreview>();
       foreach (var chunk in components) {
         MeshRenderer meshRenderer = chunk.GetComponent<MeshRenderer>();
 

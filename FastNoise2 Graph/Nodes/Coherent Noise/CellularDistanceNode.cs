@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FastNoise2Graph.Nodes {
   [System.Serializable]
   [NodeName("Cellular Distance", "Coherent Noise/Cellular Distance")]
-  public class CellularDistanceNode : FastNoiseNode {
+  public class CellularDistanceNode : NoiseNode {
     public override string metadataName => "cellulardistance";
     public override int nodeWidth => 250;
 
@@ -15,13 +15,13 @@ namespace FastNoise2Graph.Nodes {
     public int distanceIndex1 = 1;
     public ReturnType returnType = ReturnType.Index0;
 
-    public override FastNoiseInput[] inputs => m_inputs;
-    private FastNoiseInput[] m_inputs = new FastNoiseInput[] {
-      new FastNoiseHybridInput("Jitter Modifier", "jitterModifier"),
-      new FastNoiseSimpleInput("Distance Function", "distanceFunction"),
-      new FastNoiseSimpleInput("Distance Index 0", "distanceIndex0"),
-      new FastNoiseSimpleInput("Distance Index 1", "distanceIndex1"),
-      new FastNoiseSimpleInput("Return Type", "returnType"),
+    public override NoiseInput[] inputs => m_inputs;
+    private NoiseInput[] m_inputs = new NoiseInput[] {
+      new NoiseHybridInput("Jitter Modifier", "jitterModifier"),
+      new NoiseSimpleInput("Distance Function", "distanceFunction"),
+      new NoiseSimpleInput("Distance Index 0", "distanceIndex0"),
+      new NoiseSimpleInput("Distance Index 1", "distanceIndex1"),
+      new NoiseSimpleInput("Return Type", "returnType"),
     };
 
     public override void ApplyValues(FastNoise node) {
