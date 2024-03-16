@@ -12,21 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Empty
   m_EditorClassIdentifier: 
-  outputNode: {fileID: 6681280436467448167}
+  debug: 0
+  outputNode:
+    rid: 6015746244823482370
   nodes:
-  - {fileID: 6681280436467448167}
---- !u!114 &6681280436467448167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d566d8d369fcd4eb1a517202b3232d, type: 3}
-  m_Name: OutputNode
-  m_EditorClassIdentifier: 
-  guid: 685029665fb119b4aa48583c85ef1153
-  nodePosition: {x: 0, y: 0}
-  edges: []
+  - rid: 6015746244823482370
+  references:
+    version: 2
+    RefIds:
+    - rid: 6015746244823482370
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
+      data:
+        guid: 1f43a2f7-59b1-4acd-8fa1-8921ff4a112a
+        nodePosition: {x: 0, y: 0}
+        edges: []
