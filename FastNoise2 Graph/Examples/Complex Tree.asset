@@ -36,7 +36,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 6015746235274625083
-      type: {class: OutputNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: OutputNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 8e875f73-11aa-4462-a600-0a18dfbae75d
         nodePosition: {x: 1966, y: -570}
@@ -45,13 +45,13 @@ MonoBehaviour:
           childNode:
             rid: 6015746235274625100
     - rid: 6015746235274625084
-      type: {class: PerlinNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: PerlinNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 9042dcfd-0207-4c62-acd8-02332bbbf726
         nodePosition: {x: 0, y: 0}
         edges: []
     - rid: 6015746235274625085
-      type: {class: AddNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: AddNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: fc8e0c00-8b70-47d9-8dab-40437e7681c5
         nodePosition: {x: 314, y: -213}
@@ -64,13 +64,13 @@ MonoBehaviour:
             rid: 6015746235274625087
         RHS: 0
     - rid: 6015746235274625086
-      type: {class: PerlinNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: PerlinNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 727f3551-fc55-4ecd-9e47-462af636e311
         nodePosition: {x: -356.2501, y: -546.40015}
         edges: []
     - rid: 6015746235274625087
-      type: {class: FractalFBmNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: FractalFBmNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: a29fc449-9d93-442e-9c97-9a2e3f1d8fd3
         nodePosition: {x: -81.5475, y: -546.0001}
@@ -83,7 +83,7 @@ MonoBehaviour:
         octaves: 5
         lacunarity: 2
     - rid: 6015746235274625088
-      type: {class: DivideNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: DivideNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 9affbe96-23ec-430b-90d8-849d141208c0
         nodePosition: {x: 314, y: -546}
@@ -94,7 +94,7 @@ MonoBehaviour:
         LHS: 0
         RHS: 0.05
     - rid: 6015746235274625089
-      type: {class: MinNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: MinNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 2d65d20e-277b-406f-aed8-9d675292e6da
         nodePosition: {x: 564.99994, y: -546.0001}
@@ -104,7 +104,7 @@ MonoBehaviour:
             rid: 6015746235274625088
         RHS: 1
     - rid: 6015746235274625090
-      type: {class: MaxNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: MaxNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: b1f14e83-ccc2-4b72-a627-c766f0e515e3
         nodePosition: {x: 808.7001, y: -546.0002}
@@ -114,7 +114,7 @@ MonoBehaviour:
             rid: 6015746235274625089
         RHS: 0
     - rid: 6015746235274625091
-      type: {class: AddNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: AddNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 190a452c-aba8-4b52-95e3-53e685b17f7d
         nodePosition: {x: 1101.0077, y: -463.404}
@@ -127,7 +127,7 @@ MonoBehaviour:
             rid: 6015746235274625085
         RHS: 0
     - rid: 6015746235274625092
-      type: {class: FractalFBmNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: FractalFBmNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 01b08c36-de55-4d1e-b11f-aaf4d38c2228
         nodePosition: {x: 1331, y: -546}
@@ -140,7 +140,7 @@ MonoBehaviour:
         octaves: 4
         lacunarity: 2
     - rid: 6015746235274625093
-      type: {class: CellularValueNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: CellularValueNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 61add500-3b3c-4806-b4ce-78a84d86e999
         nodePosition: {x: 706.8196, y: -70}
@@ -149,7 +149,7 @@ MonoBehaviour:
         distanceFunction: 1
         valueIndex: 0
     - rid: 6015746235274625094
-      type: {class: MultiplyNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: MultiplyNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 363de8fa-4d69-4037-8002-29e788df7e2e
         nodePosition: {x: 982.81964, y: -70}
@@ -159,7 +159,7 @@ MonoBehaviour:
             rid: 6015746235274625093
         RHS: 500
     - rid: 6015746235274625095
-      type: {class: MinNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: MinNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 0a8750bf-4691-4095-8cb0-b213ee8afa98
         nodePosition: {x: 1235.8196, y: -70}
@@ -169,7 +169,7 @@ MonoBehaviour:
             rid: 6015746235274625094
         RHS: 1
     - rid: 6015746235274625096
-      type: {class: MaxNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: MaxNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 58e24b19-aeaa-400b-9278-16c20ea1770c
         nodePosition: {x: 1482.8197, y: -70}
@@ -179,13 +179,13 @@ MonoBehaviour:
             rid: 6015746235274625095
         RHS: 0
     - rid: 6015746235274625098
-      type: {class: ValueNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: ValueNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 1fbf9420-305e-4dc1-9cee-1951692a2f87
         nodePosition: {x: 1083.0001, y: -917.0001}
         edges: []
     - rid: 6015746235274625099
-      type: {class: DomainScaleNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: DomainScaleNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 75067158-caff-4ede-a684-6612d1ee5798
         nodePosition: {x: 1388, y: -917.0001}
@@ -195,7 +195,7 @@ MonoBehaviour:
             rid: 6015746235274625098
         scale: 1.34
     - rid: 6015746235274625100
-      type: {class: FadeNode, ns: FastNoiseGraph, asm: Assembly-CSharp}
+      type: {class: FadeNode, ns: FastNoiseGraph, asm: FastNoiseGraph}
       data:
         guid: 55222cc7-bd84-4d23-840d-28d35fdfc7e8
         nodePosition: {x: 1732.8269, y: -570.0001}
