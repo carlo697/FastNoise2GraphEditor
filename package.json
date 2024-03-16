@@ -1,0 +1,14 @@
+{
+  "name": "com.carlo697.fastnoise2-graph-editor",
+  "version": "0.0.1",
+  "displayName": "FastNoise2 Graph Editor",
+  "description": "Graph editor for procedural noise generation using FastNoise2",
+  "unity": "2022.3",
+  "documentationUrl": "https://github.com/carlo697/FastNoise2GraphEditor",
+  "licensesUrl": "https://github.com/carlo697/FastNoise2GraphEditor?tab=MIT-1-ov-file",
+  "author": {
+    "name": "Carlos Peña",
+    "email": "carlos.07888@gmail.com",
+    "url": "https://github.com/carlo697"
+  }
+}
