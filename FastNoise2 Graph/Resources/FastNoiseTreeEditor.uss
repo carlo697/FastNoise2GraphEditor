@@ -24,3 +24,17 @@ GridBackground {
 .node-input-property--no-port .unity-base-field {
   margin-left: 25px;
 }
+
+.node-input-property:disabled {
+  opacity: 1;
+}
+
+.node-input-property:disabled .unity-base-field__label {
+  cursor: arrow;
+}
+
+.node-input-property:disabled .unity-base-field__input {
+  /* visibility: hidden; */
+  color: var(--unity-colors-input_field-background);
+  border-color: var(--unity-colors-input_field-background);
+}

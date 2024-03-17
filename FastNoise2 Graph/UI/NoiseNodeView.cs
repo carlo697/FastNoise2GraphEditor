@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using System.Collections.Generic;
+using System.Linq;
 using FastNoise2Graph.Nodes;
 
 namespace FastNoise2Graph.UI {
@@ -12,6 +13,7 @@ namespace FastNoise2Graph.UI {
     public NoiseTree tree;
     public NoiseTreeView treeView;
     public Dictionary<int, Port> portsByIndex = new();
+    public Dictionary<NoiseInput, PropertyField> fieldsByInput = new();
     public Port output;
 
     private Texture2D previewTexture;
@@ -108,6 +110,7 @@ namespace FastNoise2Graph.UI {
           });
 
           // Add the field
+          fieldsByInput.Add(input, field);
           if (port != null) {
             port.portName = "";
             port.contentContainer.Add(field);
@@ -138,6 +141,25 @@ namespace FastNoise2Graph.UI {
       }
 
       RefreshPorts();
+    }
+
+    public void UpdateFieldsVisibility() {
+      // Iterate the inputs to create the ports and fields
+      for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
+        NoiseInput input = node.inputs[inputIndex];
+
+        if (input.acceptsEdge && input.fieldPath != null) {
+          // Know if the input has an edge connected to it
+          NoiseEdge edge = node.edges.Find((edge) => edge.parentPortIndex == inputIndex);
+          bool hasEdge = edge.childNode != null;
+
+          // Get the PropertyField of the input
+          PropertyField field = fieldsByInput[input];
+          if (field != null) {
+            field.SetEnabled(!hasEdge);
+          }
+        }
+      }
     }
 
     ~NoiseNodeView() {

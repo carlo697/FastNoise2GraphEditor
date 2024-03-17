@@ -61,6 +61,8 @@ namespace FastNoise2Graph.UI {
           int portIndex = fastNoiseEdge.parentPortIndex;
           Edge edge = parent.portsByIndex[portIndex].ConnectTo(child.output);
           AddElement(edge);
+
+          parent.UpdateFieldsVisibility();
         }
       }
     }
@@ -76,14 +78,18 @@ namespace FastNoise2Graph.UI {
           Edge edge = elementToRemove as Edge;
           if (edge != null) {
             int index = edge.input.parent.IndexOf(edge.input);
-            NoiseNode parent = ((NoiseNodeView)edge.input.node).node;
-            NoiseNode child = ((NoiseNodeView)edge.input.node).node;
+            NoiseNodeView parentView = (NoiseNodeView)edge.input.node;
+            NoiseNode parent = parentView.node;
+            NoiseNodeView childView = (NoiseNodeView)edge.input.node;
+            NoiseNode child = childView.node;
 
             int indexInList = parent.edges.FindIndex((edge) => edge.parentPortIndex == index);
 
             Undo.RecordObject(tree, "FastNoise Tree (Remove edge)");
             parent.edges.RemoveAt(indexInList);
             EditorUtility.SetDirty(tree);
+
+            parentView.UpdateFieldsVisibility();
           }
         }
       }
@@ -91,12 +97,16 @@ namespace FastNoise2Graph.UI {
       if (change.edgesToCreate != null) {
         foreach (var edge in change.edgesToCreate) {
           int index = edge.input.parent.IndexOf(edge.input);
-          NoiseNode parent = ((NoiseNodeView)edge.input.node).node;
-          NoiseNode child = ((NoiseNodeView)edge.output.node).node;
+          NoiseNodeView parentView = (NoiseNodeView)edge.input.node;
+          NoiseNode parent = parentView.node;
+          NoiseNodeView childView = (NoiseNodeView)edge.output.node;
+          NoiseNode child = childView.node;
 
           Undo.RecordObject(tree, "FastNoise Tree (Add edge)");
           parent.edges.Add(new NoiseEdge(index, child));
           EditorUtility.SetDirty(tree);
+
+          parentView.UpdateFieldsVisibility();
         }
       }
 
