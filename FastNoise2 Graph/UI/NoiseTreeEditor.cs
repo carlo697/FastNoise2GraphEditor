@@ -44,6 +44,10 @@ namespace FastNoise2Graph.UI {
         && AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID())
       ) {
         treeView.PopulateView(tree);
+
+        EditorApplication.delayCall += () => {
+          treeView.FrameAll();
+        };
       }
     }
   }
