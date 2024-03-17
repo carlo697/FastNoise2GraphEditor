@@ -15,7 +15,7 @@ namespace FastNoise2Graph.UI {
 
     public NoiseTreeView() {
       // Add stylesheet
-      StyleSheet styleSheet = Resources.Load<StyleSheet>("FastNoiseTreeEditor");
+      StyleSheet styleSheet = Resources.Load<StyleSheet>("NoiseTreeEditor");
       styleSheets.Add(styleSheet);
 
       // Add background
