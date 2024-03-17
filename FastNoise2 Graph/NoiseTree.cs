@@ -8,9 +8,6 @@ using FastNoise2Graph.Nodes;
 namespace FastNoise2Graph {
   [CreateAssetMenu(menuName = "Fast Noise Tree")]
   public class NoiseTree : ScriptableObject {
-    [ContextMenuItem("Test FastNoiseOutput", nameof(GetFastNoiseContextMenu))]
-    public bool debug;
-
     [SerializeReference]
     [HideInInspector]
     public OutputNode outputNode;
@@ -151,15 +148,6 @@ namespace FastNoise2Graph {
 
     public FastNoise GetFastNoise() {
       return GetFastNoise(outputNode);
-    }
-
-    private void GetFastNoiseContextMenu() {
-      System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-      stopwatch.Start();
-      FastNoise generated = GetFastNoise();
-      stopwatch.Stop();
-      Debug.Log(generated);
-      Debug.Log($"Time to generate the FastNoise intances: {stopwatch.Elapsed.TotalMilliseconds}");
     }
   }
 }

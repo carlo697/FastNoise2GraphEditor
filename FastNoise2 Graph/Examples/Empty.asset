@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db61526a402a2d4ba750795122b0c47, type: 3}
   m_Name: Empty
   m_EditorClassIdentifier: 
-  debug: 0
   outputNode:
     rid: 6015746244823482370
   nodes:
