@@ -111,6 +111,9 @@ namespace FastNoise2Graph.UI {
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt) {
       base.BuildContextualMenu(evt);
 
+      Vector2 mousePosition = evt.localMousePosition;
+      Vector2 graphPosition = viewTransform.matrix.inverse.MultiplyPoint(mousePosition);
+
       if (tree) {
         // Get the available types of nodes
         var nodeTypes = TypeCache.GetTypesDerivedFrom<NoiseNode>();
@@ -123,21 +126,31 @@ namespace FastNoise2Graph.UI {
 
             // Add the button
             evt.menu.AppendAction(name, (action) => {
-              CreateNode(nodeType);
+              // Create the node and the view
+              NoiseNodeView view = CreateNode(nodeType);
+
+              // Move the node to the mouse
+              view.SetPosition(new Rect(graphPosition, view.contentRect.size));
+
+              // Select the node
+              ClearSelection();
+              AddToSelection(view);
             });
           }
         }
       }
     }
 
-    private void CreateNode(Type type) {
+    private NoiseNodeView CreateNode(Type type) {
+      // Add the node to the tree and to the editor
       NoiseNode node = tree.AddNode(type);
-      CreateNodeView(node);
+      return CreateNodeView(node);
     }
 
-    private void CreateNodeView(NoiseNode node) {
+    private NoiseNodeView CreateNodeView(NoiseNode node) {
       var nodeView = new NoiseNodeView(node, tree, this);
       AddElement(nodeView);
+      return nodeView;
     }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) {
