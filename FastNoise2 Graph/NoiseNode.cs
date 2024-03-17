@@ -20,7 +20,8 @@ namespace FastNoise2Graph {
       | Capabilities.Movable
       | Capabilities.Deletable
       | Capabilities.Snappable
-      | Capabilities.Collapsible;
+      | Capabilities.Collapsible
+      | Capabilities.Copiable;
 
     public virtual NoiseInput[] inputs => m_inputs;
     private NoiseInput[] m_inputs = new NoiseInput[0];

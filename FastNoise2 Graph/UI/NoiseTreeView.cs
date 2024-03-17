@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using System;
+using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 using FastNoise2Graph.Nodes;
@@ -12,6 +13,19 @@ namespace FastNoise2Graph.UI {
     private NoiseTree tree;
 
     public new class UxmlFactory : UxmlFactory<NoiseTreeView, GraphElement.UxmlTraits> { }
+
+    [Serializable]
+    private class CopyPasteData {
+      public List<string> nodeGuids = new List<string>();
+
+      public CopyPasteData(IEnumerable<GraphElement> elements) {
+        foreach (var item in elements) {
+          if (item is NoiseNodeView view) {
+            nodeGuids.Add(view.node.guid);
+          }
+        }
+      }
+    }
 
     public NoiseTreeView() {
       // Add stylesheet
@@ -33,6 +47,41 @@ namespace FastNoise2Graph.UI {
       RegisterCallback<DetachFromPanelEvent>((evt) => {
         Undo.undoRedoPerformed -= OnUndoRedo;
       });
+
+      serializeGraphElements += (IEnumerable<GraphElement> elements) => {
+        CopyPasteData data = new(elements);
+        string jsonData = JsonUtility.ToJson(data);
+        return jsonData;
+      };
+
+      canPasteSerializedData += (jsonData) => {
+        try {
+          JsonUtility.FromJson<CopyPasteData>(jsonData);
+          return true;
+        } catch (System.Exception) {
+          return false;
+        }
+      };
+
+      unserializeAndPaste += (operationName, jsonData) => {
+        CopyPasteData data = JsonUtility.FromJson<CopyPasteData>(jsonData);
+
+        // Build a list of the original node views
+        List<NoiseNodeView> originalNodes = new List<NoiseNodeView>();
+        foreach (var nodeGuid in data.nodeGuids) {
+          NoiseNodeView nodeView = FindNodeView(nodeGuid);
+          if (nodeView != null) {
+            originalNodes.Add(nodeView);
+          }
+        }
+
+        // Copy the nodes and select them
+        ClearSelection();
+        foreach (var item in originalNodes) {
+          NoiseNodeView nodeView = CopyNode(item.node);
+          AddToSelection(nodeView);
+        }
+      };
     }
 
     private void OnUndoRedo() {
@@ -151,10 +200,33 @@ namespace FastNoise2Graph.UI {
       }
     }
 
+    private NoiseNodeView CopyNode(NoiseNode node) {
+      Type nodeType = node.GetType();
+      NoiseNode copy = tree.AddNode(nodeType);
+
+      // Move the node a little bit
+      copy.nodePosition = node.nodePosition + new Vector2(20, 20);
+
+      // Copy the fields
+      foreach (var input in node.inputs) {
+        if (input.fieldPath != null) {
+          FieldInfo field = nodeType.GetField(input.fieldPath);
+          object originalValue = field.GetValue(node);
+          field.SetValue(copy, originalValue);
+        }
+      }
+
+      return CreateNodeView(copy);
+    }
+
     private NoiseNodeView CreateNode(Type type) {
-      // Add the node to the tree and to the editor
       NoiseNode node = tree.AddNode(type);
       return CreateNodeView(node);
+    }
+
+    private NoiseNodeView CreateNode(NoiseNode node) {
+      NoiseNode copy = tree.AddNode(node.GetType());
+      return CreateNodeView(copy);
     }
 
     private NoiseNodeView CreateNodeView(NoiseNode node) {
@@ -167,8 +239,12 @@ namespace FastNoise2Graph.UI {
       return ports.ToList().Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node).ToList();
     }
 
+    public NoiseNodeView FindNodeView(string guid) {
+      return GetNodeByGuid(guid) as NoiseNodeView;
+    }
+
     public NoiseNodeView FindNodeView(NoiseNode node) {
-      return GetNodeByGuid(node.guid) as NoiseNodeView;
+      return FindNodeView(node.guid);
     }
   }
 }
