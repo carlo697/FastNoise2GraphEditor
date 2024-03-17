@@ -115,5 +115,20 @@ namespace FastNoise2Graph.Examples {
         Generate();
       }
     }
+
+    [ContextMenu("Log time to create FastNoise instance")]
+    private void LogTimeToCreateInstance() {
+      if (noiseTree == null) {
+        Debug.LogWarning("noiseTree is null");
+        return;
+      }
+
+      System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+      stopwatch.Start();
+      FastNoise generated = noiseTree.GetFastNoise();
+      stopwatch.Stop();
+      Debug.Log(generated);
+      Debug.Log($"Time to generate the FastNoise intances: {stopwatch.Elapsed.TotalMilliseconds}");
+    }
   }
 }
