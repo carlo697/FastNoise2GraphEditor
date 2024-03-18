@@ -134,7 +134,7 @@ namespace FastNoise2Graph.UI {
             port.portName = "";
             port.contentContainer.Add(field);
           } else {
-            inputContainer.Add(field);
+            extensionContainer.Add(field);
           }
         }
 
@@ -195,10 +195,6 @@ namespace FastNoise2Graph.UI {
       Box box = new Box();
       box.style.width = 200;
       box.style.height = 200;
-
-      // Background colors
-      box.style.backgroundColor = Color.black;
-      mainContainer.style.backgroundColor = Color.black;
 
       // Noise image preview
       previewTexture = new Texture2D(200, 200);
