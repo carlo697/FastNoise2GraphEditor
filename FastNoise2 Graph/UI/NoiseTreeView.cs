@@ -67,19 +67,45 @@ namespace FastNoise2Graph.UI {
         CopyPasteData data = JsonUtility.FromJson<CopyPasteData>(jsonData);
 
         // Build a list of the original node views
-        List<NoiseNodeView> originalNodes = new List<NoiseNodeView>();
+        List<NoiseNode> originalNodes = new List<NoiseNode>();
         foreach (var nodeGuid in data.nodeGuids) {
           NoiseNodeView nodeView = FindNodeView(nodeGuid);
           if (nodeView != null) {
-            originalNodes.Add(nodeView);
+            originalNodes.Add(nodeView.node);
           }
         }
 
         // Copy the nodes and select them
         ClearSelection();
-        foreach (var item in originalNodes) {
-          NoiseNodeView nodeView = CopyNode(item.node);
-          AddToSelection(nodeView);
+        Dictionary<NoiseNode, NoiseNode> newNodes = new();
+        foreach (var originalNode in originalNodes) {
+          NoiseNodeView newView = CopyNode(originalNode);
+          newNodes.Add(originalNode, newView.node);
+          AddToSelection(newView);
+        }
+
+        // Copy the edges
+        foreach (var originalNode in originalNodes) {
+          int edgeIndex = 0;
+
+          NoiseNode parent = originalNode;
+          NoiseNode newParent = newNodes[parent];
+
+          foreach (var edge in originalNode.edges) {
+            NoiseNode child = edge.childNode;
+            NoiseNode newChild;
+
+            // Make sure the edge is connected to a node in the selection
+            if (newNodes.TryGetValue(child, out newChild)) {
+              newParent.edges.Add(new NoiseEdge(edgeIndex, newChild));
+              continue;
+            }
+
+            edgeIndex++;
+          }
+
+          // Create the edges in the UI
+          CreateEdges(newParent);
         }
       };
     }
@@ -95,24 +121,20 @@ namespace FastNoise2Graph.UI {
       this.tree = tree;
 
       graphViewChanged -= OnGraphViewChanged;
+
+      // Clear the graph
       DeleteElements(graphElements);
+
       graphViewChanged += OnGraphViewChanged;
 
+      // Create the nodes
       foreach (var node in tree.nodes) {
         CreateNodeView(node);
       }
 
+      // Create the edges
       foreach (var node in tree.nodes) {
-        foreach (var fastNoiseEdge in node.edges) {
-          NoiseNodeView parent = FindNodeView(node);
-          NoiseNodeView child = FindNodeView(fastNoiseEdge.childNode);
-
-          int portIndex = fastNoiseEdge.parentPortIndex;
-          Edge edge = parent.portsByIndex[portIndex].ConnectTo(child.output);
-          AddElement(edge);
-
-          parent.UpdateFieldsVisibility();
-        }
+        CreateEdges(node);
       }
     }
 
@@ -233,6 +255,19 @@ namespace FastNoise2Graph.UI {
       var nodeView = new NoiseNodeView(node, tree, this);
       AddElement(nodeView);
       return nodeView;
+    }
+
+    private void CreateEdges(NoiseNode node) {
+      foreach (var fastNoiseEdge in node.edges) {
+        NoiseNodeView parent = FindNodeView(node);
+        NoiseNodeView child = FindNodeView(fastNoiseEdge.childNode);
+
+        int portIndex = fastNoiseEdge.parentPortIndex;
+        Edge edge = parent.portsByIndex[portIndex].ConnectTo(child.output);
+        AddElement(edge);
+
+        parent.UpdateFieldsVisibility();
+      }
     }
 
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter) {
