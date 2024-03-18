@@ -50,19 +50,15 @@ namespace FastNoise2Graph {
       EditorUtility.SetDirty(this);
     }
 
-    private FastNoise GetFastNoise(NoiseNode node, bool isOutput) {
+    private FastNoise GetFastNoise(NoiseNode node, bool isOutput, Dictionary<NoiseNode, FastNoise> cache) {
       // Create or clear the cache if necessary
       if (isOutput) {
-        if (m_nodesCache != null) {
-          m_nodesCache.Clear();
-        } else {
-          m_nodesCache = new Dictionary<NoiseNode, FastNoise>();
-        }
+        cache.Clear();
       }
 
       // The node was previosly created, let's return it
-      if (m_nodesCache.ContainsKey(node)) {
-        return m_nodesCache[node];
+      if (cache.ContainsKey(node)) {
+        return cache[node];
       }
 
       // Check if the mandatory inputs have connections
@@ -89,7 +85,7 @@ namespace FastNoise2Graph {
 
       // Create the new node
       FastNoise instancedNode = new FastNoise(node.metadataName);
-      m_nodesCache.Add(node, instancedNode);
+      cache.Add(node, instancedNode);
 
       // Debug.Log(node.nodeMetadataName);
 
@@ -119,7 +115,7 @@ namespace FastNoise2Graph {
         NoiseInput port = node.inputs[edge.parentPortIndex];
 
         // Create or get the node
-        FastNoise childNode = GetFastNoise(edge.childNode, false);
+        FastNoise childNode = GetFastNoise(edge.childNode, false, cache);
         if (childNode == null) {
           return null;
         }
@@ -134,20 +130,40 @@ namespace FastNoise2Graph {
       return instancedNode;
     }
 
-    public FastNoise GetFastNoise(NoiseNode node) {
+    public FastNoise GetFastNoise(NoiseNode node, Dictionary<NoiseNode, FastNoise> cache) {
       if (node is not OutputNode) {
-        return GetFastNoise(node, true);
+        return GetFastNoise(node, true, cache);
       }
 
       if (node.edges.Count > 0) {
-        return GetFastNoise(node.edges[0].childNode, true);
+        return GetFastNoise(node.edges[0].childNode, true, cache);
       }
 
       return null;
     }
 
+    public FastNoise GetFastNoise(NoiseNode node) {
+      if (m_nodesCache == null) {
+        m_nodesCache = new();
+      }
+
+      return GetFastNoise(node, m_nodesCache);
+    }
+
+    public FastNoise GetFastNoiseSafe(NoiseNode node) {
+      return GetFastNoise(node, new());
+    }
+
     public FastNoise GetFastNoise() {
-      return GetFastNoise(outputNode);
+      if (m_nodesCache == null) {
+        m_nodesCache = new();
+      }
+
+      return GetFastNoise(outputNode, m_nodesCache);
+    }
+
+    public FastNoise GetFastNoiseSafe() {
+      return GetFastNoise(outputNode, new());
     }
   }
 }
