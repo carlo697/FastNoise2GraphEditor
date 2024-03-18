@@ -195,7 +195,7 @@ namespace FastNoise2Graph.UI {
       Vector2 mousePosition = evt.localMousePosition;
       Vector2 graphPosition = viewTransform.matrix.inverse.MultiplyPoint(mousePosition);
 
-      if (tree && evt.target is not NoiseNodeView) {
+      if (tree && evt.target == this) {
         // Get the available types of nodes
         var nodeTypes = TypeCache.GetTypesDerivedFrom<NoiseNode>();
 
