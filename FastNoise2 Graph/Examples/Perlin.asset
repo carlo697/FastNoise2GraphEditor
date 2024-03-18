@@ -29,9 +29,11 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625063
+        isCollapsed: 0
     - rid: 6015746235274625063
       type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 2e76597e-e772-4af7-a814-590ca2fcba33
         nodePosition: {x: -254, y: 0}
         edges: []
+        isCollapsed: 0

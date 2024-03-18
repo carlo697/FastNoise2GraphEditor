@@ -266,6 +266,9 @@ namespace FastNoise2Graph.UI {
         Edge edge = parent.portsByIndex[portIndex].ConnectTo(child.output);
         AddElement(edge);
 
+        parent.RefreshExpandedState();
+        child.RefreshExpandedState();
+
         parent.UpdateFieldsVisibility();
       }
     }

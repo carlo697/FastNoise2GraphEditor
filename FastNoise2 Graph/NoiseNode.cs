@@ -10,6 +10,7 @@ namespace FastNoise2Graph {
     public string guid;
     public Vector2 nodePosition;
     public List<NoiseEdge> edges = new();
+    public bool isCollapsed;
 
     public abstract string metadataName { get; }
     public virtual int nodeWidth => 200;

@@ -16,6 +16,25 @@ namespace FastNoise2Graph.UI {
     public Dictionary<NoiseInput, PropertyField> fieldsByInput = new();
     public Port output;
 
+    public override bool expanded {
+      get {
+        if (node != null) {
+          return !node.isCollapsed;
+        }
+
+        return base.expanded;
+      }
+      set {
+        if (node != null) {
+          node.isCollapsed = !value;
+          EditorUtility.SetDirty(tree);
+          RefreshExpandedState();
+        }
+
+        base.expanded = value;
+      }
+    }
+
     private Texture2D previewTexture;
 
     public NoiseNodeView(NoiseNode node, NoiseTree tree, NoiseTreeView treeView) {

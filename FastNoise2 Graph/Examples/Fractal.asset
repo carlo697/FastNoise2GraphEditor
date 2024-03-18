@@ -30,6 +30,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625069
+        isCollapsed: 0
     - rid: 6015746235274625069
       type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
@@ -39,6 +40,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625070
+        isCollapsed: 0
         gain: 0.5
         weightedStrength: 0
         octaves: 3
@@ -49,3 +51,4 @@ MonoBehaviour:
         guid: 875d160f-1202-4374-924e-89b4cb5f3d08
         nodePosition: {x: -566, y: 0}
         edges: []
+        isCollapsed: 0

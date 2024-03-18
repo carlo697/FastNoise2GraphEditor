@@ -44,12 +44,14 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625100
+        isCollapsed: 0
     - rid: 6015746235274625084
       type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 9042dcfd-0207-4c62-acd8-02332bbbf726
         nodePosition: {x: 0, y: 0}
         edges: []
+        isCollapsed: 0
     - rid: 6015746235274625085
       type: {class: AddNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
@@ -62,6 +64,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625087
+        isCollapsed: 0
         RHS: 0
     - rid: 6015746235274625086
       type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -69,6 +72,7 @@ MonoBehaviour:
         guid: 727f3551-fc55-4ecd-9e47-462af636e311
         nodePosition: {x: -356.2501, y: -546.40015}
         edges: []
+        isCollapsed: 0
     - rid: 6015746235274625087
       type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
@@ -78,6 +82,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625086
+        isCollapsed: 0
         gain: 0.5
         weightedStrength: 0
         octaves: 5
@@ -91,6 +96,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625087
+        isCollapsed: 0
         LHS: 0
         RHS: 0.05
     - rid: 6015746235274625089
@@ -102,6 +108,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625088
+        isCollapsed: 0
         RHS: 1
     - rid: 6015746235274625090
       type: {class: MaxNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -112,6 +119,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625089
+        isCollapsed: 0
         RHS: 0
     - rid: 6015746235274625091
       type: {class: AddNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -125,6 +133,7 @@ MonoBehaviour:
         - parentPortIndex: 1
           childNode:
             rid: 6015746235274625085
+        isCollapsed: 0
         RHS: 0
     - rid: 6015746235274625092
       type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -135,6 +144,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625091
+        isCollapsed: 0
         gain: 0.5
         weightedStrength: 0
         octaves: 4
@@ -145,6 +155,7 @@ MonoBehaviour:
         guid: 61add500-3b3c-4806-b4ce-78a84d86e999
         nodePosition: {x: 706.8196, y: -70}
         edges: []
+        isCollapsed: 0
         jitterModifier: 1
         distanceFunction: 1
         valueIndex: 0
@@ -157,6 +168,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625093
+        isCollapsed: 0
         RHS: 500
     - rid: 6015746235274625095
       type: {class: MinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -167,6 +179,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625094
+        isCollapsed: 0
         RHS: 1
     - rid: 6015746235274625096
       type: {class: MaxNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -177,6 +190,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625095
+        isCollapsed: 0
         RHS: 0
     - rid: 6015746235274625098
       type: {class: ValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -184,6 +198,7 @@ MonoBehaviour:
         guid: 1fbf9420-305e-4dc1-9cee-1951692a2f87
         nodePosition: {x: 1083.0001, y: -917.0001}
         edges: []
+        isCollapsed: 0
     - rid: 6015746235274625099
       type: {class: DomainScaleNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
@@ -193,6 +208,7 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625098
+        isCollapsed: 0
         scale: 1.34
     - rid: 6015746235274625100
       type: {class: FadeNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
@@ -209,4 +225,5 @@ MonoBehaviour:
         - parentPortIndex: 2
           childNode:
             rid: 6015746235274625096
+        isCollapsed: 0
         fade: 0.5

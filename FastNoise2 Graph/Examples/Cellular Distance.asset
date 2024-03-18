@@ -29,12 +29,14 @@ MonoBehaviour:
         - parentPortIndex: 0
           childNode:
             rid: 6015746235274625053
+        isCollapsed: 0
     - rid: 6015746235274625053
       type: {class: CellularDistanceNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
       data:
         guid: 08df1f84-648c-4f67-a4bc-9452766b838b
         nodePosition: {x: -308, y: 0}
         edges: []
+        isCollapsed: 0
         jitterModifier: 1
         distanceFunction: 1
         distanceIndex0: 0
