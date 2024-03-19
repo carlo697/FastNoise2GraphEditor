@@ -160,6 +160,7 @@ namespace FastNoise2Graph.UI {
       }
 
       RefreshPorts();
+      RefreshExpandedState();
     }
 
     public void UpdateFieldsVisibility() {
