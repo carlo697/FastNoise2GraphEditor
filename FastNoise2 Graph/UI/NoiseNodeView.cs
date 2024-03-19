@@ -220,7 +220,14 @@ namespace FastNoise2Graph.UI {
 
           // Generate the noise
           float[] values = new float[resolution * resolution];
-          instancedNoise.GenUniformGrid2D(values, 0, 0, resolution, resolution, 0.03f, 0);
+          instancedNoise.GenUniformGrid2D(
+            values,
+            -resolution / 2,
+            -resolution / 2,
+            resolution, resolution,
+            0.03f,
+            0
+          );
 
           // watch.Stop();
           // Debug.Log($"Noise: {watch.Elapsed.TotalMilliseconds}");
