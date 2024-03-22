@@ -13,121 +13,151 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746235274625083
+    rid: 6015746355146522648
   nodes:
-  - rid: 6015746235274625083
-  - rid: 6015746307696099349
-  - rid: 6015746307696099350
-  - rid: 6015746307696099351
-  - rid: 6015746307696099352
-  - rid: 6015746307696099353
-  - rid: 6015746307696099354
-  - rid: 6015746307696099355
-  - rid: 6015746307696099357
+  - rid: 6015746355146522648
+  - rid: 6015746355146522649
+  - rid: 6015746355146522650
+  - rid: 6015746355146522651
+  - rid: 6015746355146522652
+  - rid: 6015746355146522653
+  - rid: 6015746355146522654
+  - rid: 6015746375075233794
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625083
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746355146522648
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 8e875f73-11aa-4462-a600-0a18dfbae75d
-        nodePosition: {x: 2525, y: -708}
+        guid: 17f47ffe-3ca7-4f0d-ac8d-55acc07ed1ac
+        nodePosition: {x: 482, y: -9}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Output
           childNode:
-            rid: 6015746307696099357
+            rid: 6015746375075233794
+        metadataName: Output
         isCollapsed: 0
-    - rid: 6015746307696099349
-      type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522649
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 4a24e1d1-ee6e-47b5-8fdb-b5c5d8342ccc
-        nodePosition: {x: 1005, y: -708.5}
+        guid: 1ad03d2b-4c9f-4c60-9eb2-56f3b375b3c3
+        nodePosition: {x: -898, y: -9}
         edges: []
+        metadataName: Perlin
         isCollapsed: 0
-    - rid: 6015746307696099350
-      type: {class: DomainOffsetNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522650
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 36b3a9c5-8bd4-4389-8c85-54bfad759deb
-        nodePosition: {x: 1464, y: -708}
+        guid: e199fbac-0692-446f-8929-0f7c213bfe95
+        nodePosition: {x: -441, y: -9}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746307696099349
-        - parentPortIndex: 1
+            rid: 6015746355146522649
+        - parentPortName: Offset X
           childNode:
-            rid: 6015746307696099353
+            rid: 6015746355146522652
+        metadataName: DomainOffset
         isCollapsed: 0
-        offsetX: 1.73
-        offsetY: 0
-        offsetZ: 0
-        offsetW: 0
-    - rid: 6015746307696099351
-      type: {class: ValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: Offset X
+          value: 0
+        - name: Offset Y
+          value: 7.78
+        - name: Offset Z
+          value: 0
+        - name: Offset W
+          value: 0
+        enumValues: []
+    - rid: 6015746355146522651
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 16113c5c-b8f9-4a47-b402-6372962995d6
-        nodePosition: {x: 791.78, y: -404.61252}
+        guid: 7bd4dc57-2fc5-4a4a-9be4-8fe257999522
+        nodePosition: {x: -898, y: 268}
         edges: []
+        metadataName: Value
         isCollapsed: 0
-    - rid: 6015746307696099352
-      type: {class: DomainOffsetNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522652
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 02abf901-834a-4617-a68a-c629096619f2
-        nodePosition: {x: 1005, y: -405.00006}
+        guid: d7f5433a-7e82-4c26-9161-ba2e82763e87
+        nodePosition: {x: -668, y: 268}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: LHS
           childNode:
-            rid: 6015746307696099351
+            rid: 6015746355146522651
+        metadataName: Multiply
         isCollapsed: 0
-        offsetX: 10
-        offsetY: 10
-        offsetZ: 0
-        offsetW: 0
-    - rid: 6015746307696099353
-      type: {class: MultiplyNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 1.88
+        enumValues: []
+    - rid: 6015746355146522653
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 9bf0f988-f164-4ea4-8bb0-2be50f546c63
-        nodePosition: {x: 1240, y: -405}
+        guid: b574ae6a-217e-471d-a942-a17f0e814453
+        nodePosition: {x: -214, y: -9}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746307696099352
+            rid: 6015746355146522650
+        metadataName: DomainAxisScale
         isCollapsed: 0
-        RHS: 4
-    - rid: 6015746307696099354
-      type: {class: DomainAxisScaleNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: Scale X
+          value: 3.08
+        - name: Scale Y
+          value: 0.18
+        - name: Scale Z
+          value: 1
+        - name: Scale W
+          value: 1
+        enumValues: []
+    - rid: 6015746355146522654
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 9ba6fb24-40b5-46d2-9382-7d5c6dd87b3b
-        nodePosition: {x: 1709, y: -708}
+        guid: 877f67f5-20e2-44bf-a057-4fda6573ab4e
+        nodePosition: {x: 7, y: -9}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746307696099350
+            rid: 6015746355146522653
+        metadataName: DomainScale
         isCollapsed: 0
-        scaleX: 0.02
-        scaleY: 1
-        scaleZ: 1
-        scaleW: 1
-    - rid: 6015746307696099355
-      type: {class: DomainScaleNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: Scale
+          value: 2.32
+        enumValues: []
+    - rid: 6015746375075233794
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 16b99a7f-8746-4d93-ab31-b6a4300af78f
-        nodePosition: {x: 1929, y: -708}
+        guid: 21cc3aa2-1d40-425f-857b-e31ebed991ee
+        nodePosition: {x: 240, y: -9}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746307696099354
+            rid: 6015746355146522654
+        metadataName: DomainRotate
         isCollapsed: 0
-        scale: 12.2
-    - rid: 6015746307696099357
-      type: {class: DomainRotateNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
-      data:
-        guid: 5f00d19b-a017-405f-8efe-f24a15b406fb
-        nodePosition: {x: 2163, y: -708}
-        edges:
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746307696099355
-        isCollapsed: 0
-        yaw: 1.5707964
-        pitch: 0
-        roll: 0
+        intValues: []
+        floatValues:
+        - name: Yaw
+          value: 0.72
+        - name: Pitch
+          value: 0
+        - name: Roll
+          value: 0
+        enumValues: []

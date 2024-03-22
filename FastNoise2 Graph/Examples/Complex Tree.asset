@@ -13,217 +13,307 @@ MonoBehaviour:
   m_Name: Complex Tree
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746235274625083
+    rid: 6015746355146522657
   nodes:
-  - rid: 6015746235274625083
-  - rid: 6015746235274625084
-  - rid: 6015746235274625085
-  - rid: 6015746235274625086
-  - rid: 6015746235274625087
-  - rid: 6015746235274625088
-  - rid: 6015746235274625089
-  - rid: 6015746235274625090
-  - rid: 6015746235274625091
-  - rid: 6015746235274625092
-  - rid: 6015746235274625093
-  - rid: 6015746235274625094
-  - rid: 6015746235274625095
-  - rid: 6015746235274625096
-  - rid: 6015746235274625098
-  - rid: 6015746235274625099
-  - rid: 6015746235274625100
+  - rid: 6015746355146522657
+  - rid: 6015746355146522658
+  - rid: 6015746355146522659
+  - rid: 6015746355146522660
+  - rid: 6015746355146522661
+  - rid: 6015746355146522662
+  - rid: 6015746355146522663
+  - rid: 6015746355146522664
+  - rid: 6015746355146522665
+  - rid: 6015746355146522666
+  - rid: 6015746355146522667
+  - rid: 6015746355146522668
+  - rid: 6015746355146522669
+  - rid: 6015746355146522670
+  - rid: 6015746355146522671
+  - rid: 6015746355146522672
+  - rid: 6015746355146522673
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625083
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746355146522657
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 8e875f73-11aa-4462-a600-0a18dfbae75d
-        nodePosition: {x: 1966, y: -570}
+        guid: 740cf6a1-abea-43a3-bbeb-e86929bca295
+        nodePosition: {x: 1646.6226, y: -47.999992}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Output
           childNode:
-            rid: 6015746235274625100
+            rid: 6015746355146522673
+        metadataName: Output
         isCollapsed: 0
-    - rid: 6015746235274625084
-      type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522658
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 9042dcfd-0207-4c62-acd8-02332bbbf726
-        nodePosition: {x: 0, y: 0}
+        guid: 433337ba-dbc0-421c-881b-ae7c034f3e2e
+        nodePosition: {x: -564.7075, y: -47.61}
         edges: []
+        metadataName: Perlin
         isCollapsed: 0
-    - rid: 6015746235274625085
-      type: {class: AddNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522659
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: fc8e0c00-8b70-47d9-8dab-40437e7681c5
-        nodePosition: {x: 314, y: -213}
+        guid: 5dcf2ba5-427b-4889-9479-f8c5be55a4ef
+        nodePosition: {x: -286.65005, y: -48.000023}
         edges:
-        - parentPortIndex: 1
+        - parentPortName: Source
           childNode:
-            rid: 6015746235274625084
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746235274625087
+            rid: 6015746355146522658
+        metadataName: FractalFBm
         isCollapsed: 0
-        RHS: 0
-    - rid: 6015746235274625086
-      type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues:
+        - name: Octaves
+          value: 5
+        floatValues:
+        - name: Lacunarity
+          value: 2
+        - name: Gain
+          value: 0.5
+        - name: Weighted Strength
+          value: 0
+        enumValues: []
+    - rid: 6015746355146522660
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 727f3551-fc55-4ecd-9e47-462af636e311
-        nodePosition: {x: -356.2501, y: -546.40015}
+        guid: e8bef153-b9db-4096-8dcc-9640e7a1d2be
+        nodePosition: {x: 7, y: -48}
+        edges:
+        - parentPortName: LHS
+          childNode:
+            rid: 6015746355146522659
+        metadataName: Divide
+        isCollapsed: 0
+        intValues: []
+        floatValues:
+        - name: LHS
+          value: 0
+        - name: RHS
+          value: 0.05
+        enumValues: []
+    - rid: 6015746355146522661
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
+      data:
+        guid: 183a7d80-fe62-4700-b29d-778d3ca37651
+        nodePosition: {x: 7, y: 284}
+        edges:
+        - parentPortName: LHS
+          childNode:
+            rid: 6015746355146522659
+        - parentPortName: RHS
+          childNode:
+            rid: 6015746355146522662
+        metadataName: Add
+        isCollapsed: 0
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 0
+        enumValues: []
+    - rid: 6015746355146522662
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
+      data:
+        guid: c121a690-fce5-4627-a8b0-19a568f3a8dc
+        nodePosition: {x: -237.00003, y: 347.1001}
         edges: []
+        metadataName: Perlin
         isCollapsed: 0
-    - rid: 6015746235274625087
-      type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522663
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: a29fc449-9d93-442e-9c97-9a2e3f1d8fd3
-        nodePosition: {x: -81.5475, y: -546.0001}
+        guid: 32428413-0655-4c34-bc54-0ea0c67a4e93
+        nodePosition: {x: 275, y: -48}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: LHS
           childNode:
-            rid: 6015746235274625086
+            rid: 6015746355146522660
+        metadataName: Min
         isCollapsed: 0
-        gain: 0.5
-        weightedStrength: 0
-        octaves: 5
-        lacunarity: 2
-    - rid: 6015746235274625088
-      type: {class: DivideNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 1
+        enumValues: []
+    - rid: 6015746355146522664
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 9affbe96-23ec-430b-90d8-849d141208c0
-        nodePosition: {x: 314, y: -546}
+        guid: e0e3d310-c6cf-495b-acbf-bd634f748efc
+        nodePosition: {x: 494, y: -48}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: LHS
           childNode:
-            rid: 6015746235274625087
+            rid: 6015746355146522663
+        metadataName: Max
         isCollapsed: 0
-        LHS: 0
-        RHS: 0.05
-    - rid: 6015746235274625089
-      type: {class: MinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 0
+        enumValues: []
+    - rid: 6015746355146522665
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 2d65d20e-277b-406f-aed8-9d675292e6da
-        nodePosition: {x: 564.99994, y: -546.0001}
+        guid: a77917a5-418a-474a-8da2-305aec7e8eb9
+        nodePosition: {x: 728, y: 252.99998}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: LHS
           childNode:
-            rid: 6015746235274625088
+            rid: 6015746355146522664
+        - parentPortName: RHS
+          childNode:
+            rid: 6015746355146522661
+        metadataName: Add
         isCollapsed: 0
-        RHS: 1
-    - rid: 6015746235274625090
-      type: {class: MaxNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 0
+        enumValues: []
+    - rid: 6015746355146522666
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: b1f14e83-ccc2-4b72-a627-c766f0e515e3
-        nodePosition: {x: 808.7001, y: -546.0002}
+        guid: 3f66fed5-e5fa-4776-b14d-62ce7be89007
+        nodePosition: {x: 952.2549, y: -48}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746235274625089
+            rid: 6015746355146522665
+        metadataName: FractalFBm
         isCollapsed: 0
-        RHS: 0
-    - rid: 6015746235274625091
-      type: {class: AddNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues:
+        - name: Octaves
+          value: 4
+        floatValues:
+        - name: Lacunarity
+          value: 2
+        - name: Gain
+          value: 1
+        - name: Weighted Strength
+          value: 1.64
+        enumValues: []
+    - rid: 6015746355146522667
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 190a452c-aba8-4b52-95e3-53e685b17f7d
-        nodePosition: {x: 1101.0077, y: -463.404}
-        edges:
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746235274625090
-        - parentPortIndex: 1
-          childNode:
-            rid: 6015746235274625085
-        isCollapsed: 0
-        RHS: 0
-    - rid: 6015746235274625092
-      type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
-      data:
-        guid: 01b08c36-de55-4d1e-b11f-aaf4d38c2228
-        nodePosition: {x: 1331, y: -546}
-        edges:
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746235274625091
-        isCollapsed: 0
-        gain: 0.5
-        weightedStrength: 0
-        octaves: 4
-        lacunarity: 2
-    - rid: 6015746235274625093
-      type: {class: CellularValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
-      data:
-        guid: 61add500-3b3c-4806-b4ce-78a84d86e999
-        nodePosition: {x: 706.8196, y: -70}
+        guid: 1498d26b-eacc-4f09-b8bd-eb909c9aba7a
+        nodePosition: {x: 727.9999, y: -392.7172}
         edges: []
+        metadataName: Value
         isCollapsed: 0
-        jitterModifier: 1
-        distanceFunction: 1
-        valueIndex: 0
-    - rid: 6015746235274625094
-      type: {class: MultiplyNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522668
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 363de8fa-4d69-4037-8002-29e788df7e2e
-        nodePosition: {x: 982.81964, y: -70}
+        guid: 4249efc3-8e06-4f80-86c5-9fcf527f2723
+        nodePosition: {x: 992.9999, y: -392.7172}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746235274625093
+            rid: 6015746355146522667
+        metadataName: DomainScale
         isCollapsed: 0
-        RHS: 500
-    - rid: 6015746235274625095
-      type: {class: MinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: Scale
+          value: 1.34
+        enumValues: []
+    - rid: 6015746355146522669
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 0a8750bf-4691-4095-8cb0-b213ee8afa98
-        nodePosition: {x: 1235.8196, y: -70}
-        edges:
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746235274625094
-        isCollapsed: 0
-        RHS: 1
-    - rid: 6015746235274625096
-      type: {class: MaxNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
-      data:
-        guid: 58e24b19-aeaa-400b-9278-16c20ea1770c
-        nodePosition: {x: 1482.8197, y: -70}
-        edges:
-        - parentPortIndex: 0
-          childNode:
-            rid: 6015746235274625095
-        isCollapsed: 0
-        RHS: 0
-    - rid: 6015746235274625098
-      type: {class: ValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
-      data:
-        guid: 1fbf9420-305e-4dc1-9cee-1951692a2f87
-        nodePosition: {x: 1083.0001, y: -917.0001}
+        guid: 109b04b1-998a-47ac-b6c9-5f969600bc6a
+        nodePosition: {x: 389.54276, y: 579.14514}
         edges: []
+        metadataName: CellularValue
         isCollapsed: 0
-    - rid: 6015746235274625099
-      type: {class: DomainScaleNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues:
+        - name: Value Index
+          value: 0
+        floatValues:
+        - name: Jitter Modifier
+          value: 1
+        enumValues:
+        - name: Distance Function
+          value: Max Axis
+    - rid: 6015746355146522670
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 75067158-caff-4ede-a684-6612d1ee5798
-        nodePosition: {x: 1388, y: -917.0001}
+        guid: b160712a-9363-4a8b-b8d0-6062d6b9480c
+        nodePosition: {x: 699.5427, y: 579.14514}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: LHS
           childNode:
-            rid: 6015746235274625098
+            rid: 6015746355146522669
+        metadataName: Multiply
         isCollapsed: 0
-        scale: 1.34
-    - rid: 6015746235274625100
-      type: {class: FadeNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 500
+        enumValues: []
+    - rid: 6015746355146522671
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 55222cc7-bd84-4d23-840d-28d35fdfc7e8
-        nodePosition: {x: 1732.8269, y: -570.0001}
+        guid: c177d904-8d7b-4716-94d9-b8151e0fec84
+        nodePosition: {x: 919.5427, y: 579.14514}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: LHS
           childNode:
-            rid: 6015746235274625099
-        - parentPortIndex: 1
-          childNode:
-            rid: 6015746235274625092
-        - parentPortIndex: 2
-          childNode:
-            rid: 6015746235274625096
+            rid: 6015746355146522670
+        metadataName: Min
         isCollapsed: 0
-        fade: 0.5
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 1
+        enumValues: []
+    - rid: 6015746355146522672
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
+      data:
+        guid: 0f55682e-5614-4b98-ab74-07fa87ee5a79
+        nodePosition: {x: 1145.5427, y: 579.14514}
+        edges:
+        - parentPortName: LHS
+          childNode:
+            rid: 6015746355146522671
+        metadataName: Max
+        isCollapsed: 0
+        intValues: []
+        floatValues:
+        - name: RHS
+          value: 0
+        enumValues: []
+    - rid: 6015746355146522673
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
+      data:
+        guid: efcfa781-d724-4c45-b6b4-e02e300d5e29
+        nodePosition: {x: 1368, y: -48.00003}
+        edges:
+        - parentPortName: A
+          childNode:
+            rid: 6015746355146522668
+        - parentPortName: B
+          childNode:
+            rid: 6015746355146522666
+        - parentPortName: Fade
+          childNode:
+            rid: 6015746355146522672
+        metadataName: Fade
+        isCollapsed: 0
+        intValues: []
+        floatValues:
+        - name: Fade
+          value: 1.03
+        enumValues: []

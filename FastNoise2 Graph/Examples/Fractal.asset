@@ -13,42 +13,58 @@ MonoBehaviour:
   m_Name: Fractal
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746235274625067
+    rid: 6015746355146522644
   nodes:
-  - rid: 6015746235274625067
-  - rid: 6015746235274625069
-  - rid: 6015746235274625070
+  - rid: 6015746355146522644
+  - rid: 6015746355146522645
+  - rid: 6015746355146522646
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625067
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746355146522644
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: b36b7386-49ba-4234-8b7c-5c2833d02d4f
+        guid: f1527d61-554f-4ea4-bc81-e861d14a87f0
         nodePosition: {x: 0, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Output
           childNode:
-            rid: 6015746235274625069
+            rid: 6015746355146522645
+        metadataName: Output
         isCollapsed: 0
-    - rid: 6015746235274625069
-      type: {class: FractalFBmNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522645
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 384e296f-2a46-4fac-8e67-cba51fd2b186
-        nodePosition: {x: -273, y: 0}
+        guid: a52870a1-1b65-4758-9d50-30af247a43ef
+        nodePosition: {x: -296, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746235274625070
+            rid: 6015746355146522646
+        metadataName: FractalRidged
         isCollapsed: 0
-        gain: 0.5
-        weightedStrength: 0
-        octaves: 3
-        lacunarity: 2
-    - rid: 6015746235274625070
-      type: {class: OpenSimplex2SNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues:
+        - name: Octaves
+          value: 10
+        floatValues:
+        - name: Lacunarity
+          value: 2
+        - name: Gain
+          value: 0.5
+        - name: Weighted Strength
+          value: 0.37
+        enumValues: []
+    - rid: 6015746355146522646
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 875d160f-1202-4374-924e-89b4cb5f3d08
-        nodePosition: {x: -566, y: 0}
+        guid: 95f6fcbc-4db3-45ca-8dd0-3466183b5526
+        nodePosition: {x: -567, y: 0}
         edges: []
+        metadataName: OpenSimplex2S
         isCollapsed: 0
+        intValues: []
+        floatValues: []
+        enumValues: []

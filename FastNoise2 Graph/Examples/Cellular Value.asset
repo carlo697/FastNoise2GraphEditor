@@ -13,30 +13,41 @@ MonoBehaviour:
   m_Name: Cellular Value
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746235274625058
+    rid: 6015746355146522637
   nodes:
-  - rid: 6015746235274625058
-  - rid: 6015746235274625059
+  - rid: 6015746355146522637
+  - rid: 6015746355146522638
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625058
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746355146522637
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 9b1d2934-6c8a-40dd-ba0f-2828c9035e3c
+        guid: 906b31f1-05a1-4a8c-92e7-a360df279cd4
         nodePosition: {x: 0, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Output
           childNode:
-            rid: 6015746235274625059
+            rid: 6015746355146522638
+        metadataName: Output
         isCollapsed: 0
-    - rid: 6015746235274625059
-      type: {class: CellularValueNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522638
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: ccb0b631-1c94-4e60-8c97-cfa0c7ad9a7a
-        nodePosition: {x: -289, y: 0}
+        guid: 966700e0-d4b0-4e45-b5c4-561a34bfab03
+        nodePosition: {x: -294, y: 0}
         edges: []
+        metadataName: CellularValue
         isCollapsed: 0
-        jitterModifier: 1
-        distanceFunction: 1
-        valueIndex: 0
+        intValues:
+        - name: Value Index
+          value: 0
+        floatValues:
+        - name: Jitter Modifier
+          value: 1
+        enumValues:
+        - name: Distance Function
+          value: Euclidean Squared

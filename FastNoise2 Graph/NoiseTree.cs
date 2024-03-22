@@ -1,36 +1,40 @@
 using UnityEngine;
 using UnityEditor;
-using System;
-using System.Reflection;
 using System.Collections.Generic;
-using FastNoise2Graph.Nodes;
 
 namespace FastNoise2Graph {
   [CreateAssetMenu(menuName = "Fast Noise Tree")]
   public class NoiseTree : ScriptableObject {
     [SerializeReference]
     [HideInInspector]
-    public OutputNode outputNode;
+    public NoiseNode outputNode;
 
     [SerializeReference]
     [HideInInspector]
     public List<NoiseNode> nodes = new List<NoiseNode>();
     private Dictionary<NoiseNode, FastNoise> m_nodesCache;
 
+    public static string outputNodeName => m_outputNodeName;
+    private static string m_outputNodeName = "Output";
+
     public NoiseTree() {
-      OutputNode node = new OutputNode();
+      NoiseNode node = new NoiseNode(outputNodeName);
       nodes.Add(node);
       outputNode = node;
     }
 
-    public NoiseNode AddNode(Type type) {
-      NoiseNode node = (NoiseNode)Activator.CreateInstance(type);
+    public static bool IsOutputNode(NoiseNode node) {
+      return node.metadataName == m_outputNodeName;
+    }
+
+    public NoiseNode AddNode(string name) {
+      NoiseNode node = new NoiseNode(name);
 
       Undo.RecordObject(this, "FastNoise Tree (Add Node)");
       nodes.Add(node);
 
-      if (node is OutputNode _outputNode) {
-        outputNode = _outputNode;
+      if (IsOutputNode(node)) {
+        outputNode = node;
       }
 
       EditorUtility.SetDirty(this);
@@ -51,7 +55,7 @@ namespace FastNoise2Graph {
     }
 
     private FastNoise GetFastNoise(NoiseNode node, bool isOutput, Dictionary<NoiseNode, FastNoise> cache) {
-      // Create or clear the cache if necessary
+      // Clear the cache if necessary
       if (isOutput) {
         cache.Clear();
       }
@@ -61,17 +65,16 @@ namespace FastNoise2Graph {
         return cache[node];
       }
 
-      // Check if the mandatory inputs have connections
-      for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
-        NoiseInput input = node.inputs[inputIndex];
-
-        if (input.acceptsEdge && input.isEdgeMandatory) {
-          // Find an edge for this input
+      // Check if node inputs have connections
+      FastNoise.Metadata metadata = FastNoise.GetMetadata(node.metadataName);
+      foreach (var (memberName, member) in metadata.members) {
+        if (member.type == FastNoise.Metadata.Member.Type.NodeLookup) {
+          // Find an edge for this member
           bool found = false;
           for (int edgeIndex = 0; edgeIndex < node.edges.Count; edgeIndex++) {
             NoiseEdge edge = node.edges[edgeIndex];
 
-            if (edge.parentPortIndex == inputIndex) {
+            if (edge.parentPortName == memberName) {
               found = true;
               break;
             }
@@ -87,51 +90,43 @@ namespace FastNoise2Graph {
       FastNoise instancedNode = new FastNoise(node.metadataName);
       cache.Add(node, instancedNode);
 
-      // Debug.Log(node.nodeMetadataName);
+      // Debug.Log(node.metadataName);
 
       // Apply values of variables
-      node.ApplyValues(instancedNode);
-      // Type nodeType = node.GetType();
-      // for (int i = 0; i < node.inputs.Length; i++) {
-      //   FastNoiseInput input = node.inputs[i];
-
-      //   if (input.fieldPath != null) {
-      //     FieldInfo field = nodeType.GetField(input.fieldPath);
-
-      //     object value = field.GetValue(node);
-      //     if (value is float floatValue) {
-      //       instancedNode.Set(input.label, floatValue);
-      //     } else if (value is int intValue) {
-      //       instancedNode.Set(input.label, intValue);
-      //     } else if (value is Enum enumValue) {
-      //       instancedNode.Set(input.label, enumValue.ToString());
-      //     }
-      //   }
-      // }
+      for (int i = 0; i < node.intValues.Count; i++) {
+        NoiseIntMember memberValue = node.intValues[i];
+        instancedNode.Set(memberValue.name, memberValue.value);
+      }
+      for (int i = 0; i < node.floatValues.Count; i++) {
+        NoiseFloatMember memberValue = node.floatValues[i];
+        instancedNode.Set(memberValue.name, memberValue.value);
+      }
+      for (int i = 0; i < node.enumValues.Count; i++) {
+        NoiseStringMember memberValue = node.enumValues[i];
+        instancedNode.Set(memberValue.name, memberValue.value);
+      }
 
       // Iterate over the connections to create and connect those nodes to this one
       for (int i = 0; i < node.edges.Count; i++) {
         NoiseEdge edge = node.edges[i];
-        NoiseInput port = node.inputs[edge.parentPortIndex];
 
-        // Create or get the node
+        // Create or get the node connected to the edge
         FastNoise childNode = GetFastNoise(edge.childNode, false, cache);
         if (childNode == null) {
           return null;
         }
 
         // Set the connection
-        string memberName = port.label;
-        instancedNode.Set(memberName, childNode);
+        instancedNode.Set(edge.parentPortName, childNode);
 
-        // Debug.Log($"{memberName}, parent: {node.nodeMetadataName}");
+        // Debug.Log($"{edge.parentPortName}, parent: {node.metadataName}");
       }
 
       return instancedNode;
     }
 
     public FastNoise GetFastNoise(NoiseNode node, Dictionary<NoiseNode, FastNoise> cache) {
-      if (node is not OutputNode) {
+      if (!IsOutputNode(node)) {
         return GetFastNoise(node, true, cache);
       }
 

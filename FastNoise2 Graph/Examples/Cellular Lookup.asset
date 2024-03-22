@@ -13,53 +13,73 @@ MonoBehaviour:
   m_Name: Cellular Lookup
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746235274625076
+    rid: 6015746355146522632
   nodes:
-  - rid: 6015746235274625076
-  - rid: 6015746235274625077
-  - rid: 6015746235274625079
-  - rid: 6015746235274625080
+  - rid: 6015746355146522632
+  - rid: 6015746355146522633
+  - rid: 6015746355146522634
+  - rid: 6015746355146522635
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625076
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746355146522632
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: f84b50a5-1f0e-48fa-a4d5-3b619e5379c8
-        nodePosition: {x: 295, y: 0}
+        guid: 566b04f3-c4b2-46d9-8caa-30b32fd17796
+        nodePosition: {x: 0, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Output
           childNode:
-            rid: 6015746235274625080
+            rid: 6015746355146522635
+        metadataName: Output
         isCollapsed: 0
-    - rid: 6015746235274625077
-      type: {class: CellularLookupNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522633
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: fd95badc-4851-4df1-9690-22049bdf3066
-        nodePosition: {x: -413, y: 0}
+        guid: 0742f485-fb8e-4aea-97a3-843c85a80185
+        nodePosition: {x: -583, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Lookup
           childNode:
-            rid: 6015746235274625079
+            rid: 6015746355146522634
+        metadataName: CellularLookup
         isCollapsed: 0
-        jitterModifier: 1
-        distanceFunction: 1
-        lookupFrequency: 0.07
-    - rid: 6015746235274625079
-      type: {class: OpenSimplex2Node, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues:
+        - name: Lookup Frequency
+          value: -0.17
+        - name: Jitter Modifier
+          value: 1
+        enumValues:
+        - name: Distance Function
+          value: Euclidean Squared
+    - rid: 6015746355146522634
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: baff6f00-6d23-4fce-98a2-d3a901aad928
-        nodePosition: {x: -741.9543, y: -0.000002861023}
+        guid: 4935182a-d06b-47d1-a419-1f99c3ec2f3d
+        nodePosition: {x: -841, y: 0}
         edges: []
+        metadataName: Perlin
         isCollapsed: 0
-    - rid: 6015746235274625080
-      type: {class: DomainScaleNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522635
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 306e71de-8734-426d-b7c6-c6f014fcdb29
-        nodePosition: {x: -103, y: 0}
+        guid: 67637181-932c-43a5-a197-ba7482259d8e
+        nodePosition: {x: -301, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Source
           childNode:
-            rid: 6015746235274625077
+            rid: 6015746355146522633
+        metadataName: DomainScale
         isCollapsed: 0
-        scale: 6.61
+        intValues: []
+        floatValues:
+        - name: Scale
+          value: 3.36
+        enumValues: []

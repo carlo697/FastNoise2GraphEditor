@@ -5,15 +5,15 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using System.Collections.Generic;
 using System.Linq;
-using FastNoise2Graph.Nodes;
 
 namespace FastNoise2Graph.UI {
   public class NoiseNodeView : UnityEditor.Experimental.GraphView.Node {
     public NoiseNode node;
     public NoiseTree tree;
     public NoiseTreeView treeView;
-    public Dictionary<int, Port> portsByIndex = new();
-    public Dictionary<NoiseInput, PropertyField> fieldsByInput = new();
+    public Dictionary<string, PropertyField> fieldsByName = new();
+    public Dictionary<string, Port> portsByName = new();
+    public Dictionary<Port, string> namesByPort = new();
     public Port output;
 
     public override bool expanded {
@@ -43,15 +43,25 @@ namespace FastNoise2Graph.UI {
       this.treeView = treeView;
 
       // Get the name of the node
-      string name = NoiseNode.GetNodeName(node);
-      this.title = name;
+      this.title = node.metadataName;
 
       this.viewDataKey = node.guid;
-      this.titleContainer.style.backgroundColor = node.headerBackgroundColor;
+      this.titleContainer.style.backgroundColor = Color.black;
 
-      this.style.width = node.nodeWidth;
+      this.style.width = NoiseNode.defaultNodeWidths.GetValueOrDefault(node.metadataName, 200);
 
-      capabilities = node.capabilities;
+      if (NoiseTree.IsOutputNode(node)) {
+        capabilities = Capabilities.Selectable
+          | Capabilities.Movable
+          | Capabilities.Snappable;
+      } else {
+        capabilities = Capabilities.Selectable
+          | Capabilities.Movable
+          | Capabilities.Deletable
+          | Capabilities.Snappable
+          | Capabilities.Collapsible
+          | Capabilities.Copiable;
+      }
 
       // Set the saved position
       style.left = node.nodePosition.x;
@@ -87,65 +97,134 @@ namespace FastNoise2Graph.UI {
       var serializedNodes = serializedTree.FindProperty("nodes");
       var serializedNode = serializedNodes.GetArrayElementAtIndex(nodeIndex);
 
-      // Iterate the inputs to create the ports and fields
-      for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
-        NoiseInput input = node.inputs[inputIndex];
+      if (NoiseTree.IsOutputNode(node)) {
+        string name = "Output";
+        Port port = InstantiatePort(
+          Orientation.Horizontal,
+          Direction.Input,
+          Port.Capacity.Single,
+          typeof(float)
+        );
 
-        Port port = null;
-
-        // Create a port if the input accepts connections
-        if (input.acceptsEdge) {
-          port = InstantiatePort(
-            Orientation.Horizontal,
-            Direction.Input,
-            Port.Capacity.Single,
-            typeof(float)
-          );
-
-          port.portColor = input.color;
-          port.portName = input.label;
-        }
-
-        // Create a field if the input supports it
-        if (input.fieldPath != null) {
-          // Get a SerializedProperty
-          SerializedProperty property = serializedNode.FindPropertyRelative(input.fieldPath);
-
-          // Create the field and bind it to the SerializedObject
-          PropertyField field = new PropertyField(property);
-          field.Bind(serializedTree);
-
-          // Style field
-          field.AddToClassList("node-input-property");
-          if (port == null) {
-            field.AddToClassList("node-input-property--no-port");
-          }
-
-          field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
-            foreach (var node in tree.nodes) {
-              NoiseNodeView nodeView = treeView.FindNodeView(node);
-              nodeView.MarkDirtyRepaint();
-            }
-          });
-
-          // Add the field
-          fieldsByInput.Add(input, field);
-          if (port != null) {
-            port.portName = "";
-            port.contentContainer.Add(field);
-          } else {
-            extensionContainer.Add(field);
-          }
-        }
+        port.portColor = new Color(0.02f, 0.188f, 1f);
+        port.portName = name;
 
         // Add the port
-        if (port != null) {
-          inputContainer.Add(port);
-          portsByIndex.Add(inputIndex, port);
-        }
-      }
+        inputContainer.Add(port);
+        portsByName.Add(name, port);
+        namesByPort.Add(port, name);
+      } else {
+        // Metadata
+        FastNoise.Metadata metadata = FastNoise.GetMetadata(node.metadataName);
 
-      if (node is not OutputNode) {
+        // Iterate the inputs to create the ports and fields
+        foreach (var (memberName, member) in metadata.members) {
+          Port port = null;
+
+          // Create a port if the input accepts connections
+          if (
+            member.type == FastNoise.Metadata.Member.Type.NodeLookup ||
+            member.type == FastNoise.Metadata.Member.Type.Hybrid
+          ) {
+            port = InstantiatePort(
+              Orientation.Horizontal,
+              Direction.Input,
+              Port.Capacity.Single,
+              typeof(float)
+            );
+
+            port.portColor = new Color(0.02f, 0.188f, 1f);
+            port.portName = memberName;
+          }
+
+          // Create a field if the input supports it
+          if (member.type == FastNoise.Metadata.Member.Type.Int ||
+            member.type == FastNoise.Metadata.Member.Type.Float ||
+            member.type == FastNoise.Metadata.Member.Type.Hybrid ||
+            member.type == FastNoise.Metadata.Member.Type.Enum
+          ) {
+            // Create a value for this field if necessary
+            int valueIndex = node.EnsureMemberExists(member);
+            serializedTree.UpdateIfRequiredOrScript();
+
+            // Get the name of the array field where the value is
+            string valuesFieldName;
+            switch (member.type) {
+              case FastNoise.Metadata.Member.Type.Int:
+                valuesFieldName = "intValues";
+                break;
+              case FastNoise.Metadata.Member.Type.Float:
+              case FastNoise.Metadata.Member.Type.Hybrid:
+                valuesFieldName = "floatValues";
+                break;
+              default:
+                valuesFieldName = "enumValues";
+                break;
+            }
+
+            // Get a SerializedProperty of the member
+            SerializedProperty serializedValues = serializedNode.FindPropertyRelative(valuesFieldName);
+            var serializedMember = serializedValues.GetArrayElementAtIndex(valueIndex);
+
+            // Get a SerializedProperty for the actual value inside the member
+            SerializedProperty serializedMemberValue = serializedMember.FindPropertyRelative("value");
+
+            VisualElement fieldElement;
+            switch (member.type) {
+              case FastNoise.Metadata.Member.Type.Enum:
+                // Create the field
+                DropdownField dropdown = new(memberName, new List<string>(member.enumNames), 0);
+
+                // Binding
+                dropdown.BindProperty(serializedMemberValue);
+
+                // Register to the value changed callback
+                dropdown.RegisterValueChangedCallback(evt => {
+                  RepaintNodesOnFieldUpdate();
+                });
+
+                fieldElement = dropdown;
+                break;
+              default:
+                // Create the field
+                PropertyField field = new PropertyField(serializedMemberValue, memberName);
+
+                // Binding
+                field.Bind(serializedTree);
+
+                field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
+                  RepaintNodesOnFieldUpdate();
+                });
+
+                fieldElement = field;
+                fieldsByName.Add(memberName, field);
+
+                break;
+            }
+
+            // Style field
+            fieldElement.AddToClassList("node-input-property");
+            if (port == null) {
+              fieldElement.AddToClassList("node-input-property--no-port");
+            }
+
+            // Add the field
+            if (port != null) {
+              port.portName = "";
+              port.contentContainer.Add(fieldElement);
+            } else {
+              extensionContainer.Add(fieldElement);
+            }
+          }
+
+          // Add the port
+          if (port != null) {
+            inputContainer.Add(port);
+            portsByName.Add(memberName, port);
+            namesByPort.Add(port, memberName);
+          }
+        }
+
         // Create the output port
         Port outputPort = InstantiatePort(
           Orientation.Horizontal,
@@ -163,22 +242,22 @@ namespace FastNoise2Graph.UI {
       RefreshExpandedState();
     }
 
+    private void RepaintNodesOnFieldUpdate() {
+      foreach (var node in tree.nodes) {
+        NoiseNodeView nodeView = treeView.FindNodeView(node);
+        nodeView.MarkDirtyRepaint();
+      }
+    }
+
     public void UpdateFieldsVisibility() {
-      // Iterate the inputs to create the ports and fields
-      for (int inputIndex = 0; inputIndex < node.inputs.Length; inputIndex++) {
-        NoiseInput input = node.inputs[inputIndex];
-
-        if (input.acceptsEdge && input.fieldPath != null) {
-          // Know if the input has an edge connected to it
-          NoiseEdge edge = node.edges.Find((edge) => edge.parentPortIndex == inputIndex);
-          bool hasEdge = edge.childNode != null;
-
-          // Get the PropertyField of the input
-          PropertyField field = fieldsByInput[input];
-          if (field != null) {
-            field.SetEnabled(!hasEdge);
+      foreach (var (memberName, field) in fieldsByName) {
+        bool enabled = true;
+        foreach (var edge in node.edges) {
+          if (edge.parentPortName == memberName) {
+            enabled = false;
           }
         }
+        field.SetEnabled(enabled);
       }
     }
 
@@ -189,7 +268,7 @@ namespace FastNoise2Graph.UI {
     }
 
     public void CreatePreview() {
-      if (node is OutputNode) {
+      if (NoiseTree.IsOutputNode(node)) {
         return;
       }
 

@@ -3,12 +3,12 @@ using UnityEngine;
 namespace FastNoise2Graph {
   [System.Serializable]
   public struct NoiseEdge {
-    public int parentPortIndex;
+    public string parentPortName;
     [SerializeReference]
     public NoiseNode childNode;
 
-    public NoiseEdge(int parentPortIndex, NoiseNode childNode) {
-      this.parentPortIndex = parentPortIndex;
+    public NoiseEdge(string parentPortName, NoiseNode childNode) {
+      this.parentPortName = parentPortName;
       this.childNode = childNode;
     }
   }

@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: Empty
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746244823482370
+    rid: 6015746375075233793
   nodes:
-  - rid: 6015746244823482370
+  - rid: 6015746375075233793
   references:
     version: 2
     RefIds:
-    - rid: 6015746244823482370
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746375075233793
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 1f43a2f7-59b1-4acd-8fa1-8921ff4a112a
+        guid: 5f33ae66-d2e6-4534-b17a-9cf1722f2678
         nodePosition: {x: 0, y: 0}
         edges: []
+        metadataName: Output
         isCollapsed: 0
+        intValues: []
+        floatValues: []
+        enumValues: []

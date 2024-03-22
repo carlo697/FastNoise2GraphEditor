@@ -13,27 +13,35 @@ MonoBehaviour:
   m_Name: Perlin
   m_EditorClassIdentifier: 
   outputNode:
-    rid: 6015746235274625062
+    rid: 6015746355146522641
   nodes:
-  - rid: 6015746235274625062
-  - rid: 6015746235274625063
+  - rid: 6015746355146522641
+  - rid: 6015746355146522642
   references:
     version: 2
     RefIds:
-    - rid: 6015746235274625062
-      type: {class: OutputNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+    - rid: 6015746355146522641
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 2ecb5b6a-897c-416d-ba16-9622590fef5a
+        guid: 7560ea94-742d-469a-a1f1-db8e9f796c2f
         nodePosition: {x: 0, y: 0}
         edges:
-        - parentPortIndex: 0
+        - parentPortName: Output
           childNode:
-            rid: 6015746235274625063
+            rid: 6015746355146522642
+        metadataName: Output
         isCollapsed: 0
-    - rid: 6015746235274625063
-      type: {class: PerlinNode, ns: FastNoise2Graph.Nodes, asm: FastNoise2Graph}
+        intValues: []
+        floatValues: []
+        enumValues: []
+    - rid: 6015746355146522642
+      type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
-        guid: 2e76597e-e772-4af7-a814-590ca2fcba33
-        nodePosition: {x: -254, y: 0}
+        guid: 87a1cc9b-55a7-48d6-80d7-5b6f8f883987
+        nodePosition: {x: -223, y: 0}
         edges: []
+        metadataName: Perlin
         isCollapsed: 0
+        intValues: []
+        floatValues: []
+        enumValues: []
