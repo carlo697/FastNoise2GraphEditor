@@ -1,0 +1,20 @@
+{
+    "name": "FastNoise2Graph.Editor",
+    "rootNamespace": "FastNoise2Graph",
+    "references": [
+        "GUID:749d94032ccdb464aa32d7def21707e1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [
+        ""
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

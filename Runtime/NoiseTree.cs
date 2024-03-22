@@ -29,29 +29,20 @@ namespace FastNoise2Graph {
 
     public NoiseNode AddNode(string name) {
       NoiseNode node = new NoiseNode(name);
-
-      Undo.RecordObject(this, "FastNoise Tree (Add Node)");
       nodes.Add(node);
 
       if (IsOutputNode(node)) {
         outputNode = node;
       }
 
-      EditorUtility.SetDirty(this);
-
       return node;
     }
 
-    public void DeleteNode(NoiseNode node) {
-      Undo.RecordObject(this, "FastNoise Tree (Delete Node)");
-
+    public void RemoveNode(NoiseNode node) {
       if (outputNode == node) {
         outputNode = null;
       }
-
       nodes.Remove(node);
-
-      EditorUtility.SetDirty(this);
     }
 
     private FastNoise GetFastNoise(NoiseNode node, bool isOutput, Dictionary<NoiseNode, FastNoise> cache) {

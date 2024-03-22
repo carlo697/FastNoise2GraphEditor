@@ -138,7 +138,7 @@ namespace FastNoise2Graph.UI {
         foreach (var elementToRemove in change.elementsToRemove) {
           NoiseNodeView nodeView = elementToRemove as NoiseNodeView;
           if (nodeView != null) {
-            tree.DeleteNode(nodeView.node);
+            RemoveNodeFromTree(nodeView.node);
           }
 
           Edge edge = elementToRemove as Edge;
@@ -221,8 +221,21 @@ namespace FastNoise2Graph.UI {
       }
     }
 
+    private NoiseNode AddNodeToTree(string name) {
+      Undo.RecordObject(tree, "FastNoise Tree (Add Node)");
+      NoiseNode node = tree.AddNode(name);
+      EditorUtility.SetDirty(tree);
+      return node;
+    }
+
+    private void RemoveNodeFromTree(NoiseNode node) {
+      Undo.RecordObject(tree, "FastNoise Tree (Delete Node)");
+      tree.RemoveNode(node);
+      EditorUtility.SetDirty(tree);
+    }
+
     private NoiseNodeView CopyNode(NoiseNode node) {
-      NoiseNode copy = tree.AddNode(node.metadataName);
+      NoiseNode copy = AddNodeToTree(node.metadataName);
 
       // Move the node a little bit
       copy.nodePosition = node.nodePosition + new Vector2(20, 20);
@@ -236,7 +249,7 @@ namespace FastNoise2Graph.UI {
     }
 
     private NoiseNodeView CreateNode(string name) {
-      NoiseNode node = tree.AddNode(name);
+      NoiseNode node = AddNodeToTree(name);
       return CreateNodeView(node);
     }
 

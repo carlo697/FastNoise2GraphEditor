@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace FastNoise2Graph.UI {
-  public class NoiseNodeView : UnityEditor.Experimental.GraphView.Node {
+  public class NoiseNodeView : Node {
     public NoiseNode node;
     public NoiseTree tree;
     public NoiseTreeView treeView;

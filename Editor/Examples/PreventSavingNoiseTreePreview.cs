@@ -3,7 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace FastNoise2Graph.Examples {
+namespace FastNoise2Graph.Examples.UI {
   [UnityEditor.InitializeOnLoad]
   static class PreventSavingNoiseTreePreview {
     private static Dictionary<MeshRenderer, Material> cachedMaterials =
