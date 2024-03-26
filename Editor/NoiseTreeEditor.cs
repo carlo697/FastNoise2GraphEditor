@@ -33,10 +33,10 @@ namespace FastNoise2Graph.UI {
       return false;
     }
 
-    [MenuItem("Window/FastNoiseTreeEditor")]
+    [MenuItem("Window/FastNoise2 Graph Editor")]
     public static NoiseTreeEditor OpenWindow() {
       NoiseTreeEditor editor = GetWindow<NoiseTreeEditor>();
-      editor.titleContent = new GUIContent("FastNoiseTreeEditor");
+      editor.titleContent = new GUIContent("FastNoise2 Graph Editor");
       return editor;
     }
 
