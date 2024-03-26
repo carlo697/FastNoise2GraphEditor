@@ -12,8 +12,10 @@ namespace FastNoise2Graph.UI {
 
     [OnOpenAsset]
     public static bool OnOpenAsset(int instanceId, int line) {
-      if (Selection.activeObject is NoiseTree) {
-        OpenWindow();
+      NoiseTree tree = EditorUtility.InstanceIDToObject(instanceId) as NoiseTree;
+      if (tree != null) {
+        NoiseTreeEditor editor = OpenWindow();
+        editor.OpenTree(tree);
         return true;
       }
 
@@ -21,9 +23,10 @@ namespace FastNoise2Graph.UI {
     }
 
     [MenuItem("Window/FastNoiseTreeEditor")]
-    public static void OpenWindow() {
-      NoiseTreeEditor wnd = GetWindow<NoiseTreeEditor>();
-      wnd.titleContent = new GUIContent("FastNoiseTreeEditor");
+    public static NoiseTreeEditor OpenWindow() {
+      NoiseTreeEditor editor = GetWindow<NoiseTreeEditor>();
+      editor.titleContent = new GUIContent("FastNoiseTreeEditor");
+      return editor;
     }
 
     public void CreateGUI() {
@@ -34,21 +37,14 @@ namespace FastNoise2Graph.UI {
       m_VisualTreeAsset.CloneTree(root);
 
       treeView = root.Q<NoiseTreeView>();
-
-      OnSelectionChange();
     }
 
-    private void OnSelectionChange() {
-      if (
-        Selection.activeObject is NoiseTree tree
-        && AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID())
-      ) {
-        treeView.PopulateView(tree);
+    public void OpenTree(NoiseTree tree) {
+      treeView.PopulateView(tree);
 
-        EditorApplication.delayCall += () => {
-          treeView.FrameAll();
-        };
-      }
+      EditorApplication.delayCall += () => {
+        treeView.FrameAll();
+      };
     }
   }
 }
