@@ -8,7 +8,8 @@ namespace FastNoise2Graph.UI {
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    private NoiseTreeView treeView;
+    private NoiseTree m_currentTree;
+    private NoiseTreeView m_treeView;
 
     [OnOpenAsset]
     public static bool OnOpenAsset(int instanceId, int line) {
@@ -36,14 +37,22 @@ namespace FastNoise2Graph.UI {
       // Instantiate UXML
       m_VisualTreeAsset.CloneTree(root);
 
-      treeView = root.Q<NoiseTreeView>();
+      m_treeView = root.Q<NoiseTreeView>();
+
+      // Re-open tree if there was one
+      if (m_currentTree != null) {
+        OpenTree(m_currentTree);
+      }
     }
 
     public void OpenTree(NoiseTree tree) {
-      treeView.PopulateView(tree);
+      titleContent.text = tree.name;
+
+      m_currentTree = tree;
+      m_treeView.PopulateView(tree);
 
       EditorApplication.delayCall += () => {
-        treeView.FrameAll();
+        m_treeView.FrameAll();
       };
     }
   }
