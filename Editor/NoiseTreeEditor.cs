@@ -11,6 +11,16 @@ namespace FastNoise2Graph.UI {
     private NoiseTree m_currentTree;
     private NoiseTreeView m_treeView;
 
+    private void OnEnable() {
+      EditorApplication.playModeStateChanged += HandlePlayModeStateChanged;
+    }
+
+    private void HandlePlayModeStateChanged(PlayModeStateChange state) {
+      if (state == PlayModeStateChange.EnteredEditMode) {
+        ReloadActiveTree();
+      }
+    }
+
     [OnOpenAsset]
     public static bool OnOpenAsset(int instanceId, int line) {
       NoiseTree tree = EditorUtility.InstanceIDToObject(instanceId) as NoiseTree;
@@ -40,9 +50,7 @@ namespace FastNoise2Graph.UI {
       m_treeView = root.Q<NoiseTreeView>();
 
       // Re-open tree if there was one
-      if (m_currentTree != null) {
-        OpenTree(m_currentTree);
-      }
+      ReloadActiveTree();
     }
 
     public void OpenTree(NoiseTree tree) {
@@ -54,6 +62,12 @@ namespace FastNoise2Graph.UI {
       EditorApplication.delayCall += () => {
         m_treeView.FrameAll();
       };
+    }
+
+    private void ReloadActiveTree() {
+      if (m_currentTree != null) {
+        OpenTree(m_currentTree);
+      }
     }
   }
 }
