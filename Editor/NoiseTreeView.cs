@@ -14,15 +14,49 @@ namespace FastNoise2Graph.UI {
     public new class UxmlFactory : UxmlFactory<NoiseTreeView, GraphElement.UxmlTraits> { }
 
     [Serializable]
-    private class CopyPasteData {
-      public List<string> nodeGuids = new List<string>();
+    private class SerializableNoiseTree {
+      public List<SerializableNode> nodes = new List<SerializableNode>();
 
-      public CopyPasteData(IEnumerable<GraphElement> elements) {
+      public SerializableNoiseTree(IEnumerable<GraphElement> elements) {
         foreach (var item in elements) {
           if (item is NoiseNodeView view) {
-            nodeGuids.Add(view.node.guid);
+            nodes.Add(new SerializableNode(view.node));
           }
         }
+      }
+    }
+
+    [Serializable]
+    private class SerializableNode {
+      public string guid;
+      public Vector2 nodePosition;
+      public string metadataName;
+      public bool isCollapsed;
+      public List<SerializableNoiseEdge> edges;
+      public List<NoiseIntMember> intValues;
+      public List<NoiseFloatMember> floatValues;
+      public List<NoiseStringMember> enumValues;
+
+      public SerializableNode(NoiseNode node) {
+        this.guid = node.guid;
+        this.nodePosition = node.nodePosition;
+        this.metadataName = node.metadataName;
+        this.isCollapsed = node.isCollapsed;
+        this.edges = node.edges.Select((edge) => new SerializableNoiseEdge(edge)).ToList();
+        this.intValues = new(node.intValues);
+        this.floatValues = new(node.floatValues);
+        this.enumValues = new(node.enumValues);
+      }
+    }
+
+    [Serializable]
+    private struct SerializableNoiseEdge {
+      public string parentPortName;
+      public string childNodeGuid;
+
+      public SerializableNoiseEdge(NoiseEdge edge) {
+        this.parentPortName = edge.parentPortName;
+        this.childNodeGuid = edge.childNode.guid;
       }
     }
 
@@ -48,14 +82,14 @@ namespace FastNoise2Graph.UI {
       });
 
       serializeGraphElements += (IEnumerable<GraphElement> elements) => {
-        CopyPasteData data = new(elements);
+        SerializableNoiseTree data = new(elements);
         string jsonData = JsonUtility.ToJson(data);
         return jsonData;
       };
 
       canPasteSerializedData += (jsonData) => {
         try {
-          JsonUtility.FromJson<CopyPasteData>(jsonData);
+          JsonUtility.FromJson<SerializableNoiseTree>(jsonData);
           return true;
         } catch (System.Exception) {
           return false;
@@ -63,44 +97,30 @@ namespace FastNoise2Graph.UI {
       };
 
       unserializeAndPaste += (operationName, jsonData) => {
-        CopyPasteData data = JsonUtility.FromJson<CopyPasteData>(jsonData);
+        SerializableNoiseTree data = JsonUtility.FromJson<SerializableNoiseTree>(jsonData);
 
-        // Build a list of the original node views
-        List<NoiseNode> originalNodes = new List<NoiseNode>();
-        foreach (var nodeGuid in data.nodeGuids) {
-          NoiseNodeView nodeView = FindNodeView(nodeGuid);
-          if (nodeView != null) {
-            originalNodes.Add(nodeView.node);
-          }
-        }
+        Dictionary<string, NoiseNode> pastedNodes = new();
 
         // Copy the nodes and select them
         ClearSelection();
-        Dictionary<NoiseNode, NoiseNode> newNodes = new();
-        foreach (var originalNode in originalNodes) {
-          NoiseNodeView newView = CopyNode(originalNode);
-          newNodes.Add(originalNode, newView.node);
-          AddToSelection(newView);
+        foreach (var copiedNode in data.nodes) {
+          NoiseNodeView pastedView = CopyNode(copiedNode);
+          pastedNodes.Add(copiedNode.guid, pastedView.node);
+          AddToSelection(pastedView);
         }
 
         // Copy the edges
-        foreach (var originalNode in originalNodes) {
-          NoiseNode parent = originalNode;
-          NoiseNode newParent = newNodes[parent];
+        foreach (var copiedNode in data.nodes) {
+          NoiseNode pastedNode = pastedNodes[copiedNode.guid];
 
-          foreach (var edge in originalNode.edges) {
-            NoiseNode child = edge.childNode;
-            NoiseNode newChild;
-
-            // Make sure the edge is connected to a node in the selection
-            if (newNodes.TryGetValue(child, out newChild)) {
-              newParent.edges.Add(new NoiseEdge(edge.parentPortName, newChild));
-              continue;
+          foreach (var edge in copiedNode.edges) {
+            if (pastedNodes.TryGetValue(edge.childNodeGuid, out NoiseNode child)) {
+              pastedNode.edges.Add(new NoiseEdge(edge.parentPortName, child));
             }
           }
 
           // Create the edges in the UI
-          CreateEdges(newParent);
+          CreateEdges(pastedNode);
         }
       };
     }
@@ -234,11 +254,11 @@ namespace FastNoise2Graph.UI {
       EditorUtility.SetDirty(tree);
     }
 
-    private NoiseNodeView CopyNode(NoiseNode node) {
+    private NoiseNodeView CopyNode(SerializableNode node) {
       NoiseNode copy = AddNodeToTree(node.metadataName);
 
-      // Move the node a little bit
       copy.nodePosition = node.nodePosition + new Vector2(20, 20);
+      copy.isCollapsed = node.isCollapsed;
 
       // Copy the fields
       copy.intValues = new(node.intValues);
