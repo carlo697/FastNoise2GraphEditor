@@ -188,7 +188,11 @@ namespace FastNoise2Graph.UI {
                   RepaintNodesOnFieldUpdate();
                 });
 
-                fieldElement = dropdown;
+                // We add this element to make the USS class work correctly
+                VisualElement fieldParent = new VisualElement();
+                fieldParent.Add(dropdown);
+
+                fieldElement = fieldParent;
                 break;
               default:
                 // Create the field
