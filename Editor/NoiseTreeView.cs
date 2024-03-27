@@ -68,7 +68,10 @@ namespace FastNoise2Graph.UI {
       // Add background
       Insert(0, new GridBackground());
 
-      this.AddManipulator(new ContentZoomer());
+      ContentZoomer zoomer = new();
+      zoomer.maxScale = 3f;
+      this.AddManipulator(zoomer);
+
       this.AddManipulator(new ContentDragger());
       this.AddManipulator(new SelectionDragger());
       this.AddManipulator(new RectangleSelector());
