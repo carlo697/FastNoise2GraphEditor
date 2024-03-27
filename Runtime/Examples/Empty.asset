@@ -27,6 +27,8 @@ MonoBehaviour:
         edges: []
         metadataName: Output
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []

@@ -91,11 +91,16 @@ namespace FastNoise2Graph.UI {
       EditorUtility.SetDirty(tree);
     }
 
-    private void CreateInputPorts() {
+    private (SerializedObject, SerializedProperty) GetSerializedProperty() {
       int nodeIndex = tree.nodes.IndexOf(node);
       var serializedTree = new SerializedObject(tree);
       var serializedNodes = serializedTree.FindProperty("nodes");
       var serializedNode = serializedNodes.GetArrayElementAtIndex(nodeIndex);
+      return (serializedTree, serializedNode);
+    }
+
+    private void CreateInputPorts() {
+      var (serializedTree, serializedNode) = GetSerializedProperty();
 
       if (NoiseTree.IsOutputNode(node)) {
         string name = "Output";
@@ -282,6 +287,23 @@ namespace FastNoise2Graph.UI {
 
       // Add the box
       mainContainer.Add(box);
+
+      // Settings field
+      var (serializedTree, serializedNode) = GetSerializedProperty();
+      SerializedProperty serializedSettings = serializedNode.FindPropertyRelative("previewSettings");
+      PropertyField field = new PropertyField(serializedSettings, "Preview");
+
+      // Binding
+      field.Bind(serializedTree);
+      field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
+        RepaintNodesOnFieldUpdate();
+      });
+
+      // Field style
+      field.AddToClassList("node-input-property");
+
+      // Add the field
+      mainContainer.Add(field);
     }
 
     public void UpdatePreview() {
@@ -320,10 +342,14 @@ namespace FastNoise2Graph.UI {
             float value = values[i];
 
             // Convert the value to range 0 to 1
-            float normalizedValue = NoiseTextureUtils.Normalize(value);
+            if (node.previewSettings.mode == NodePreviewMode.Minus1ToOne) {
+              value = NoiseTextureUtils.Normalize(value);
+            } else {
+              value = Mathf.Clamp01(value);
+            }
 
             // Store the final black and white color
-            Color finalColor = new Color(normalizedValue, normalizedValue, normalizedValue, 1f);
+            Color finalColor = new Color(value, value, value, 1f);
             colors[i] = finalColor;
           }
 

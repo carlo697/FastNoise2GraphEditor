@@ -46,6 +46,8 @@ MonoBehaviour:
             rid: 6015746355146522673
         metadataName: Output
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -57,6 +59,8 @@ MonoBehaviour:
         edges: []
         metadataName: Perlin
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -71,6 +75,8 @@ MonoBehaviour:
             rid: 6015746355146522658
         metadataName: FractalFBm
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues:
         - name: Octaves
           value: 5
@@ -93,6 +99,8 @@ MonoBehaviour:
             rid: 6015746355146522659
         metadataName: Divide
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: LHS
@@ -104,7 +112,7 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: 183a7d80-fe62-4700-b29d-778d3ca37651
-        nodePosition: {x: 7, y: 284}
+        nodePosition: {x: 6.999999, y: 379}
         edges:
         - parentPortName: LHS
           childNode:
@@ -114,6 +122,8 @@ MonoBehaviour:
             rid: 6015746355146522662
         metadataName: Add
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -123,10 +133,12 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: c121a690-fce5-4627-a8b0-19a568f3a8dc
-        nodePosition: {x: -237.00003, y: 347.1001}
+        nodePosition: {x: -237, y: 400.16}
         edges: []
         metadataName: Perlin
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -141,6 +153,8 @@ MonoBehaviour:
             rid: 6015746355146522660
         metadataName: Min
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -157,6 +171,8 @@ MonoBehaviour:
             rid: 6015746355146522663
         metadataName: Max
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -166,7 +182,7 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: a77917a5-418a-474a-8da2-305aec7e8eb9
-        nodePosition: {x: 728, y: 252.99998}
+        nodePosition: {x: 720.00006, y: 355.20007}
         edges:
         - parentPortName: LHS
           childNode:
@@ -176,6 +192,8 @@ MonoBehaviour:
             rid: 6015746355146522661
         metadataName: Add
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -192,6 +210,8 @@ MonoBehaviour:
             rid: 6015746355146522665
         metadataName: FractalFBm
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues:
         - name: Octaves
           value: 4
@@ -211,6 +231,8 @@ MonoBehaviour:
         edges: []
         metadataName: Value
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -225,6 +247,8 @@ MonoBehaviour:
             rid: 6015746355146522667
         metadataName: DomainScale
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: Scale
@@ -234,10 +258,12 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: 109b04b1-998a-47ac-b6c9-5f969600bc6a
-        nodePosition: {x: 389.54276, y: 579.14514}
+        nodePosition: {x: 407.49008, y: 716}
         edges: []
         metadataName: CellularValue
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues:
         - name: Value Index
           value: 0
@@ -251,13 +277,15 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: b160712a-9363-4a8b-b8d0-6062d6b9480c
-        nodePosition: {x: 699.5427, y: 579.14514}
+        nodePosition: {x: 717.4901, y: 716}
         edges:
         - parentPortName: LHS
           childNode:
             rid: 6015746355146522669
         metadataName: Multiply
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -267,13 +295,15 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: c177d904-8d7b-4716-94d9-b8151e0fec84
-        nodePosition: {x: 919.5427, y: 579.14514}
+        nodePosition: {x: 937.4901, y: 716}
         edges:
         - parentPortName: LHS
           childNode:
             rid: 6015746355146522670
         metadataName: Min
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -283,13 +313,15 @@ MonoBehaviour:
       type: {class: NoiseNode, ns: FastNoise2Graph, asm: FastNoise2Graph}
       data:
         guid: 0f55682e-5614-4b98-ab74-07fa87ee5a79
-        nodePosition: {x: 1145.5427, y: 579.14514}
+        nodePosition: {x: 1163.4901, y: 716}
         edges:
         - parentPortName: LHS
           childNode:
             rid: 6015746355146522671
         metadataName: Max
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: RHS
@@ -312,6 +344,8 @@ MonoBehaviour:
             rid: 6015746355146522672
         metadataName: Fade
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: Fade

@@ -31,6 +31,8 @@ MonoBehaviour:
             rid: 6015746355146522638
         metadataName: Output
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -42,6 +44,8 @@ MonoBehaviour:
         edges: []
         metadataName: CellularValue
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues:
         - name: Value Index
           value: 0

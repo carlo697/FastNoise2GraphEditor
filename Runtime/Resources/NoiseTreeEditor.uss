@@ -21,6 +21,21 @@ GridBackground {
   flex-grow: 0;
 }
 
+.node-input-property .unity-base-field.unity-foldout__toggle {
+  flex-direction: row;
+  margin-left: 0;
+  justify-content: flex-start;
+}
+
+.node-input-property .unity-foldout .unity-base-field__input {
+  min-width: 70px;
+  flex-grow: 0;
+}
+
+.node-input-property .unity-foldout__toggle .unity-base-field__input {
+  flex-grow: 1;
+}
+
 .node-input-property--no-port .unity-base-field {
   margin-left: 25px;
 }

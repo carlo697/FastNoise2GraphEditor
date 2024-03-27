@@ -3,6 +3,18 @@ using System;
 using System.Collections.Generic;
 
 namespace FastNoise2Graph {
+  public enum NodePreviewMode {
+    [InspectorName("-1 to 1")]
+    Minus1ToOne,
+    [InspectorName("0 to 1")]
+    ZeroToOne
+  }
+
+  [System.Serializable]
+  public class NoiseNodePreviewSettings {
+    public NodePreviewMode mode;
+  }
+
   [System.Serializable]
   public class NoiseNode {
     public string guid;
@@ -10,6 +22,7 @@ namespace FastNoise2Graph {
     public List<NoiseEdge> edges = new();
     public string metadataName;
     public bool isCollapsed;
+    public NoiseNodePreviewSettings previewSettings = new();
 
     public List<NoiseIntMember> intValues = new();
     public List<NoiseFloatMember> floatValues = new();

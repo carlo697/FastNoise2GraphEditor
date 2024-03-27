@@ -33,6 +33,8 @@ MonoBehaviour:
             rid: 6015746355146522635
         metadataName: Output
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -47,6 +49,8 @@ MonoBehaviour:
             rid: 6015746355146522634
         metadataName: CellularLookup
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: Lookup Frequency
@@ -64,6 +68,8 @@ MonoBehaviour:
         edges: []
         metadataName: Perlin
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues: []
         enumValues: []
@@ -78,6 +84,8 @@ MonoBehaviour:
             rid: 6015746355146522633
         metadataName: DomainScale
         isCollapsed: 0
+        previewSettings:
+          mode: 0
         intValues: []
         floatValues:
         - name: Scale
