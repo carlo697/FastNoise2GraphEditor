@@ -157,6 +157,8 @@ namespace FastNoise2Graph.UI {
     }
 
     private GraphViewChange OnGraphViewChanged(GraphViewChange change) {
+      List<NoiseNodeView> viewsToUpdate = new();
+
       if (change.elementsToRemove != null) {
         foreach (var elementToRemove in change.elementsToRemove) {
           NoiseNodeView nodeView = elementToRemove as NoiseNodeView;
@@ -179,6 +181,7 @@ namespace FastNoise2Graph.UI {
             EditorUtility.SetDirty(tree);
 
             parentView.UpdateFieldsVisibility();
+            viewsToUpdate.Add(parentView);
           }
         }
       }
@@ -196,12 +199,12 @@ namespace FastNoise2Graph.UI {
           EditorUtility.SetDirty(tree);
 
           parentView.UpdateFieldsVisibility();
+          viewsToUpdate.Add(parentView);
         }
       }
 
-      foreach (var node in tree.nodes) {
-        NoiseNodeView nodeView = FindNodeView(node);
-        nodeView.UpdatePreview();
+      foreach (var view in viewsToUpdate) {
+        view.UpdatePreviewsRecursively();
       }
 
       return change;

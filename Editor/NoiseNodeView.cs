@@ -72,12 +72,13 @@ namespace FastNoise2Graph.UI {
 
       // Create preview
       CreatePreview();
+      UpdatePreview();
 
       generateVisualContent += OnGenerateVisualContent;
     }
 
     private void OnGenerateVisualContent(MeshGenerationContext mgc) {
-      UpdatePreview();
+      m_initialized = true;
     }
 
     public override void SetPosition(Rect newPos) {
@@ -98,6 +99,8 @@ namespace FastNoise2Graph.UI {
       var serializedNode = serializedNodes.GetArrayElementAtIndex(nodeIndex);
       return (serializedTree, serializedNode);
     }
+
+    private bool m_initialized;
 
     private void CreateInputPorts() {
       var (serializedTree, serializedNode) = GetSerializedProperty();
@@ -185,7 +188,7 @@ namespace FastNoise2Graph.UI {
 
                 // Register to the value changed callback
                 dropdown.RegisterValueChangedCallback(evt => {
-                  RepaintNodesOnFieldUpdate();
+                  UpdatePreviewsRecursively();
                 });
 
                 // We add this element to make the USS class work correctly
@@ -202,7 +205,7 @@ namespace FastNoise2Graph.UI {
                 field.Bind(serializedTree);
 
                 field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
-                  RepaintNodesOnFieldUpdate();
+                  UpdatePreviewsRecursively();
                 });
 
                 fieldElement = field;
@@ -251,13 +254,6 @@ namespace FastNoise2Graph.UI {
       RefreshExpandedState();
     }
 
-    private void RepaintNodesOnFieldUpdate() {
-      foreach (var node in tree.nodes) {
-        NoiseNodeView nodeView = treeView.FindNodeView(node);
-        nodeView.MarkDirtyRepaint();
-      }
-    }
-
     public void UpdateFieldsVisibility() {
       foreach (var (memberName, field) in fieldsByName) {
         bool enabled = true;
@@ -300,7 +296,7 @@ namespace FastNoise2Graph.UI {
       // Binding
       field.Bind(serializedTree);
       field.RegisterCallback<SerializedPropertyChangeEvent>((evt) => {
-        RepaintNodesOnFieldUpdate();
+        UpdatePreviewsRecursively();
       });
 
       // Field style
@@ -308,6 +304,52 @@ namespace FastNoise2Graph.UI {
 
       // Add the field
       mainContainer.Add(field);
+    }
+
+    private static bool IsNodeDescendantOf(NoiseNode node, NoiseNode parent) {
+      if (node == parent) {
+        return true;
+      }
+
+      bool isPart = false;
+      foreach (var edge in node.edges) {
+        if (IsNodeDescendantOf(edge.childNode, parent)) {
+          isPart = true;
+          break;
+        }
+      }
+
+      return isPart;
+    }
+
+    private List<NoiseNode> GetParents() {
+      List<NoiseNode> parents = new();
+      foreach (var treeNode in tree.nodes) {
+        if (treeNode == node) {
+          continue;
+        }
+
+        if (IsNodeDescendantOf(treeNode, node)) {
+          parents.Add(treeNode);
+        }
+      }
+      return parents;
+    }
+
+    public void UpdatePreviewsRecursively() {
+      if (m_initialized) {
+        // Update this preview
+        UpdatePreview();
+
+        // Find the parents and parent's parent, ect. of this node
+        List<NoiseNode> nodesToUpdate = GetParents();
+
+        // Update their preview
+        foreach (var node in nodesToUpdate) {
+          NoiseNodeView view = treeView.FindNodeView(node);
+          view.UpdatePreview();
+        }
+      }
     }
 
     public void UpdatePreview() {
