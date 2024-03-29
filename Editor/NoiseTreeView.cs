@@ -70,6 +70,7 @@ namespace FastNoise2Graph.UI {
 
       ContentZoomer zoomer = new();
       zoomer.maxScale = 3f;
+      zoomer.minScale = 0.05f;
       this.AddManipulator(zoomer);
 
       this.AddManipulator(new ContentDragger());
