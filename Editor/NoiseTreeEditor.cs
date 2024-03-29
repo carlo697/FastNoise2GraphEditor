@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -48,6 +49,10 @@ namespace FastNoise2Graph.UI {
       m_VisualTreeAsset.CloneTree(root);
 
       m_treeView = root.Q<NoiseTreeView>();
+
+      // Button to select all elements
+      ToolbarButton selectAllButton = root.Q<ToolbarButton>(name: "SelectAllButton");
+      selectAllButton.clicked += m_treeView.SelectAll;
 
       // Re-open tree if there was one
       ReloadActiveTree();

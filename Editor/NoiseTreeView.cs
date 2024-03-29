@@ -312,5 +312,11 @@ namespace FastNoise2Graph.UI {
     public NoiseNodeView FindNodeView(NoiseNode node) {
       return FindNodeView(node.guid);
     }
+
+    public void SelectAll() {
+      foreach (var element in graphElements) {
+        AddToSelection(element);
+      }
+    }
   }
 }

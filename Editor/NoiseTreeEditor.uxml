@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/Scripts/Noise/FastNoise%20Graph/UI/FastNoiseTreeEditor.uss?fileID=7433441132597879392&amp;guid=13a04c2c9c9e18a419e7d10f09e6168c&amp;type=3#FastNoiseTreeEditor" />
+    <Style src="project://database/Assets/FastNoise2GraphEditor/Editor/Resources/NoiseTreeEditor.uss?fileID=7433441132597879392&amp;guid=13a04c2c9c9e18a419e7d10f09e6168c&amp;type=3#NoiseTreeEditor" />
     <uie:Toolbar>
-        <uie:ToolbarMenu tabindex="-1" display-tooltip-when-elided="true" text="Assets" />
+        <uie:ToolbarButton text="Select All" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectAllButton" />
     </uie:Toolbar>
     <FastNoise2Graph.UI.NoiseTreeView focusable="true" style="flex-grow: 1;" />
 </ui:UXML>
