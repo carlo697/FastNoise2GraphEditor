@@ -25,7 +25,7 @@ namespace FastNoise2Graph.UI {
 
     public static NoiseTreeEditor OpenWindow(NoiseTree tree) {
       // Know if there's already a window
-      NoiseTreeEditor[] windows = Resources.FindObjectsOfTypeAll<NoiseTreeEditor>();
+      NoiseTreeEditor[] windows = GetWindows();
       foreach (var window in windows) {
         if (window.m_currentTree == tree) {
           window.Focus();
@@ -38,6 +38,20 @@ namespace FastNoise2Graph.UI {
       editor.titleContent.image = Resources.Load<Texture>("NoiseTreeIcon");
       editor.OpenTree(tree);
       return editor;
+    }
+
+    public static void CloseWindow(NoiseTree tree) {
+      // Know if there's already a window
+      NoiseTreeEditor[] windows = GetWindows();
+      foreach (var window in windows) {
+        if (window.m_currentTree == tree) {
+          window.Close();
+        }
+      }
+    }
+
+    public static NoiseTreeEditor[] GetWindows() {
+      return Resources.FindObjectsOfTypeAll<NoiseTreeEditor>();
     }
 
     private void CreateGUI() {
