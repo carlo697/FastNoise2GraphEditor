@@ -13,25 +13,33 @@ namespace FastNoise2Graph.UI {
     private NoiseTreeView m_treeView;
 
     [OnOpenAsset]
-    public static bool OnOpenAsset(int instanceId, int line) {
+    private static bool OnOpenAsset(int instanceId, int line) {
       NoiseTree tree = EditorUtility.InstanceIDToObject(instanceId) as NoiseTree;
       if (tree != null) {
-        NoiseTreeEditor editor = OpenWindow();
-        editor.OpenTree(tree);
+        NoiseTreeEditor editor = OpenWindow(tree);
         return true;
       }
 
       return false;
     }
 
-    [MenuItem("Window/FastNoise2 Graph Editor")]
-    public static NoiseTreeEditor OpenWindow() {
-      NoiseTreeEditor editor = GetWindow<NoiseTreeEditor>();
-      editor.titleContent = new GUIContent("FastNoise2 Graph Editor");
+    public static NoiseTreeEditor OpenWindow(NoiseTree tree) {
+      // Know if there's already a window
+      NoiseTreeEditor[] windows = Resources.FindObjectsOfTypeAll<NoiseTreeEditor>();
+      foreach (var window in windows) {
+        if (window.m_currentTree == tree) {
+          window.Focus();
+          return window;
+        }
+      }
+
+      // Create a new window
+      NoiseTreeEditor editor = CreateWindow<NoiseTreeEditor>(typeof(SceneView));
+      editor.OpenTree(tree);
       return editor;
     }
 
-    public void CreateGUI() {
+    private void CreateGUI() {
       // Each editor window contains a root VisualElement object
       VisualElement root = rootVisualElement;
 
@@ -48,7 +56,7 @@ namespace FastNoise2Graph.UI {
       ReloadActiveTree();
     }
 
-    public void OpenTree(NoiseTree tree) {
+    private void OpenTree(NoiseTree tree) {
       titleContent.text = tree.name;
 
       m_currentTree = tree;
