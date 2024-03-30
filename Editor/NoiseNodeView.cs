@@ -283,6 +283,7 @@ namespace FastNoise2Graph.UI {
 
       // Noise image preview
       previewTexture = new Texture2D(200, 200);
+      previewTexture.hideFlags = HideFlags.HideAndDontSave;
       box.style.backgroundImage = previewTexture;
 
       // Add the box
