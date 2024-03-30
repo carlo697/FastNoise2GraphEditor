@@ -8,7 +8,7 @@ namespace FastNoise2Graph.UI {
   public class NoiseTreeEditor : EditorWindow {
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
-
+    [SerializeField]
     private NoiseTree m_currentTree;
     private NoiseTreeView m_treeView;
 
