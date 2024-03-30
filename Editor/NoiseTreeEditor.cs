@@ -34,7 +34,7 @@ namespace FastNoise2Graph.UI {
       }
 
       // Create a new window
-      NoiseTreeEditor editor = CreateWindow<NoiseTreeEditor>(typeof(SceneView));
+      NoiseTreeEditor editor = CreateWindow<NoiseTreeEditor>(typeof(NoiseTreeEditor), typeof(SceneView));
       editor.titleContent.image = Resources.Load<Texture>("NoiseTreeIcon");
       editor.OpenTree(tree);
       return editor;
