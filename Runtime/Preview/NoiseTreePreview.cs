@@ -28,9 +28,11 @@ namespace FastNoise2Graph.Examples {
       m_meshRenderer = GetComponent<MeshRenderer>();
 
       material = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+      material.hideFlags = HideFlags.DontSave;
       m_meshRenderer.sharedMaterial = material;
 
       m_texture2d = new Texture2D(resolution, resolution);
+      m_texture2d.hideFlags = HideFlags.DontSave;
     }
 
     private void OnDestroy() {
