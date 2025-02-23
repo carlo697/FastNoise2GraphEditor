@@ -94,18 +94,10 @@ namespace FastNoise2Graph.Examples {
     }
 
     public void Generate() {
-      System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
-      watch.Start();
-
       float[] heightmap = GetNoise();
 
-      watch.Stop();
-      if (debugTime) {
-        Debug.Log($"Time: {watch.Elapsed.TotalMilliseconds} ms");
-      }
-
+      // Use a black heightmap as fallback
       if (heightmap == null) {
-        // Use a black heightmap
         heightmap = new float[resolution * resolution];
       }
 
@@ -118,8 +110,8 @@ namespace FastNoise2Graph.Examples {
       }
     }
 
-    [ContextMenu("Log time to create FastNoise instance")]
-    private void LogTimeToCreateInstance() {
+    [ContextMenu("Performance Test")]
+    private void PerformanceTest() {
       if (noiseTree == null) {
         Debug.LogWarning("noiseTree is null");
         return;
@@ -127,10 +119,19 @@ namespace FastNoise2Graph.Examples {
 
       System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
       stopwatch.Start();
-      FastNoise generated = noiseTree.GetFastNoise();
+
+      FastNoise noise = noiseTree.GetFastNoise();
+
       stopwatch.Stop();
-      Debug.Log(generated);
-      Debug.Log($"Time to generate the FastNoise intances: {stopwatch.Elapsed.TotalMilliseconds}");
+      Debug.Log($"FastNoise instance generated in: {stopwatch.Elapsed.TotalMilliseconds} ms");
+
+      stopwatch.Restart();
+
+      float[] heightmap = new float[resolution * resolution];
+      noise.GenUniformGrid2D(heightmap, offset.x, offset.y, resolution, resolution, 1f / scale, 0);
+
+      stopwatch.Stop();
+      Debug.Log($"Noise of {resolution} x {resolution} ({resolution * resolution} pixels) generated in: {stopwatch.Elapsed.TotalMilliseconds} ms");
     }
   }
 }
